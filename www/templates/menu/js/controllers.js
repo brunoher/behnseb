@@ -108,7 +108,7 @@ appControllers.controller('transitionCtrl', function($scope, $state) {
     })
 });
 
-appControllers.controller('profileCtrl', function($rootScope, $scope, $state, Utilities, $ionicPopup, PopupService, SignInService, DataService, CreateUser, $timeout, IgnApiService, Confirm){
+appControllers.controller('profileCtrl', function($rootScope, $scope, $state, Utilities, $ionicPopup, PopupService, SignInService, DataService, CreateUser, $timeout, IgnApiService, Confirm, Animate){
     //$rootScope.isSidemenu = true;
     /*
     $scope.sendNotif = function(){
@@ -434,16 +434,16 @@ appControllers.controller('profileCtrl', function($rootScope, $scope, $state, Ut
         }
     }
 
-    /*$scope.addStreetNumber = function() {
+    $scope.addStreetNumber = function() {
         var nmbr = $scope.data.streetNumber; 
         if (!isNaN(parseInt(nmbr))) {
             $scope.data.selectedSuggestion.fullText = nmbr + " " + $scope.data.selectedSuggestion.fullText;
-            //IgnApiService.formatString($scope.data.selectedSuggestion.fullText);   
-            //IgnApiService.setUserFullAdress($scope.data, $scope.form).then(function(obj) {
+            IgnApiService.formatString($scope.data.selectedSuggestion.fullText);   
+            IgnApiService.setUserFullAdress($scope.data, $scope.form).then(function(obj) {
             //    $scope.o = obj;
                 $scope.o.addressSelected = $scope.data.selectedSuggestion.fullText;
-                //$scope.displayResult = obj.displayResult;
-                //$scope.showButton = obj.showButton;
+                $scope.displayResult = obj.displayResult;
+                $scope.showButton = obj.showButton;
                 $scope.o.streetNumber = nmbr;
                 $scope.data.streetNumber = null;
              }), function (err) {
@@ -453,18 +453,20 @@ appControllers.controller('profileCtrl', function($rootScope, $scope, $state, Ut
             PopupService.show("invalidStreetNumber");
             delete $scope.o;
         } 
-    }*/
+    }
 
     $scope.setUserFullAdress = function() {
+        Animate.loadStrt();
         SignInService.setUserFullAdress($scope.data, $scope.form).then(function(obj) {
             $scope.o = obj;
             if (isNaN(parseInt($scope.o.streetNumber))) {
-                /*var template = '<input type="text" ng-model="data.streetNumber">';
+                var template = '<input type="text" ng-model="data.streetNumber">';
                 var title = "Numéro de rue manquant : souhaitez vous ajouter un numéro de rue à l'adresse :<br>'"+ $scope.data.selectedSuggestion.fullText+"' ?";
-                Confirm.addStreetNumber($scope, template, title);*/
-                PopupService.show("invalidStreetNumber");
-                delete $scope.o;
+                Confirm.addStreetNumber($scope, template, title);
+                //PopupService.show("invalidStreetNumber");
+                //delete $scope.o;
             }else {
+                Animate.loadEnd();
                 $scope.displayResult = obj.displayResult;
                 $scope.showButton = obj.showButton;
             }

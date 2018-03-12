@@ -110,14 +110,17 @@
                         <input ng-model="form.user.syndicNumber" type="text" placeholder="Code syndic (optionnel)">
                     </label>
 
+                    <div id=bubble-codeSyndic-container>
+                        <div ng-if="showCodeSyndic == true" class="bubble-codeSyndic">
+                            <div class="talktext">
+                                {{ 'syndicCode_card' | translate }}
+                            </div>
+                        </div>
+                    </div>
+
                     <a ng-click="showCodeSyndicFunc()">
                         Où le trouver et à quoi sert-il?
                     </a>
-                    <div ng-if="showCodeSyndic == true" class="bubble-codeSyndic">
-                        <div class="talktext">
-                            {{ 'syndicCode_card' | translate }}
-                        </div>
-                    </div>
 
                     <label class="item item-input signUp">
                         <input type="text" ng-model="b_Day.year" value="" maxlength="4" placeholder="{{ 'year_of_birth' | translate }}" ng-keyup="getB_dayYearPlus18(b_Day.year)"/>
