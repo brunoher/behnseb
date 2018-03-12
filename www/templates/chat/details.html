@@ -1,0 +1,6 @@
+<div class="input-btn-container">
+    <label class="item-input-wrapper">
+        <textarea  rows={{rowsInputMsg}} style="resize:none; font-size: 120%; margin-top: {{ margin_top }};" type="text" placeholder="Tapez votre message" on-return="adjustInputHeight(); closeKeyboard()" ng-model="inputText.content" ng-focus="viewUp()" ng-blur="viewDown()" ng-keyUp="adjustInputHeight()" class="send-message-input">     
+        </textarea>
+    </label>
+</div>

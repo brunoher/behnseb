@@ -1,0 +1,115 @@
+{
+  "project_info": {
+    "project_number": "373460998251",
+    "firebase_url": "https://msh2-d4cb7.firebaseio.com",
+    "project_id": "msh2-d4cb7",
+    "storage_bucket": "msh2-d4cb7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:373460998251:android:024787d36884bc55",
+        "android_client_info": {
+          "package_name": "com.myspoticom.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "373460998251-chod4is1eloopor8vnskvt5jn07ds8g4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.myspoticom.app",
+            "certificate_hash": "ba9fc46ec16837389fef04f51f4e91d40f88ebe2"
+          }
+        },
+        {
+          "client_id": "373460998251-jq00d8coq1e4qlbf10crnql212um9deh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.myspoticom.app",
+            "certificate_hash": "d877f4d73c2f6a893d26b44e06dc3f4ed1a231b7"
+          }
+        },
+        {
+          "client_id": "373460998251-89ehqojfi2hnk2as0pf3frjrmb5dju11.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADfEK5WTRoyMzbP2qM_V7U_q4SMaMvLz8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "373460998251-89ehqojfi2hnk2as0pf3frjrmb5dju11.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:373460998251:android:b849a5f2de3827e0",
+        "android_client_info": {
+          "package_name": "com.myspoticom.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "373460998251-28uoi9jp6mg2f1s7ijumkjr36ija1hs5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.myspoticom.app",
+            "certificate_hash": "ba9fc46ec16837389fef04f51f4e91d40f88ebe2"
+          }
+        },
+        {
+          "client_id": "373460998251-ihko2es81f2rbrsi47g1c70q6fnf96hv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.myspoticom.app",
+            "certificate_hash": "d877f4d73c2f6a893d26b44e06dc3f4ed1a231b7"
+          }
+        },
+        {
+          "client_id": "373460998251-89ehqojfi2hnk2as0pf3frjrmb5dju11.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADfEK5WTRoyMzbP2qM_V7U_q4SMaMvLz8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "373460998251-89ehqojfi2hnk2as0pf3frjrmb5dju11.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,151 @@
+<!--View Information-->
+<!--View name : Contract Detail-->
+<!--Controller name : contractDetailCtrl-->
+<!--Controller path : www/templates/application-storage/sqLite/js/controllers.js-->
+<!--State name : app.contractdetail-->
+<!--URL : #app/contractdetail-->
+
+<ion-view cache-view="false" title="Ajouter/Editer un incident"   hide-tabs>
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ui-sref="app.listIncidents" class="button back-button buttons  button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons> <!--end left button on navigation bar-->
+
+    <!--contract detail section-->
+    <ion-content  id="menu-dashboard-content">
+        <!--contract detail input section-->
+        <!--
+<md-input-container md-no-float>
+<i class="ion-android-person"></i>
+<input ng-model="form.titre" name="titre" required placeholder="* titre (required)">
+</md-input-container>
+-->
+
+
+        <form name="incidentForm">
+            <div class="menu-dashboard-footer">
+
+                <ion-item class="item-divider item">Quel est le status ?</ion-item>
+
+                <md-whiteframe class="md-whiteframe-z1"  layout>
+
+                    <md-input-container>
+                        <md-select ng-model="form.status">
+
+                            <md-option ng-repeat="(k,option) in formSelectList.status" ng-value="k" >
+                                {{option.name}} 
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </md-whiteframe>
+
+                <md-whiteframe class="md-whiteframe-z1"  layout>
+                    <md-input-container class="md-block">
+                        <label>Description</label>
+                        <textarea ng-model="form.description" md-maxlength="850" rows="5" md-select-on-focus></textarea>
+                    </md-input-container>
+
+                </md-whiteframe>
+                
+                <ion-item class="item-divider item">Choisissez le type d'incident</ion-item>
+
+                <md-whiteframe class="md-whiteframe-z1"  layout>
+
+                    <md-input-container>
+                        <md-select ng-model="form.type.name">
+
+                            <md-option ng-value="type.name" ng-repeat="type in incidentTypes">{{ type.name }}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </md-whiteframe>
+
+                <ion-item class="item-divider item">A quel endroit ?</ion-item>
+
+                <md-whiteframe class="md-whiteframe-z1"  layout>
+
+                    <md-input-container>
+                        <md-select ng-model="form.zone.name">
+
+                            <md-option ng-value="zone.name" ng-repeat="zone in incidentPlaces">{{ zone.name }}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </md-whiteframe>
+            </div>
+
+            <div class="row">
+                <div class="col-33">
+                    <a  ui-sref="app.homeDashboard" class="sign-up-button md-raised md-button md-default-theme material-background">
+                        RETOUR</a>
+
+                </div>
+                
+                <div class="col-33" style="text-align: center;">
+                    <button ng-click="showAddImageBottomSheet($event,form)" style="border: none;" class="button icon ion-camera chsog">
+                    </button>
+                </div>
+
+                <div class="col-33">
+                    <a  ng-click="saveIncident(form,$event)" class="sign-up-button md-raised md-button md-default-theme material-background">
+                        VALIDER</a>
+                </div>
+            </div>
+            <div style="height: 30px;"></div>
+            
+            <div ng-if="img.src">
+
+                <md-card>
+
+
+                    <img ng-if="img.src" ng-src="{{ img.src }}" id="img2" ng-model="img.src" class="incident-decla-img">
+
+                    <md-card-actions layout="row" layout-align="center" no-margin>
+                        <md-button ng-if="img.src" ng-click="deleteimgEdit(img)">Supprimer l'image</md-button>
+                    </md-card-actions>
+                </md-card>
+
+            </div>
+
+            <md-progress-circular ng-show="loading" class="md-warn md-progress-social-profile ng-hide"
+                                  md-mode="indeterminate">                          
+            </md-progress-circular><!--end social loading progress section-->
+
+            <!--loading progress-->
+            <div id="incident-post-loading-progress" class="loading-progress fade-in">
+                <ion-spinner ng-if="!isAndroid" class="progress-circular"></ion-spinner>
+                <md-progress-circular ng-if="isAndroid" class="md-warn md-progress-social-profile"
+                                      md-mode="indeterminate"></md-progress-circular>
+            </div><!--end loading progress--> 
+        </form>    
+    </ion-content>
+    
+    
+    <script type="text/ng-template" id="image-actions-template.html">
+        <md-bottom-sheet class="md-list md-has-header">
+            <h1 class="md-bottom-sheet-header">Ajouter une image</h1>
+            
+            <md-list>
+                <!--md bottom sheet list item-->
+                <md-list-item>
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-class="{ 'disabled-link': disableSaveBtn}"
+                       ng-click="takePicture(1, img.src)">
+                        <i class="ion-camera"></i>
+                        <span>Prendre une photo</span>
+                    </a>
+                </md-list-item>
+
+                <md-list-item >
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-click="takePicture(0, img.src)">
+                        <i class="ion-folder"></i>
+                        <span>Depuis ma bibliothèque</span>
+                    </a>
+                </md-list-item>
+                <!--end md bottom sheet list item-->
+            </md-list>
+        </md-bottom-sheet>
+    </script><!--end angular template section-->
+
+</ion-view>

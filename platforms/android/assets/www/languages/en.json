@@ -1,0 +1,196 @@
+//
+{
+   
+   	"welcome" : "welcme",
+   	"signIn" : "SIGN IN",
+   	"signUp" : "NOT A MEMBER YET? SIGN UP", 
+   	
+   	"signUp_message" : "Your building and more...",
+   	"googleConnect" : "GOOGLE SIGN UP",
+   	"fbConnect" : " FACEBOOK SIGN UP",
+   	"mail" : "email",
+   	"pwd_connect" : "password",
+   	"emailConnect" : "SIGN UP WITH EMAIL",
+   	"forgotPwd" : "Password forgotten?",
+   	"email_backup" : "Enter your email",
+    
+    "back" : "back",
+    "signUp" : "Sign up",
+    "civility" : "Civility",
+    "year_of_birth" : "Year of birth : YYYY",
+    "firstName" : "Your firstName",
+    "name" : "Your name",
+    "emailAddress" : "Enter a valid email",
+    "pwd" : "Password (6 chars at least)",
+    "pwd_confirm" : "Confirm your password",
+    "mobilePhone" : "Your mobile phone number",
+    "syndicCode" : "Your sydic code (optional)",
+    "syndicCode_where" : "Where to find it? What is its use?",
+    "syndicCode_card" : "Il s'agit de votre identifiant extranet"
+      "fourni par votre syndic d'immeuble. Vous le trouverez"
+      "sur votre relevé de charges et appel de fonds."
+      "<br> Cet identifiant permet de simplifier"
+      "votre inscription à notre service.",
+    "continue" : "Continue",
+    "flat_status" : "Status",
+    "owner" : "owner",
+    "loc" : "subtenant",
+    "occupier" : "occupier",
+    "owner_nonOccupier" : "Owner non-occupier",
+    "isSyndicMember" : "I'm a syndic of co-owners member",
+    "department" : "Your department",
+    "typeYourAddress" : "type your address (num, street, city)",
+    "selectAddress" : "Select your address",
+    "batName" : "Building name (optional)",
+    "floor" : "Floor number",
+    "add_a_picture" : "Choose your best picture so the other users recognize you !",
+    "open_tou" : "Read our general terms of use",
+    "tou" : "Terms of use",
+    "tou_content" : "Données personnelles"
+    "Les informations recueillies à partir de ce formulaire "
+    "font l’objet d’un traitement informatique destiné à SPOTICOM "
+    "pour les finalité(s) suivante(s) : la gestion des inscriptions "
+    "au service, la constitution de réseaux entre Utilisateurs, la "
+    "mise à disposition de contenus personnalisés, l’instruction des "
+    "demandes adressées par les utilisateurs, la gestion et l’animation "
+    "commerciale, la réalisation d’actions de prospection et la réalisation "
+    "d’études statistiques. Les destinataires des données sont : SPOTICOM, "
+    "ses partenaires et le syndic (bailleurs, gestionnaire) en charge de la "
+    "résidence concernée. Conformément à la loi  informatique et libertés du "
+    "6 janvier 1978 modifiée, vous disposez d’un droit d’accès et de "
+    "rectification aux informations qui vous concernent. "
+    "Vous pouvez accéder aux informations vous concernant en vous adressant à : adresse@mail.com."
+    "Vous pouvez également, pour des motifs légitimes, vous opposer au "
+    "traitement des données vous concernant. Je reconnais avoir été informé :"
+    " - Que SPOTICOM pourra utiliser mes données pour vérifier les informations "
+    "saisies et me suggérer d’entrer en relation avec d’autres utilisateurs y compris en"
+    "utilisant la technologie de géolocalisation."
+    " - Que SPOTICOM pourra récupérer et exploiter à des fins commerciales les"
+    "données relatives aux incidents déclarés.",
+  "close" : "close",
+  "acceptTou" : "I read and agree MySpotiHome general terms of use",
+  "acceptAddOffers" : "I agree to recieve SPOTICOM, partners offers which fit my profile.",
+  "addAvatarText" : "You can add a photo to your profile!",
+  "picture" : "picture",
+  "selectPic" : "Select in library",
+  "takeNewPicture" : "Take a new one",
+  "cancel" : "Cancel",
+  "displayPictute" : "Display picture",
+  "finish" : "Complete",
+ 
+  "usefulContacts" : "Helpful contacts",
+  "newIncident" : "Declare incident",
+  "chat" : "Chat",
+  "network" : "Network",
+  "followUpIncident" : "Follow up incidents",
+  "digitalPosts" : "Digital posts",
+  
+  "sideMenu" : "Menu",
+  "home" : "Home",
+  "profile" : "My profile",
+  "legals" : "Legal notices",
+  "dataProtect" : "Data protection policy",
+  "quit" : "Sign out",
+  "timeOfJoin" : "You joined MySpotiHome community on : ",
+  "legals" : "Editeur"
+    "SPOTICOM SAS, "
+    "11 rue Pierre Brossolette 92300 Levallois Perret"
+    "RCS de Nanterre sous le N°824 796 734 "
+    "Directeur de la publication : Sébastien Baer, Président Contact : contact@spoticom.com"
+    "Hébergement "
+    "OVH 2 rue Kellermann - 59100 Roubaix - France. "
+    "Objectif et qualité des contenus En accord avec sa politique de communication, le site "
+    "myspotihome.com a pour vocation d'informer les utilisateurs sur les services proposés par "
+    "la SAS SPOTICOM, qui s'efforce alors de fournir des informations précises sur son activité. "
+    "Cependant, des inexactitudes ou des omissions peuvent exister : la société ne pourra en "
+    "aucun cas être tenue pour responsable pour toute erreur présente sur le site myspotihome.com. "
+    "Les liens reliés à notre site web myspotihome.com ne sont pas sous le contrôle de notre société. "
+    "Par conséquent, nous ne pouvons nous assurer de l’exactitude des informations présentes sur ces "
+    "autres sites Internet. "
+    "Notre site ne pourra être tenu pour responsable en cas de dommages matériels liés à son "
+    "utilisation. Par ailleurs, toute autre type de conséquence liée à l'exploitation du site "
+    "myspotihome.com, qu'elle soit directe ou indirecte (bug, incompatibilité, virus, perte de marché,  "
+    "perte de données, etc.) ne saurait engager la responsabilité du site. "
+    "Propriété intellectuelle Le contenu rédactionnel, visuel et graphique du site web myspotihome.com "
+    "appartiennent exclusivement à SPOTICOM. Toute violation des droits d’auteur est sanctionnée par "
+    "l’article L.335-2 du Code de la Propriété Intellectuelle, avec une peine encourue de 2 ans "
+    "d’emprisonnement et de 150 000 € d’amende.",
+  "dataProtect" : "<h3>Charte de protection des données.</h3> Cette "
+    "charte de protection des données à caractère personnel fixe la manière dont les données à caractère personnel des utilisateurs du site Internet sont traitées. Les utilisateurs du présent site sont susceptibles de communiquer à SPOTICOM, éditeur du site, des données à caractère personnel les concernant en renseignant les formulaires de contact ou d’inscription présents sur le site. Ces données pourront faire l'objet de traitement automatisé au sens de la loi Informatique et Libertés du 6 janvier 1978 modifiée. "
+    "<h4>Données collectées, finalités du traitement.</h4> "
+    "Pour accéder à certaines fonctionnalités du site, Vous devez communiquer à SPOTICOM certaines données personnelles lorsque vous visitez ou utilisez le site. Les données personnelles susceptibles d’être collectées incluent la civilité, le prénom et le nom de famille, l’adresse e-mail, le(s) numéro(s) de téléphone, l’adresse IP ; le Statut (propriétaire, locataire, occupant) ; la photographie ; l’adresse postale ; les données de géolocalisation, les numéros de téléphone présents dans le carnet d’adresses ou répertoire du téléphone  et toute autre donnée personnelle utile dans le cadre des finalités décrites ci-après. L’Utilisateur confirme qu’il est autorisé à fournir à SPOTICOM ces numéros. En tout état de cause, les données à caractère personnel collectées se limitent aux données nécessaires pour les finalités décrites dans la présente charte. "
+    "Vous êtes libre de fournir ou non tout ou partie de vos données personnelles à SPOTICOM. Le caractère obligatoire de la communication des informations est indiqué par la présence d'un astérisque ou par tout autre procédé équivalent. Si vous choisissez de ne pas les fournir, certains services et certaines fonctionnalités du site pourraient ne pas "
+    "fonctionner. "
+    "Les données à caractère personnel collectées via les formulaires du présent site sont destinées à SPOTICOM en sa qualité de responsable de traitement. Ces données seront utilisées pour les finalités suivantes : la gestion des inscriptions au service, la constitution de réseaux entre Utilisateurs, la mise à disposition de contenus personnalisés, l’instruction des demandes adressées par les utilisateurs, la gestion et l’animation commerciale, la réalisation d’actions de prospection et la réalisation d’études statistiques. "
+    "Conformément à la loi n°78-17 du 6 janvier 1978 relative à l'informatique aux fichiers et aux libertés, vous pouvez, à tout moment accéder aux informations vous concernant, les faire rectifier, les faire mettre à jour ou faire supprimer les données inexactes, incomplètes ou périmées et de vous opposer, sous réserve de justifier d'un motif légitime, à ce que des données à caractère personnel vous concernant fassent l'objet d'un traitement. Cette opposition peut toutefois entraîner l'impossibilité pour SPOTICOM de fournir le service souscrit. "
+    "Vous pouvez, sans avoir à motiver votre demande, vous opposer à ce que ces données soient utilisées à des fins de prospection commerciale ou communiquées à des tiers à cette fin.   Ces droits peuvent être exercés  en écrivant à SPOTICOM à l'adresse suivante : contact@spoticom.com, ou en effectuant sa demande par courrier, à l’adresse suivante : SPOTICOM 11 rue Pierre Brossolette 92300 Levallois Perret. "
+    "<h4>Sécurité des données </h4> "
+    "Notre préoccupation est de préserver la qualité et l'intégrité de vos données à caractère personnel. Les technologies et les politiques de sécurité appliquées par SPOTICOM permettent de protéger vos données à caractère personnel contre tout accès non autorisé, toute utilisation impropre.  "
+    "SPOTICOM a pris des mesures de protection physiques, électroniques et organisationnelles pour prévenir toute perte, mauvaise utilisation, accès ou diffusion non autorisé, altération ou destruction éventuelle des données personnelles. Toutefois, malgré nos efforts pour protéger vos données personnelles, nous ne pouvons pas garantir l’infaillibilité de cette protection en raison de risques inévitables pouvant survenir lors de la transmission de données personnelles. "
+    "Toutes les Données Personnelles étant confidentielles, leur accès est limité aux collaborateurs et  prestataires qui en ont besoin dans le cadre de l’exécution de leur mission. Toutes les personnes qui ont accès aux données personnelles sont tenues par une obligation de confidentialité et s’exposent à des mesures disciplinaires et/ou autres sanctions si elles ne respectent pas ces obligations.  "
+    "Nous vous invitons à faire preuve de prudence pour empêcher tout accès non autorisé à vos données personnelles.  "
+    "<h4>Cookies </h4> "
+    "La connexion au site Internet, la navigation sur l'une de ses pages ou l'utilisation de l'un des services disponibles à partir de ce site Internet nécessitent l'installation de cookies sur votre ordinateur. Les utilisateurs du site sont informés que, lors de l'accès au site, des informations peuvent être temporairement conservées en mémoire sur leur disque dur afin de faciliter la navigation. "
+     
+    "<h5>Qu'est-ce qu'un cookie ?</h5> "
+    "Un cookie est un petit fichier qui enregistre les paramètres Internet. Il est téléchargé via un navigateur lorsque vous visitez pour la première fois un site Web. Lorsque vous retournez sur ce site à l'aide du même ordinateur, le navigateur peut vérifier si un cookie correspondant est présent  et utiliser les données contenues dans ce cookie pour les transmettre au site. "
+    "Cookies utilisés sur le site internet et leurs finalités "
+    "Sur le site myspotihome.com et sur l’application MySpotiHome, la Société SPOTICOM utilise Firebase, la solution de mesure d'audience et de statistiques pour les sites web proposée par la société Google. Les informations collectées via l’outil de mesure d'audience et de statistiques Firebase permettent de mesurer le nombre de visites, le nombre de pages vues, l’activité des utilisateurs sur le site ainsi que leur fréquence de retour afin de mieux d’adapter le site aux demandes des utilisateurs et d'améliorer l'intérêt et l'ergonomie de nos services. "
+    "En continuant d’utiliser le site internet en connaissance des informations détaillées ci-dessus, vous acceptez expressément l’utilisation par SPOTICOM de tels cookies. "
+    "<h5>Contrôler et supprimer les cookies </h5> "
+    "Pour contrôler les cookies, la plupart des navigateurs vous permettent d'accepter ou de rejeter tous les cookies, de n'accepter que certains types de cookies ou vous pose la question chaque fois qu'un site souhaite enregistrer un cookie. Il est également facile de supprimer les cookies qui ont été enregistrés sur votre ordinateur par un navigateur. "
+    "Il est possible de s'opposer à l'installation de cookies sur un ordinateur en configurant son navigateur Internet de la manière suivante : "
+    "Pour Safari : Choisir le menu « Edition » puis « Préférences » et Cliquer sur l'icône « Sécurité » ; Sélectionner les options relatives aux cookies souhaitées. "
+    "Pour Mozilla Firefox : Choisir le menu « Outil » puis « Options » et Cliquer sur l'icône « Vie privée » ;    Sélectionner les options relatives aux cookies souhaitées. "
+    "Pour Microsoft Internet Explorer 6, 7 ou 8 (Microsoft) : Choisir le menu « Outils », puis « Options Internet » et Cliquer sur l'onglet « Confidentialité » ;  Sélectionner le niveau souhaité à l'aide du curseur. "
+    "Pour Microsoft Internet Explorer 9 : Choisir le menu « Outils », puis « Options Internet » et Cliquer sur l'onglet « Confidentialité » ; sous « Paramètres », déplacer le curseur vers le haut pour bloquer tous les cookies ou vers le bas pour autoriser tous les cookies, avant de cliquer sur OK.  "
+    "Pour Chrome : Choisir le menu « Paramètres », puis « Confidentialité » et Cliquer sur l'onglet « Paramètres de contenu » ; Sélectionner les options relatives aux cookies souhaitées. "
+     
+    "Pour Netscape 6.X et 7. X : Choisir « Edition », « Préférences »,  puis  Confidentialité et Sécurité / Cookies. "
+     
+    "Pour Opéra 6.0 et au-delà : choisir « Fichier », « Préférences »,  puis « Vie Privée ». "
+    "  Si vous n'autorisez pas l'installation des cookies nécessaires à la connexion au site Internet ou à l’application MySpotiHome, certaines fonctionnalités et caractéristiques du site ou de l’application pourraient ne pas fonctionner correctement et vous pourriez ne pas être en mesure de pouvoir accéder à certains services. "
+    "Utilisation des données à des fins de prospection "
+    "Conformément à la réglementation applicable, toute prospection par courrier électronique ainsi que toute cession ou location des données à des fins de prospection utilisant ce moyen, ne seront réalisées qu'avec votre consentement préalable à recevoir des prospections via ce canal ou/et à la cession de ses données. "
+    "Si vous acceptez de recevoir de tels messages de prospection en cochant les cases d'acceptation prévues à cet effet sur le présent site, il vous sera possible à tout moment de revenir sur ce consentement, et notamment chacun des courriers électroniques de prospection vous offrira la possibilité de vous opposer pour le futur à l'envoi de nouveaux courriers électroniques de prospection.",
+  
+  "noSyndicForBuilding" : "Your building is not yet connected with any service in MySpotiHome.",
+  "noSyndicMembers" : "No syndic members registered in MySpotiHome at the moment.",
+  "noCompany" :  "No company registered in MySpotiHome at the moment",
+ 
+  "whatIsItAbout" : "What is it about?",
+  "access" : "Security access",
+  "elevator" : "Elevator",
+  "heating" : "Heating/ air conditioning",
+  "waterDamage" : "Water damage",
+  "electricity" : "Electricity",
+  "cleaning" : "Cleaning",
+  "divers" : "Other",
+  "incidentsPending" : "List of pending incidents",
+  "youSelected" : "You selected",
+  "noIncident" : "No similar incident detected",
+  "next" : "next",
+  "declareNew" : "Declare new incident",
+  "incidentWhere" : "Where did it take place?",
+  "stairs" : "Stairs",
+  "greenSpaces" : "Green spaces",
+  "garbage" : "Garbage",
+  "parking" : "Parking",
+  "basement" : "basement",
+  "building" : "building",
+  "otherPlace" : "Other place",
+  "describeAndPic" : "Description & picture",
+  "describeIncident" : "Describe incident",
+  "post" : "Post",
+  "saveModifs" : "Save it ?",
+  "incidentToBePosted" : "Your incident is about to be posted.",
+  "confirm" : "confirm",
+ 
+  "pending" : "Pending",
+  "closed" : "Solved",
+  "myIncidents" : "My incidents",
+  
+  "incidentDetails" : "Incident details",
+
+  "addEditIncident" : "Add/Edit incident"
+}

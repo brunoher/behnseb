@@ -1,0 +1,13 @@
+<div ng-if="showActionSheet" class="profile-actionSheet">
+	<div class="actionSheet-par" style="top: 0;">
+		<a ng-click="takePicture(0, img.src)" class="btn-actionSheet">Gallerie photo</a>
+	</div>
+
+	<div class="actionSheet-par" style="top: 33.3%;">
+		<a ng-click="takePicture(1, img.src)" class="btn-actionSheet">Camera</a>
+	</div>
+
+	<div class="actionSheet-par" style="top: 66.6%;">
+		<a ng-click="hideActionSheet()"><span style="color: red;">Annuler</span></a>
+	</div>
+</div>

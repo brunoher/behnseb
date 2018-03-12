@@ -1,0 +1,183 @@
+<!--<link href="css/messages.css" rel="stylesheet">-->
+<!--
+<ion-header-bar align-title="center" class="bar-stable" style="height:49px" ng-hide="choseMessagesCount<1">
+<div class="buttons">
+<button class="button button-icon ion-android-arrow-back" ng-click="cancelChoseMessages()"></button>
+</div>
+<h1 class="title title-chose-messages">{{choseMessagesCount}} messages</h1>
+<div class="buttons">
+<button class="button button-icon ion-ios-trash-outline" style="color:#387ef5" ng-click="deleteMessages()"></button>
+</div>
+</ion-header-bar>
+ng-class="{'has-footer':choseMessagesCount<1}"
+-->
+<ion-view  cache-view="false"  title="Messages"> 
+    <ion-nav-buttons side="left">
+        <button class="button button-clear" ui-sref="app.homeDashboard">
+            <i class="icon ion-home"></i>
+        </button>
+    </ion-nav-buttons>" 
+    
+    <ion-nav-buttons side="right">
+        <button class="button button-clear"   ui-sref="app.startConversation">
+            <i class="icon ion-compose"></i>
+        </button>
+    </ion-nav-buttons>
+    
+    <ion-content class="chose-messages ">
+        <div class="list message-index" ng-controller="groupCtrl">
+            <!--<div class="item item-divider light-bg positive">MESSAGES</div> ,messages,groups -->
+            <pane  ng-init="initChat(groups);"></pane>
+            
+            <pane ng-repeat="message in all | orderBy:'-time'">
+                <div ng-if='message.type=="isMessage"'  class="item item-avatar relative">
+                    <!--<input type="checkbox" id="{{message.$id}}" ng-change="choseMessage(message)" ng-model="message.selected">-->
+                    <label for="{{message.$id}}" ui-sref="detail({id:message.$id})">
+                        <img ng-if="message.avatar.$value" ng-src="{{message.avatar.$value}}">
+                        
+                        <img ng-if="!message.avatar.$value" ng-src="css/img/avatar/{{message.name.$value | firstChar}}.png">
+                        
+                        <div class="status-check bg-full"></div>
+                        
+                        <div ng-show="message.unread > 0" class="message-count">
+                            {{message.unread}}
+                        </div>
+                    </label>
+                    
+                    <div ui-sref="detail({id:message.$id})">
+                        <h2>{{message.name.$value | limitTo:19}}</h2>
+
+                        <p ng-if="message.content !== '[sticker]'" class="message-small">{{message.content}}</p>
+
+                        <p ng-if="message.content === '[sticker]'" class="message-small">emoticône</p>
+
+                        <p class="message-time">{{message.time | sinceTime}}</p>
+                    </div>
+                </div>
+
+                <div ng-init="group = message" ng-if='message.type=="isGroup"' class="item item-avatar relative" on-hold="showPopupMenuGroup(group.$id,group.nameGroup.$value,group.name)" ui-sref="groupDetail({id:group.$id})">
+                    <input type="checkbox" id="{{message.$id}}" ng-change="choseMessage(message)" ng-model="message.selected">
+                    
+                    <label for="{{message.$id}}">
+                        <img ng-if="group.avatar.$value" ng-src="{{message.avatar.$value}}">
+                        
+                        <img ng-if="!group.avatar.$value" ng-src="css/img/avatar/{{group.nameGroup.$value | firstChar}}.png">
+                        
+                        <div class="status-check bg-full"></div>
+                        
+                        <div ng-show="message.unread > 0" class="message-count">
+                            {{message.unread}}
+                        </div>
+                    </label>
+                    
+                    <div ui-sref="detail({id:message.$id})">
+                        <h2 ng-if="group.lastMessage"> {{group.nameGroup.$value | limitTo:19}} </h2>
+                        
+                        <h2 ng-if="!group.lastMessage"> Groupe sans nom </h2>
+                        
+                        <h4 class="no-margin">  
+                            <span ng-if="group.name" ng-repeat="item in group.name | limitTo:3">
+                                {{item.$value}}<span ng-if="!$last">, </span>
+                            </span>
+                        </h4>
+                        
+                        <p class="message-small" ng-if="group.lastMessage && group.lastMessage.type === 'text'">
+                            {{group.lastMessage.content}}
+                        </p>
+
+                        <p class="message-small" ng-if="group.lastMessage && group.lastMessage.type === 'picture'">
+                            image
+                        </p>
+
+                        <p class="message-small" ng-if="group.lastMessage && group.lastMessage.type === 'sticker'">
+                            emoticône
+                        </p>
+                        
+                        <p class="message-small" ng-if="!group.lastMessage.time">
+                            Aucun message
+                        </p>
+                        
+                        <p ng-if="group.lastMessage.time" class="message-time">
+                            {{group.lastMessage.time | sinceTime}}
+                        </p>
+                    </div>
+                </div>
+            </pane> 
+            <!--
+            <div ng-repeat="group in groups | orderBy:'-time'" class="item item-avatar relative" on-hold="showPopupMenuGroup(group.$id,group.nameGroup.$value,group.name)" ui-sref="groupDetail({id:group.$id})">
+            <input type="checkbox" id="{{group.$id}}" ng-change="choseMessage(message)" ng-model="group.selected">
+            <label for="{{group.$id}}">
+            <img ng-if="group.avatar.$value" ng-src="{{message.avatar.$value}}">
+            <img ng-if="!group.avatar.$value" ng-src="css/img/avatar/{{group.nameGroup.$value | firstChar}}.png">
+            <div class="status-check bg-full"></div>
+            </label>
+            <div ui-sref="detail({id:group.$id})">
+            <h2 ng-if="group.lastMessage"> {{group.nameGroup.$value}} </h2>
+            <h2 ng-if="!group.lastMessage"> Groupe sans nom </h2>
+            <p ng-if="group.lastMessage">{{group.lastMessage.content}}</p>
+            <p ng-if="!group.lastMessage.time">Aucun message</p>
+            <p ng-if="group.lastMessage.time" class="message-time">{{group.lastMessage.time | sinceTime}}</p>
+            </div>
+            </div>
+            -->
+        </div>
+
+        <div class="list  message-index" >
+            <!--
+            <div class="item item-divider light-bg no-border stable">Joined groups({{groups.length}}/100)</div>
+            -->
+
+            <!--
+            <a class="item item-avatar" ng-repeat="group in groups" on-hold="showPopupMenuGroup(group.$id,group.nameGroup.$value,group.name)" ui-sref="groupDetail({id:group.$id})">
+            <div class="group-avatar" ng-if="group.avatar.length == 3">
+            <div class="row row-center row-no-padding no-margin height-50">
+            <div class="col">
+            <img class="img-avatar" ng-if="group.avatar[0].$value" ng-src="{{group.avatar[0].$value}}">
+            <img class="img-avatar" ng-if="!group.avatar[0].$value" ng-src="css/img/avatar/{{group.name[0].$value | firstChar}}.png">
+            </div>
+            </div>
+            <div class="row row-center row-no-padding no-margin height-50">
+            <div ng-repeat="i in [1,2]" class="col">
+            <img class="img-avatar" ng-if="group.avatar[i].$value" ng-src="{{group.avatar[i].$value}}">
+            <img class="img-avatar" ng-if="!group.avatar[i].$value" ng-src="css/img/avatar/{{group.name[i].$value | firstChar}}.png">
+            </div>
+            </div>
+            </div>
+            <div class="group-avatar" ng-if="group.avatar.length == 4">
+            <div class="row row-center row-no-padding no-margin height-50">
+            <div ng-repeat="i in [0,1]" class="col">
+            <img class="img-avatar" ng-if="group.avatar[i].$value" ng-src="{{group.avatar[i].$value}}">
+            <img class="img-avatar" ng-if="!group.avatar[i].$value" ng-src="css/img/avatar/{{group.name[i].$value | firstChar}}.png">
+            </div>
+            </div>
+            <div class="row row-center row-no-padding no-margin height-50">
+            <div class="col">
+            <img class="img-avatar" ng-if="group.avatar[2].$value" ng-src="{{group.avatar[2].$value}}">
+            <img class="img-avatar" ng-if="!group.avatar[2].$value" ng-src="css/img/avatar/{{group.name[2].$value | firstChar}}.png">
+            </div>
+            <div class="col count-avatar">{{group.numUser.$value}}</div>
+            </div>
+            </div>
+            <div class="no-wrap group-name">
+            <span ng-if="group.nameGroup.$value" ng-bind="group.nameGroup.$value"></span>
+            <span ng-if="!group.nameGroup.$value" ng-repeat="item in group.name | limitTo:3">
+            {{item.$value}}<span ng-if="!$last">, </span>
+            </span>
+            </div>
+            <span ng-if="!group.lastMessage.time">!! - ({{group.numUser.$value}})</span>
+            <span ng-if="group.lastMessage">*{{group.lastMessage.time}}* )</span>
+            </a>
+            -->
+        </div>
+        
+        <div ng-show="messages == ''" class="text-center">
+            <div class="margin-bottom">
+                Vous n'avez pas encore de messages.
+            </div>
+            
+            <button class="button button-small width-50 button-positive" ui-sref="app.contacts">
+                Voir mes contacts
+            </button>
+        </div> <!-- -->
+    </ion-content>
+</ion-view>

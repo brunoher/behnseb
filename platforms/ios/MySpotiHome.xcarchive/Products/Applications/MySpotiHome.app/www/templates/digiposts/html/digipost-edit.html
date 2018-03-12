@@ -1,0 +1,31 @@
+<ion-view title="Nouveau post" hide-tabs>
+    <ion-nav-buttons side="left">
+        <a ui-sref="app.listAnnonces" class="button back-button buttons button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons><!--end left button on navigation bar-->
+    <ion-content>
+        <div ng-include="'templates/actionSheet.html'"></div>
+        <!--
+        <ion-refresher pulling-text="Rafraichir la page..." on-refresh="readURL(img.src, '#img')">
+        </ion-refresher>
+        -->
+        <div style="position: relative;" class="postIt" ng-style={{postSize}}>
+            <div>
+                <div ng-style={{fontSize}} class="mokoleNewBody">
+                    <textarea class="textArea-editMokole" rows="14" placeholder="rédigez ici votre mot" ng-model="newPost.content"></textarea>
+                    <button class="digipost-edit-btn" ng-click="displayActionSheet()"></button>
+                    <img src="img/add_photo.svg" class="digipost-edit-img">
+                   
+                    <img ng-if="img.src" src="{{ img.src }}" ng-model="img.src" id="img" class="digipost-edit-imgAdded">
+                </div>
+            </div>
+        </div>
+        <div class="mokole-btn-edit">
+            <a ng-click="post(img.src)" class="sign welcome-login" style="top: 1.5em;">
+                <span ng-if="edit == false">Publier</span>
+                <span ng-if="edit == true">Modifier</span>
+            </a>
+        </div>   
+    </ion-content>
+</ion-view>

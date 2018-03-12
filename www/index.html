@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!--<meta name="viewport" content="initial-scale=1, maximum-scale=1.0, user-scalable=no, width=device-width">-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+        <title></title>
+
+        <link rel="manifest" href="manifest.json">
+
+
+   
+
+<!--     
+<script>
+window.onerror = function (errorMsg, url, lineNumber) {
+alert('Error: ' + errorMsg + ' Script: ' + url + ' Line: ' + lineNumber);
+}
+</script>
+-->
+
+        <!-- un-comment this code to enable service worker
+<script>
+if ('serviceWorker' in navigator) {
+navigator.serviceWorker.register('service-worker.js')
+.then(() => console.log('service worker installed'))
+.catch(err => console.log('Error', err));
+}
+</script>-->
+
+        <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/style-materia.css">
+        <link rel="stylesheet" href="css/tabSlideBox.css">
+        <link href="lib/robotodraft/robotodraft.css">
+
+        <link rel="stylesheet prefetch" href="lib/angular-material/angular-material.css">
+        <!-- end CSS reference section -->
+        <link href="css/func-ionic.css" rel="stylesheet">
+        <link href="css/general.css" rel="stylesheet">
+        <link href="css/contacts.css" rel="stylesheet">
+        <link href="css/fonts.css" rel="stylesheet">
+        <link href="css/vspfonts/vspfonts.css" rel="stylesheet">
+        <link href="css/messages.css" rel="stylesheet">
+        <link href="css/group.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="lib/components-font-awesome/css/font-awesome.css">
+
+        <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+<link href="css/ionic.app.css" rel="stylesheet">
+-->
+        <script src="lib/bluebird.min.js"></script>
+        <!-- ionic/angularjs js -->
+        <script src="lib/ionic/js/ionic.bundle.js"></script>
+        <script src="lib/ionic.cloud.min.js"></script>
+
+        <!-- cordova script (this will be a 404 during development) -->
+        <script src="cordova.js"></script>
+
+        <script src="lib/angular-translate/angular-translate.min.js"></script>
+        <script src="lib/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+        <script src="lib/jQuery/dist/jquery.min.js"></script>
+        <script src="lib/moment/min/moment-with-locales.min.js"></script>
+        <script src="lib/angularfire/dist/angularfire.js"></script>
+        <script src="lib/firebase/firebase.js"></script>
+        <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+        <script src="lib/angular-ios9-uiwebview-patch/angular-ios9-uiwebview-patch.js"></script>
+        <script src="lib/ionic-close-popup/ionic-close-popup.js"></script>
+
+        <script src="lib/angularLocalStorage/dist/angularLocalStorage.min.js"></script>
+        <script src="lib/ngstorage/ngStorage.min.js"></script>
+        <script src="lib/ionic-ion-swipe-cards/ionic.swipecards.js"></script>
+        <script src="lib/ng-img-crop/compile/minified/ng-img-crop.js"></script>
+
+
+        <script src="lib/angular-filter/dist/angular-filter.min.js"></script>
+        <script src="lib/angular-aria/angular-aria.js"></script>
+        <script src="lib/angular-material/angular-material.js"></script>
+        <!-- <script src="lib/angular-messages/angular-messages.min.js"></script> -->
+        <script src="lib/material-date-picker/build/mbdatepicker.js"></script>
+
+        <!-- app.js section-->
+        <script src="js/app.js"></script>
+        <!-- end app.js section-->
+
+        <!-- your app's js -->
+        <script src="js/jquery.touchSwipe.min.js"></script>
+        <script src="js/GpServices.js"></script>
+        <script src="js/controllers.js"></script>
+        <script src="js/utilities.js"></script>
+        <script src="js/shared/directives.js"></script>
+        <script src="js/shared/filter.js"></script>
+        <script src="js/shared/controllers.js"></script>
+        <script src="js/shared/poster-service.js"></script>
+        <script src="js/shared/services.js"></script>
+        <script src="js/shared/chat-services.js"></script>
+        <script src="js/shared/tabSlideBox.js"></script>
+
+        <script src="templates/incidents/js/controllers.js"></script>
+        <script src="templates/digiposts/js/controllers.js"></script>
+        <script src="templates/phonebook/js/controllers.js"></script>
+
+        <script src="templates/dashboard/js/controllers.js"></script>
+        <script src="templates/menu/js/controllers.js"></script>
+        <script src="js/shared/chat-controllers.js"></script>
+        <!-- <script src="js/shared/message-controllers.js"></script>-->
+    </head>
+    <body ng-app="starter">
+
+        <!--
+class="hide-native-scroll-y"
+
+Custom Style section-->
+        <style type="text/css">
+            {{customStyle}}
+        </style><!-- end Custom Style section-->
+
+
+        <!--
+The nav bar that will be updated as we navigate between views.
+-->
+        <ion-nav-bar class="bar-stable" <ion-nav-back-button="">
+            
+        </ion-nav-bar>
+        <!--
+The views will be rendered in the <ion-nav-view> directive below
+Templates are in the /templates folder (but you could also
+have templates inline in this html file if you'd like).
+-->
+
+
+        <ion-side-menus>
+            <ion-side-menu-content ng-controller="NavCtrl">
+                <ion-nav-view animation="slide-left-right"></ion-nav-view>
+                <!--ion-nav-bar class="bar-positive">
+<ion-nav-back-button style="font-size: 15px;">
+<
+</ion-nav-back-button>
+<ion-nav-buttons side="left">
+<button class="button button-icon button-clear ion-navicon" menu-toggle="right" ng-click="showMenu()">
+</button>
+</ion-nav-buttons>
+</ion-nav-bar-->
+            </ion-side-menu-content>
+
+            <ion-side-menu side="left" ng-controller="NavCtrl">
+                <ion-header-bar class="bar bar-header bar-stable" style="background-color: #05A8FA;">
+                    <h1 class="title">Menu</h1>
+                </ion-header-bar>
+
+                <ion-content has-header="true">
+                    <ul class="list">
+                        <li>
+                            <a class="item" menu-close="" nav-clear="" ui-sref="app.homeDashboard">Accueil</a>
+                        </li>
+                        <li>
+                            <a class="item" menu-close="" nav-clear="" ui-sref="profile">Mon profil</a>
+                        </li>
+                        <!--li>
+<a class="item" menu-close="" nav-clear="" ui-sref="preferences">Mes pr&#xE9;f&#xE9;rences</a>
+</li-->
+                        <li>
+                            <a class="item" menu-close="" nav-clear="" ui-sref="cgu">Les C.G.U.</a>
+                        </li>
+                        <!--li>
+<a class="item" menu-close="" nav-clear="" ui-sref="infos">Qui sommes-nous</a>
+</li>
+<li-->
+                        <a class="item" menu-close="" nav-clear="" ui-sref="legals">Mentions l&#xE9;gales</a>
+
+                        <a class="item" menu-close="" nav-clear="" ui-sref="chartData">Protection des donn&#xE9;es</a>
+
+                        <li>
+                            <a class="item" menu-close="" nav-clear="" ng-click="logout()">Déconnexion</a>
+                        </li>
+                        <li style="margin-top: 15%; font-size: 2.2vh; margin-left: 8%;">Version: {{appVersion}}</li>
+                    </ul>
+                </ion-content>
+            </ion-side-menu>
+        </ion-side-menus>
+    </body>
+    <!--Share template confirm-dialog section-->
+    <script type="text/ng-template" id="confirm-dialog.html">
+        <md-dialog aria-label="confirm-dialog">
+            <form>
+                <md-dialog-content style="padding: 20px;">
+                    <div>
+                        <h2 class="md-title">{{displayOption.title}}</h2>
+
+                        <p>{{displayOption.content}}</p>
+                    </div>
+                </md-dialog-content>
+                
+                <div class="md-actions" layout="row">
+                    <a class="md-primary-color dialog-action-btn" ng-click="cancel()">
+                        {{displayOption.cancel}}
+                    </a>
+                    
+                    <a class="md-primary-color dialog-action-btn" ng-click="ok()">
+                        {{displayOption.ok}}
+                    </a>
+                </div>
+             </form>
+        </md-dialog>
+    </script> <!-- end share template confirm-dialog section-->
+
+    <!-- Share template toast section-->
+    <script type="text/ng-template" id="toast.html">
+        <md-toast class="toast-form">
+            <span flex>{{displayOption.title}}</span>
+        </md-toast>
+    </script><!-- end share template toast section-->
+    <!-- end Angular custom template section-->
+</html>

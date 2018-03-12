@@ -1,0 +1,104 @@
+@font-face {
+    font-family: Roboto;
+    src: url(fonts/Roboto/Roboto.ttf);
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+    font-family: Roboto;
+    src: url(fonts/Roboto/Roboto-Bold.ttf);
+	font-weight: bold;
+}
+@font-face {
+    font-family: Roboto;
+    src: url(fonts/Roboto/Roboto-Italic.ttf);
+	font-style: italic;
+}
+@font-face {
+    font-family: Roboto;
+    src: url(fonts/Roboto/Roboto-BoldItalic.ttf);
+	font-weight: bold;
+	font-style: italic;
+}
+@font-face {
+    font-family: Roboto;
+    src: url(fonts/Roboto/Roboto-Medium.ttf);
+	font-size: medium;
+}
+@font-face {
+    font-family: Roboto;
+    src: url(fonts/Roboto/Roboto-MediumItalic.ttf);
+	font-size: medium;
+	font-style: italic;
+}
+
+
+/@font-face { 
+  font-family: PermanentMarker; 
+  src: url(fonts/PermanentMarker/PermanentMarker-webfont.eot); 
+  font-weight: normal; 
+}
+
+@font-face { 
+  font-family: PermanentMarker; 
+  src: url(fonts/PermanentMarker/PermanentMarker-webfont.ttf); 
+  font-weight: normal;  
+}
+
+@font-face { 
+  font-family: PermanentMarker; 
+  src: url(fonts/PermanentMarker/PermanentMarker-webfont.woff); 
+  font-weight: normal;  
+}
+
+@font-face { 
+  font-family: PermanentMarker; 
+  src: url(fonts/PermanentMarker/PermanentMarker-webfont.svg); 
+  font-weight: normal;  
+}
+/*
+@font-face { 
+  font-family: LearningCurve; 
+  src: url(fonts/LearningCurve/LearningCurve-regular.otf); 
+  font-weight: normal;
+  font-style: normal; 
+}
+
+@font-face { 
+  font-family: LearningCurve; 
+  src: url(fonts/LearningCurve/LearningCurve-regular.ttf); 
+  font-weight: normal;
+  font-style: normal  
+}
+
+@font-face { 
+  font-family: LearningCurve; 
+  src: url(fonts/LearningCurve/LearningCurve-regular.woff); 
+  font-weight: normal;
+  font-style: normal  
+}
+
+@font-face { 
+  font-family: LearningCurve; 
+  src: url(fonts/LearningCurve/LearningCurve-regular.woff2); 
+  font-weight: normal;
+  font-style: normal  
+}
+*/
+
+
+
+@font-face { 
+  font-family: HaloHandletter; 
+  src: url(fonts/HaloHandletter/HaloHandletter.eot); 
+  font-size: medium;
+  font-style: normal; 
+}
+
+/*@font-face {
+    font-family: 'LearningCurve';
+    src: url('MaSuperPolice.eot') format('eot'),
+         url('MaSuperPolice.woff') format('woff'),
+         url('MaSuperPolice.ttf') format('truetype'),
+         url('MaSuperPolice.svg') format('svg');
+}*/

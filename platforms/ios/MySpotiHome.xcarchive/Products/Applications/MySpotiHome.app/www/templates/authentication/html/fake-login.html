@@ -1,0 +1,82 @@
+<!--View Information-->
+<!--View name : Fake Login-->
+<!--State name : app.fakeLogin-->
+<!--URL : #app/fakeLogin-->
+
+<ion-view title="Connectez-vous" hide-tabs>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear">
+        </button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="left">
+        <a ui-sref="public.tryApp" class="button back-button buttons button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons>
+
+    <!--end left button on navigation bar-->
+
+    <!--login content section-->
+    <ion-content  id="social-login" hide-tabs scroll="" class="bg-white">
+        <!--fake login form section-->
+        <form class="fakeLogin-form" style="margin-top: 4%;">
+            <div>
+                <img src="img/icon.png"/>
+            </div>
+            <div id="social-login-form" style="display:none">
+                <div class="sub-header">
+                    Votre immeuble avec un truc en plus !
+                </div>
+                <!--a class="button button-assertive button-block button-outline" ng-click="showLogOutMenu()">Log Out</a-->
+                <!--
+                <a ng-style={{fbBtnStyle}} class="welcome-login" ng-click="loginWithFbNative(form)">
+                    Connexion FB
+                </a>
+                     
+                <a ng-style={{googleBtnStyle}} class="welcome-login" ng-click="loginWithGoogleNative(form)">
+                    Connexion Google
+                </a>
+               --> 
+                <div id="fakeLogin" style="margin-top: 30%;">
+                    <md-input-container md-no-float="">
+                        <input class="user-name" type="email" placeholder="Adresse mail" ng-model="form.mail">
+                    </md-input-container>
+                    <hr/>
+                    <md-input-container md-no-float="">      
+                        <div>
+                            <div style="display: inline;"> 
+                                <input class="user-name" show-password="data.showPassword" ng-model="form.password" type="password" placeholder="Mot de passe">
+                            </div>
+                            <div style="display: inline;">
+                                <a ng-if="data.showBtn !== false" ng-click="showPW('1')">
+                                    <img style="position:absolute; width:{{ showPwd_width }}%; left: 60%; top: 45%;" src="img/pw_hide.png">
+                                </a>
+                                <a ng-if="data.showBtn !== true" ng-click="showPW('2')">
+                                    <img style="position:absolute; width:{{ showPwd_width }}%; left: 60%; top: 45%;" src="img/pw_show.png">
+                                </a>
+                            </div>
+                        </div>      
+                    </md-input-container>
+                </div>
+
+                <button ng-if="!isAndroid" class="sign btn-login" ng-click="logUser(form)">
+                    Connexion par e-mail
+                </button>
+                 <button ng-if="isAndroid" class="sign btn-login-android" ng-click="logUser(form)">
+                    Connexion par e-mail
+                </button>
+                <button class="button button-clear" ng-click="forgotPassword()" style="width: 100%; text-align: center; color: #387ef5; margin-top: 32%;">
+                    Mot de passe oublié
+                </button>  
+            </div>
+        </form> <!--end fake login form section-->
+         <!--loading progress-->
+        <div id="auth-loading-progress" class="loading-progress fade-in">
+            <ion-spinner ng-if="!isAndroid" class="progress-circular"></ion-spinner>
+            <md-progress-circular ng-if="isAndroid" class="md-warn md-progress-social-profile"
+                                  md-mode="indeterminate"></md-progress-circular>
+        </div><!--end loading progress-->
+
+    </ion-content><!--end login content section-->
+</ion-view>

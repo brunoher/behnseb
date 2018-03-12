@@ -1,0 +1,366 @@
+<!--View Information-->
+<!--View name : Fake Wizzard signIn-->
+<!--State name : public.fakeWizardSignUp-->
+<!--URL : #app/fakeLogin-->
+
+<ion-view title="{{ 'signUp' | translate }}" hide-tabs>
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <button class="button button-clear" ng-click="goBackSlide()">
+            <i class="icon ion-ios-arrow-back"></i>
+            {{'back' | translate}}
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear">
+        </button><!-- -->
+    </ion-nav-buttons>
+
+    <ion-slide-box id="try-app-content" on-slide-changed="slideHasChanged($index)" show-pager="false" ng-init="lockSlide()">
+        <ion-slide>
+            <!--social sign up section-->
+            <ion-content id="social-sign-up-content" hide-tabs>
+                <form class="fakeLogin-form" style="margin-top: 15%;">
+                    <!--input section-->
+                    <div style="margin-bottom: 6%;">
+                        <div class ='row'>
+                            <div ng-style="miss_gender" style="margin-left: 5%;"> {{ 'civility' | translate }}* : </div>
+                            <md-select class="col" ng-model="form.user.gender" style="margin-left: 2em; margin-top: -0.8em;">
+                                <md-option ng-if="data.genders" ng-repeat="gender in data.genders" ng-value="gender.value">
+                                    {{ gender.name }} 
+                                </md-option>
+                            </md-select>
+                        </div>
+                    </div>
+                       
+                    <!--
+                    <div style="margin-bottom: 1em; margin-top: -2.4em;"> 
+                         
+                        <span style="margin-left: -47%;">{{ 'b_day' | translate }}* :</span> 
+                       
+                        <input class = "col bday-field" type="text" ng-model="b_day.day" value="" maxlength="2" placeholder="JJ"/> 
+                        <input class = "col bday-field" type="text" ng-model="b_day.month" value="" maxlength="2" placeholder="MM"/>  
+                    </div>      
+                     -->
+
+                    <label class="item item-input signUp">
+                        <input ng-style="miss_firstName" ng-model="form.user.firstName" type="text" placeholder="{{ 'firstName' | translate }}*">
+                    </label>
+                    
+                    <label class="item item-input signUp">
+                        <input  ng-style="miss_name" ng-model="form.user.name" type="text" placeholder="{{ 'name' | translate }}*">
+                    </label>
+
+                    <label class="item item-input signUp">
+                        <input ng-style="miss_mail"  ng-model="form.user.mail" type="email" placeholder="{{ 'emailAddress' | translate }}*">
+                    </label> 
+
+                    <!--
+                    <md-input-container md-no-float="">
+                        <div>
+                            <span ng-if="form.user.mail !== form.user.email_2 && form.user.email_2.length > 5" style='color: red;'>adresses différentes</span>
+                            <span ng-if="form.user.mail === form.user.email_2 && form.user.email_2.length > 5" style='color: green;'>adresses identiques</span>
+                            <input class="user-name" ng-model="form.user.email_2" type="text" placeholder="Confirmez votre mail">
+                        </div>
+                    </md-input-container>
+                    -->
+                    <div ng-show="!tmpUser" >
+                        <div style="display: inline;"> 
+                            <label class="item item-input signUp">
+                                <input show-password="data.showPassword" ng-model="form.user.pw" type="password" placeholder="Mot de passe: min 6 caractères">
+                            </label> 
+                        </div>
+                        
+                        <div style="display: inline;" >
+                            <a ng-if="data.showBtn == true || (data.showBtn == undefined)" ng-click="showPW('1')">
+                                <img ng-style={{pwdEye}} style="width:6.7%; position: absolute; top: 20em; left: 95%;" src="img/pw_hide.png">
+                            </a>
+                            <a ng-style={{pwdEye}} ng-if="data.showBtn == false" ng-click="showPW('2')">
+                                <img style="width:6.7%; position: absolute; left:95%; top: 20em;" src="img/pw_show.png">
+                            </a>
+                        </div>
+
+                        <div style="display: inline">
+                            <span ng-style={{goodPwdStyle}} style="width:8%; position: absolute;" ng-if="form.user.pw.length > 0 && form.user.pw.length < 6">
+                                &#10060;
+                            </span>
+                            <span ng-style={{goodPwdStyle}} style="width:8%; position: absolute;" ng-if="form.user.pw.length > 0 && form.user.pw.length > 5">
+                                &#10003;
+                            </span>
+                        </div>
+                    </div>
+
+                    <div ng-show="!tmpUser" >
+                        <div style="display: inline;"> 
+                            <label class="item item-input signUp">
+                                <input show-password="data.showPassword" ng-model="form.user.pw_2" type="password" placeholder="Confirmez votre mot de passe *">
+                            </label>
+                        </div>
+                        <div style="display: inline;">
+                            <span ng-style={{goodPwdStyle2}} style="width:8%; position:absolute;" ng-if="form.user.pw_2.length > 5 &&  form.user.pw_2 !== form.user.pw">&#10060;</span>
+                            <span ng-style={{goodPwdStyle2}} style="width:8%; position:absolute;" ng-if="form.user.pw_2.length > 5 &&  form.user.pw_2 === form.user.pw">&#10003;</span>
+                        </div>
+                    </div>
+
+                    <label class="item item-input signUp">
+                        <input ng-model="form.user.phone" type="text" placeholder="Votre numéro de mobile*">
+                    </label>
+
+                    <label class="item item-input signUp">
+                        <input ng-model="form.user.syndicNumber" type="text" placeholder="Code syndic (optionnel)">
+                    </label>
+
+                    <a ng-click="showCodeSyndicFunc()">
+                        Où le trouver et à quoi sert-il?
+                    </a>
+                    <div ng-if="showCodeSyndic == true" class="bubble-codeSyndic">
+                        <div class="talktext">
+                            {{ 'syndicCode_card' | translate }}
+                        </div>
+                    </div>
+
+                    <label class="item item-input signUp">
+                        <input type="text" ng-model="b_Day.year" value="" maxlength="4" placeholder="{{ 'year_of_birth' | translate }}" ng-keyup="getB_dayYearPlus18(b_Day.year)"/>
+                    </label>
+
+                    <md-checkbox ng-if="b_dayYearPlus18 === yearOfToday" aria-label="CheckboxTerms" ng-model="form.majorityChecked" style="text-align: left; margin-top:1em; margin-left: 5%;">
+                        J'ai 18 ans ou plus.
+                    </md-checkbox>
+                    <!--
+                    <md-input-container>        
+                        <div>
+                            <div style="display: inline;"> 
+                                <input  style="width:300%;" class="user-name" show-password="data.showPassword" ng-model="form.user.pw" type="password" placeholder="Mot de passe (6 caractères minimum)">
+                            </div>
+                            <div style="display: inline;">
+                                <a ng-if="data.showBtn == true || (data.showBtn == undefined)" ng-click="showPW('2')">
+                                    <img style="width:8%; position: absolute; left: 95%;" src="img/pw_show.png">
+                                </a>
+                                <a ng-if="data.showBtn == false" ng-click="showPW('1')">
+                                    <img style="width:8%; position: absolute; left:95%;" src="img/pw_hide.png">
+                                </a>
+                            </div>
+                            <div style="display: inline">
+                                <span style="width:8%; position: absolute; left: 75%;" ng-if="form.user.pw.length > 0 && form.user.pw.length < 6">
+                                    &#10060;
+                                </span>
+                                <span style="width:8%; position: absolute; left: 75%;" ng-if="form.user.pw.length > 0 && form.user.pw.length > 5">
+                                    &#10003;
+                                </span>
+                            </div>
+                        </div> 
+                    </md-input-container>
+            
+                    <md-input-container md-no-float="">
+
+                        <div>
+                            <div style="display: inline;"> 
+                                <input style="width:300%;" class="user-name" show-password="data.showPassword" ng-model="form.user.pw_2" type="password" placeholder="Confirmez votre mot de passe">
+                            </div>
+                            <div style="display: inline;">
+                                <span style="position:absolute; left: 95%;" ng-if="form.user.pw_2.length > 5 &&  form.user.pw_2 !== form.user.pw">&#10060;</span>
+                                <span style="position:absolute; left: 95%;" ng-if="form.user.pw_2.length > 5 &&  form.user.pw_2 === form.user.pw">&#10003;</span>
+                            </div>
+                        </div>
+
+                    </md-input-container>
+
+
+                    <md-input-container md-no-float="">
+                        <div>
+                            <input class="user-name" ng-model="form.user.phone" type="text" placeholder="Votre numéro de mobile">
+                        </div>
+                    </md-input-container>
+                    <md-input-container md-no-float="">
+                        <div>
+                            <input class="user-name" ng-model="form.user.syndicNumber" type="text" placeholder="Code fourni par votre syndic">
+                        </div>
+                    </md-input-container>
+
+                    <a style="" ng-click="showCodeSyndicFunc()">
+                        Où le trouver et à quoi sert-il?
+                    </a>
+                    <div ng-if="showCodeSyndic == true" style="z-index: 1; position:absolute; bottom:10%; height: 15%;" class="bubble">
+                        <div class="talktext">
+                            <p>Il s'agit de votre identifiant extranet fourni par votre syndic d'immeuble. Vous le trouverez sur votre relevé de charges et appel de fonds.<br> Cet identifiant permet de simplifier votre inscription à notre service</p>
+                        </div>
+                    </div>
+                    -->
+
+                    <!--ui-sref="public.fakeWizardSignUp"-->
+                            
+
+                    <a ng-click="implement_1(form.user, b_day)" class="d-raised social-button md-button md-default-theme material-background"> Continuer</a>
+
+                    <!--end input section-->
+                </form>
+            </ion-content>
+        </ion-slide>
+        <!-- Social provider -->
+        <ion-slide ng-if="socialProvider === true">
+            <!--social sign up section-->
+            <ion-content id="social-sign-up-content" hide-tabs>
+                <form class="fakeLogin-form" style="margin-top: 15%;">
+                    <!--input section-->                 
+                    <div style="margin-bottom: 6%;">
+                        <div class ='row'>
+                            <div ng-style="miss_gender"> Civilité * : </div>
+                            <md-select class="col" ng-model="form.user.gender" style="margin-left: 60px; padding: 0px;">
+                                <md-option ng-if="data.genders" ng-repeat="gender in data.genders" ng-value="gender.value">
+                                    {{ gender.name }} 
+                                </md-option>
+                            </md-select>
+                        </div>
+                    </div>
+
+                    <label class="item item-input signUp">
+                        <input ng-style="miss_firstName" ng-model="form.user.firstName" type="text" placeholder="Votre prénom *">
+                    </label>    
+                    
+                    <label class="item item-input signUp">
+                        <input ng-style="miss_name" ng-model="form.user.name" type="text" placeholder="Votre nom *">
+                    </label>
+
+                    <label class="item item-input signUp">
+                        <input ng-style="miss_mail" ng-model="form.user.mail" type="text" placeholder="Votre adresse mail *">
+                    </label>
+              
+                    <label class="item item-input signUp">
+                        <input ng-model="form.user.phone" type="text" placeholder="Votre numéro de mobile *">
+                    </label>
+            
+                    <label class="item item-input signUp">
+                        <input ng-model="form.user.syndicNumber" type="text" placeholder="Code fourni par votre syndic">
+                    </label>
+                        
+                </form>
+            </ion-content>
+        </ion-slide>
+        <!-- -->        
+        <ion-slide>
+            <ion-content id="social-sign-up-content" hide-tabs>
+                <form class="fakeLogin-form" style="margin-top: 15%;">
+
+                    <div style="margin-bottom: 6%;">
+                        <div class="row" style="margin-left: -14%;">
+                            <div ng-style="miss_status" class="col">Statut * : </div>
+                            <md-select ng-model="form.user.status" style="margin-left: 2em; margin-top: -0.8em;" class ="col">
+                                <md-option ng-repeat="status in data.status" ng-value="status.value">
+                                    {{status.name}}
+                                </md-option>
+                            </md-select>
+                        </div>
+                    </div>
+
+                    <md-checkbox aria-label="CheckboxTerms" ng-model="form.user.isSyndicMember" style="text-align: left;">
+                        Je fais partie du conseil syndical.
+                    </md-checkbox>
+
+                    <div style="margin-top: 6%;">
+                        <div class="row"  style="margin-left: 0%;">
+                            <div class="col"  style="text-align: left;"> Votre département*:</div>
+                            <md-select ng-model="data.foString" style="margin-left: 2em; margin-top: -0.8em;" class ="col">
+                                <md-option ng-repeat="departement in data.departements" ng-value="departement.value">
+                                    {{departement.value}}
+                                </md-option>
+                            </md-select>
+                        </div>    
+                    </div>
+
+
+                    <md-autocomplete ng-if="data.foString" md-no-cache="true" placeholder="Saisissez votre adresse (N°, voie, ville)" md-selected-item="data.selectedSuggestion" md-items="suggestion in suggestions" md-search-text="form.typed" md-search-text-change="suggest(form, data)" md-item-text="suggestion.fullText">
+                        <span>{{ suggestion.fullText }}</span>
+                    </md-autocomplete>
+
+                    <a ng-if="showButton == true" class="md-raised social-button md-button md-default-theme material-background" ng-click="setUserFullAdress()">
+                        Choisissez votre adresse*
+                    </a>
+
+
+                    <div ng-if="o.show == true">
+                        <label class="item item-input readOnly">
+                            <input type="text" ng-model="o.streetNumber" placeholder="N° de rue" readonly>
+                        </label>
+
+                        <label class="item item-input readOnly">
+                            <input class="user-name" type="text" ng-model="o.street" placeholder="Rue" readonly>
+                        </label>
+                        
+                        <label class="item item-input readOnly">
+                            <input class="user-name" type="text" ng-model="o.city" placeholder="Ville" readonly>
+                        </label>
+
+                        <label class="item item-input readOnly">
+                            <input class="user-name" type="text" ng-model="o.postalCode" placeholder="Code postal" readonly>
+                        </label>
+ 
+                        <label class="item item-input signUp" style="margin-top: 5%; width: 50%;">
+                            <input ng-model="o.batName" type="text" placeholder="Bâtiment">
+                        </label>
+
+                        <div>
+                            <div class="row" style="margin-left: -8%;">
+                                <div ng-style="miss_floor" class="col"> Votre étage * : </div>
+                                <md-select ng-model="form.user.floor" style="margin-left: 2em; margin-top: -0.8em;" class="col">
+                                    <md-option ng-repeat="floor in data.floors" ng-value="floor.value">
+                                        {{ floor.value }}
+                                    </md-option>
+                                </md-select>
+                            </div>
+                        </div>
+
+                        <a class="hyperText-cgu" ng-click="showCGU()">
+                            Lire les conditions générales d'utilisation </a>
+
+                        <md-checkbox aria-label="CheckboxTerms" ng-model="form.hasRead" style="text-align: left;">
+                            J’ai lu et j’accepte les conditions d’utilisation du service MySpotiHome.
+                        </md-checkbox>
+                        <md-checkbox aria-label="CheckboxTerms" ng-model="form.user.acceptAdd" style="text-align: left;">
+                            J’accepte de recevoir des offres de partenaires de SPOTICOM adaptées à mon profil.
+                        </md-checkbox>
+                            
+                        <a class="md-raised social-button md-button md-default-theme material-background" ng-click="implement_2(form.user)">>
+                            Continuer
+                        </a>
+                    </div>    
+                    <!--end input section-->
+                </form>   
+            </ion-content>
+        </ion-slide>
+
+        <ion-slide>
+            <!--social sign up section-->
+            <ion-content id="social-sign-up-content" hide-tabs>
+                <div ng-include="'templates/actionSheet.html'"></div>
+                <form class="fakeLogin-form">
+                    <!--input section-->                 
+                    <md-input-container  md-no-float>
+                        <h4 style="text-align:center; width:80%; margin-left:10%;">{{ 'add_a_picture' | translate }}</h4>
+                    </md-input-container>
+
+
+                    <img src="{{ img.src }}" id="img" ng-model="img.src" style=" border-radius: 30px; width:50%;">
+
+                    <!--div class="fileinputs">
+<input type="file" class="file" file-input="files" />                        
+<div class="fakefile">
+<a class="md-raised social-button md-button md-default-theme material-background">
+<span ng-if="!files.length"> Ajout photo</span>
+<span ng-if="files.length > 0">Modifier</span>
+</a>
+</div>
+</div-->
+                    <a class="md-raised social-button md-button md-default-theme material-background" ng-click="displayActionSheet()">Photo</a>
+                    <!--
+                    <a ng-if="img.src !== 'css/img/icon-camera.png'" class="md-raised social-button md-button md-default-theme material-background" ng-click="readURL(img.src, '#img')">
+                        Afficher photo
+                    </a>
+                    -->
+                    <a ng-if="!tmpUser" class="md-raised social-button md-button md-default-theme material-background" ng-click="createUser(form.user, img.src, o)">Terminer</a>
+                    <a ng-if="tmpUser" class="md-raised social-button md-button md-default-theme material-background" ng-click="finishUser(form.user, img.src, o)">Finaliser</a>
+                </form>
+            </ion-content>
+        </ion-slide>
+        <!--end slider section-->
+    </ion-slide-box><!--end try app section-->
+</ion-view>

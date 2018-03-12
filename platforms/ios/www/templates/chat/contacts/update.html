@@ -1,0 +1,93 @@
+<link href="css/contacts.css" rel="stylesheet">
+<ion-view title="Update Contacts" hide-tabs="true">
+    <ion-header-bar align-title="left" class="bar-positive">
+        <div class="buttons">
+            <button class="button button-icon ion-android-arrow-back" ng-click="goBack()"></button>
+        </div>
+        <h1 class="title">Inviter mes amis</h1>
+    </ion-header-bar>
+     <md-toolbar class="bar-subheader md-tall md-primary toolbar-medium">
+            <div>
+                <h1>Mes contacts</h1>
+
+                <md-input-container md-no-float="">
+                    <input ng-model="filterText" id="name_2" placeholder="Chercher un contact...">
+                </md-input-container>
+
+            </div>
+            <!--
+            <a class="md-button md-accent md-fab fab-toolbar-medium"
+               ng-click="navigateTo('app.mobileContractDetail')"
+               aria-label="Add">
+                <i class="icon ion-plus"></i>
+            </a>
+-->
+        </md-toolbar> <!--end toolbar section-->
+    <!--mobile contract list section-->
+    <ion-content id="mobile-contract-list-content" >
+        <!--list section-->
+        <!--toolbar section-->
+   
+        <md-list class="ng-hide" ng-show="!loading">
+
+            <md-list-item class="md-list-item-default" item-height="46px" item-width="100%"
+                          collection-repeat="contract in contracts  |  filter: filterText | orderBy: 'firstName'">
+
+                <span>
+                    <i class="ion-android-person"></i>
+                </span>
+
+                <p>
+                    {{contract.name.formatted}}
+                </p>
+
+                <md-menu md-position-mode="target-right target" class="md-list-item-md-menu-right">
+                    <p ng-click="$mdOpenMenu()">
+                        <md-icon md-menu-origin md-svg-icon="more"></md-icon>
+                    </p>
+                    <md-menu-content width="1">
+                         <!--
+                        <md-menu-item ng-repeat="number in contract.phoneNumbers">
+                            <a class="md-button md-default-theme" ng-click="callTo(number.value)">
+                                <span class="menu-item-button" content="telephone=no">
+                                    <i class="ion-android-call"></i> {{number.value}}
+                                </span>
+                            </a>
+                        </md-menu-item>
+-->
+                        <md-menu-item>
+                            <a class="md-button md-default-theme"
+                               ng-click="navigateTo('app.mobileContractDetail',contract)">
+                                <span class="menu-item-button">Inviter</span>
+                            </a>
+                        </md-menu-item>
+
+                        <!--
+                        <md-menu-item>
+                            <a class="md-button md-default-theme" ng-click="deleteContract(contract,$event)">
+                                <span class="menu-item-button">Remove</span>
+                            </a>
+                        </md-menu-item>
+-->
+                    </md-menu-content>
+                </md-menu>
+
+            </md-list-item>
+
+        </md-list><!--end list section-->
+
+    </ion-content><!--end mobile contract list section-->
+
+    <!--loading progress-->
+    <div id="mobile-contract-list-loading-progress" class="loading-progress fade-in">
+        <ion-spinner ng-if="!isAndroid" class="progress-circular"></ion-spinner>
+        <md-progress-circular ng-if="isAndroid" md-mode="indeterminate"></md-progress-circular>
+    </div><!--end loading progress-->
+
+    <!--
+<div class="text-center padding">Hichat friends in phonebook will automatically added to Hichat contact</div>
+<div ng-show="lastupdate" class="light-bg padding margin-horizontal"><div>Last updated:</div>
+<h4>{{lastupdate | date:'HH:mm, dd/MM/yyyy'}}</h4></div>
+<button ng-click="updateContacts()" ng-disabled="!contacts" class="button button-small button-positive padding-horizontal margin-auto width-50">UPDATE</button>
+-->
+</ion-view>

@@ -1,0 +1,116 @@
+<ion-view title="Mon profil" hide-tabs>
+  <ion-nav-bar class="bar-positive">
+    <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear ion-navicon" menu-toggle="right" ui-sref="app.transition">
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+  <ion-content>
+		<!--
+		<ion-refresher pulling-text="Rafraichir la page..." on-refresh="updateImg()">
+    	</ion-refresher>
+    	-->
+		
+		<div ng-include="'templates/actionSheet.html'"></div>
+		
+		<div ng-style={{imgContainer_style}} class="profile-image-container">
+			<img ng-src="{{ img_profile.src }}" id="img_profile" ng-model="img_profile.src" class="imageHome">
+
+			<div class="name-profile">
+				{{ currentUser.formatedName }}
+			</div>
+			
+			<!--____________________Si on est sous IOS____________________-->
+			<button ng-if="edit_address === false && edit_phone === false && isIos === true" ng-style={{buttonModifImgTop}} class="button btn-profile" ng-click="displayActionSheet()">
+				Modifier		
+			</button>
+			<button ng-if="((currentUser.imageUrl && currentUser.imageUrl !== img_profile.src) || (!currentUser.imageUrl && img_profile.src !== 'css/img/icon-camera.png') && editPhoto === true) && isIos === true" ng-style={{buttonModifImgTop}} class="button btn-profile-abort" ng-click="abortNewPhoto()">
+				Annuler		
+			</button>
+			
+			<!--__________________Si on est sous Android-________________-->
+			<button ng-if="edit_address == false && edit_phone == false && isAndroid === true" class="button btn-profile-android" ng-style={{buttonModifImgTop}} ng-click="displayActionSheet()">
+				Modifier		
+			</button>
+			<button ng-if="((currentUser.imageUrl && currentUser.imageUrl !== img-profile.src) || (!currentUser.imageUrl && img_profile.src !== 'css/img/icon-camera.png') && editPhoto === true) && isAndroid === true" class="button btn-profile-abort-android" ng-style={{buttonModifImgTop}} ng-click="abortNewPhoto()">
+				Annuler		
+			</button>
+
+		</div>
+
+		<button ng-if='form.newAddress !== currentUser.fullAddress' ng-style={{modifBtnStyle}} ng-click="_editAdress()" ng-style={{changeSyndicStatusStyle}} class="changeInfos-btn"> Confirmer</button>
+ 		<button ng-if="form.newPhone !== currentUser.phone" ng-style={{modifBtnStyle}} ng-click="_editPhone()" ng-style={{changeSyndicStatusStyle}} class="changeInfos-btn"> Confirmer</button>
+ 		<button ng-if="img_profile.src !== 'css/img/icon-camera.png' && img_profile.src !== currentUser.imageUrl" ng-click="editImage()" ng-style={{changeSyndicStatusStyle}} class="changeInfos-btn"> Confirmer</button>
+ 		<button ng-if="syndicStatus !== currentUser.isSyndicMember && modifSyndicBtn !== false" ng-click="editSyndicStatus(syndicStatus)" ng-style={{changeSyndicStatusStyle}} class="changeInfos-btn"> Confirmer</button>
+		
+		<div ng-style = {{fieldsContainerTop}} class="profile-fields-container">
+			<div class="row">
+				<div class="col textAreaProfile-container"> 
+	                    <textarea class="textAreaProfile item-input" rows="3" ng-model="form.newAddress" type="text" placeholder="Votre adresse actuelle" readonly>
+	                    </textarea>
+	            </div>
+	            <div ng-if="edit_photo == false && edit_phone == false && edit_isSyndicMember == false" class="col icon-edit-address-container" >
+	                <a ui-sref="app.changeAddressForm">
+	                    <img class="icon-edit-address" src="img/edit-black.svg">
+	                </a>
+	            </div>
+	            <div ng-if="form.newAddress !== currentUser.fullAddress" class="col btn-abortNewAddress-container" >
+	                <button class="button btn-abortNewAddress" ng-click="abortNewAddress()">
+	                </button>
+	                <span class="btn-abortNewAddress-cross">&#x274C;</span>
+	            </div>
+			</div>
+
+			<div class="row mailProfile-row">
+				<div class="col mailProfile-col"> 
+                	<label class="item item-input readOnly mailProfile-label">
+                    	<input ng-model="currentUser.mail" class="mailProfile-input" type="text" readonly>
+                   	</label> 	
+	            </div>
+	            
+	            <div class="col" >
+	                <a>
+	                    <div class="icon-edit-address" src=""></div>
+	                </a>
+	            </div>
+			</div>
+
+			<div class="row phoneProfile-row">
+				<div ng-if="editPhone !== true" class="col phoneProfile-container"> 
+	                	<label class="item item-input readOnly phoneProfile-label">
+	                    	<input class='phoneProfile-input' ng-model="form.newPhone" type="text" readonly>
+	                   	</label> 	
+	                
+	            </div>
+	            <div ng-if="editPhone == true" class="col phoneProfile-container"> 
+                	<label class="item item-input unreadOnly phoneProfile-label">
+                    	<input class='phoneProfile-input' ng-model="form.newPhone" type="text">
+                   	</label> 	   
+	            </div>
+	            
+	            <div ng-if="edit_address == false && edit_photo == false && edit_isSyndicMember == false" class="col btn-edit-phone-container">
+	                <button class="btn-edit-phone" ng-click="readOnlyPhone()">
+	                </button>
+	                <img  class="icon-edit-phone" src="img/edit-black.svg">
+	            </div>
+	            <div ng-if="form.newPhone !== currentUser.phone" class="col btn-abortNewPhone-container" >
+	                <button class="button btn-abortNewPhone" ng-click="abortNewPhone()">
+	                </button>
+	                <span class="btn-abortNewPhone-cross">&#x274C;</span>
+	            </div>
+			</div>
+
+			<div ng-style={{cardBottomStyle}} class="suscription-date card">Vous avez rejoint la communauté MySpotiHome le: {{ date }}</div>
+		</div>
+
+		<div class="modifSyndicMember" ng-style={{syndicMemberStyle}}>
+			<label style="display: block; padding-left: 15px; text-indent: -15px;">
+				<input type="checkBox" checked="true" id="myCheckBox" ng-model="syndicStatus" aria-label="CheckboxTerms" style="width: 13px; height: 13px; padding: 0; margin:0; vertical-align: bottom; position: relative; top: -1px;" ng-click="modifSyndicBtnTrue()"/>
+               	Je fais partie du conseil syndical.
+            </label>   
+        	
+		</div>
+			
+	</ion-content>
+</ion-view>

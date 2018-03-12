@@ -1,0 +1,91 @@
+<!--View Information-->
+<!--View name : Contract Detail-->
+<!--Controller name : contractDetailCtrl-->
+<!--Controller path : www/templates/application-storage/sqLite/js/controllers.js-->
+<!--State name : app.contractdetail-->
+<!--URL : #app/contractdetail-->
+
+<ion-view title="Editer Profile"  hide-tabs>
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="$ionicGoBack()" class="button back-button buttons  button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons> <!--end left button on navigation bar-->
+
+    <!--contract detail section-->
+    <form name="profileForm">
+        <ion-content id="contract-details-content"  hide-tabs>
+            <!--contract detail input section-->
+            <md-input-container md-no-float>
+                <i class="ion-android-person"></i>
+                <input ng-model="form.uid" name="uid" disabled >
+            </md-input-container>
+            <md-input-container md-no-float>
+                <i class="ion-android-person"></i>
+                <input ng-model="form.formatedName" name="name" required placeholder="* nom (required)">
+            </md-input-container>
+            <md-input-container md-no-float>
+                <i class="ion-android-person"></i>
+                <input ng-model="form.mail"   name="email" disabled required placeholder="* email (required)">
+            </md-input-container>
+
+            <md-input-container  md-no-float>
+                <i class="ion-android-people"></i>
+                <md-select ng-model="form.batiment" style="    margin-left: 60px;
+                                                           padding: 0px;">
+                    <md-option><em>None</em></md-option>
+                    <md-option ng-repeat="(k,option)  in formSelectList.batiments" ng-value="k" ng-disabled="$index === 1">
+                        {{option.name}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container  md-no-float>
+                <i class="ion-android-people"></i>
+                <md-select ng-model="form.immeuble" style="    margin-left: 60px;
+                                                           padding: 0px;">
+                    <md-option><em>None</em></md-option>
+                    <md-option ng-repeat="(k,option) in formSelectList.immeubles" ng-value="k" ng-disabled="$index === 1">
+                        {{option.name}} 
+                    </md-option>
+                </md-select>
+            </md-input-container>
+
+
+        </ion-content>
+        <div class="footer-fab-bar">
+            <a class="md-button md-accent md-fab fab-footer" ng-click="showEditProfileBottomSheet($event,profileForm)"
+               aria-label="Contract Form Actions">
+                <i class="ion-android-star"></i>
+            </a>
+        </div>
+    </form><!--end contract detail section-->
+
+    <!--angular template section-->
+    <script type="text/ng-template" id="incident-actions-template.html">
+        <md-bottom-sheet class="md-list md-has-header">
+            <h1 class="md-bottom-sheet-header">Actions</h1>
+                <md-list>
+        <!--md bottom sheet list item-->
+                    <md-list-item>
+                        <a class="md-default-theme md-bottom-sheet-list-item"
+                        ng-class="{ 'disabled-link': disableSaveBtn}"
+                        ng-click="saveProfile(form,$event)">
+                            <i class="ion-android-list"></i>
+                            <span>Save Profile</span>
+                        </a>
+                    </md-list-item>
+
+                    <md-list-item ng-show="actionDelete">
+                        <a class="md-default-theme md-bottom-sheet-list-item"
+                        ng-click="deleteContract(contract,$event)">
+                            <i class="ion-android-delete"></i>
+                            <span>Remove Incident</span>
+                        </a>
+                    </md-list-item>
+                <!--end md bottom sheet list item-->
+                </md-list>
+            </md-bottom-sheet>
+        </script><!--end angular template section-->
+    <ion-footer></ion-footer>
+</ion-view>

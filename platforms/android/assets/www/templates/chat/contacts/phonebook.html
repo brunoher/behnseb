@@ -1,0 +1,79 @@
+<!--<link href="css/contacts.css" rel="stylesheet">-->
+<ion-view title="Inviter mes amis" hide-tabs="true">
+    <!--
+ <ion-nav-buttons side="left">
+<a ui-sref="app.contacts"class="button back-button buttons  button-clear header-item nav-back-btn">
+<i class="ion-android-arrow-back"></i>
+</a>
+</ion-nav-buttons>
+      <ion-nav-buttons side="right">
+        <button class="button button-clear" ui-sref="app.updateContacts">
+            <i class="fa fa-address-book"></i>
+        </button>
+    </ion-nav-buttons>
+-->
+       <ion-nav-buttons side="left">
+        <button class="button button-clear" ui-sref="app.contacts">
+            <i class="ion-android-arrow-back"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="contacts-nearby-main">
+       <!--  <md-autocomplete
+
+             ng-disabled="isDisabled"
+             md-no-cache="noCache"
+             md-selected-item="selectedItem"
+             md-search-text-change="searchTextChange(searchText)"
+             md-search-text="searchText"
+             md-selected-item-change="selectedItemChange(item)"
+             md-items="item in querySearch(searchText)"
+             md-item-text="item.name.formatted"
+             md-min-length="3"
+             placeholder="Taper un nom...">
+           <md-item-template>
+                
+                <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.display}}</span>
+            </md-item-template>
+            <md-not-found>
+                "{{searchText}}" introuvable.
+
+            </md-not-found>
+        </md-autocomplete>-->
+ <div class="list list-inset">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text"  ng-model="filterText" placeholder="Taper un nom...">
+            </label>
+        </div>
+               
+        <!--
+ <md-input-container class="">
+                    <input ng-model="filterText" id="name_2" placeholder="Chercher un contact...">
+                </md-input-container>
+        <div class="list no-margin">
+            <div class="item item-icon-right"><span class="stable">Filter by: </span>
+                <span>{{settings.gender}} - {{settings.visible}}, {{settings.fromage}} - {{settings.toage}} age</span><i class="icon ion-ios-gear-outline" ng-click="showNearbySetting()"></i>
+            </div>
+        </div>
+ui-sref="app.inviteContacts({id:user.$id})"
+-->
+        
+        <ul class="list contacts-recommended no-margin" ng-repeat="user in contracts | filter:filterText | orderBy:'name.familyName':false">
+            <li class="item item-avatar">
+                
+                <div>{{user.name.formatted| limitTo : 20}}</div>
+                <span class="positive margin-right" ng-class="{'ion-male':user.gender=='Male','ion-female':user.gender=='Female'}"></span>
+                <span class="smaller">{{user.phoneNumbers[0].value}}</span>
+                <button ng-if="!user.isInvited" class="button button-outline button-positive" ng-click="inviteSms(user.phoneNumbers[0].value);" >+ Inviter</button>
+                <button ng-if="!user.isInvited && false" class="button button-outline button-positive" ng-click="addNewInvite({id:user.$id});user.isInvited=true;" >+ Ajouter</button>
+                <button ng-if="user.isInvited" class="button button-outline button-positive">Invité</button>
+            </li>
+        </ul>
+    </ion-content>
+    
+     <!--loading progress-->
+    <div id="mobile-contract-list-loading-progress" class="loading-progress fade-in">
+        <ion-spinner ng-if="!isAndroid" class="progress-circular"></ion-spinner>
+        <md-progress-circular ng-if="isAndroid" md-mode="indeterminate"></md-progress-circular>
+    </div><!--end loading progress-->
+</ion-view>

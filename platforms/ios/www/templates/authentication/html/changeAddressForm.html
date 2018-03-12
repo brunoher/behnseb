@@ -1,0 +1,98 @@
+<!--View Information-->
+<!--View name : Fake Wizzard signIn-->
+<!--State name : public.fakeWizardSignUp-->
+<!--URL : #app/fakeLogin-->
+
+<ion-view title="Modifier votre adresse" hide-tabs>
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <button class="button button-clear" ng-click="goBack()">
+            <i class="icon ion-ios-arrow-back"></i>
+            {{'back' | translate}}
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear">
+        </button><!-- -->
+    </ion-nav-buttons>
+
+            
+            <ion-content id="social-sign-up-content" hide-tabs ng-controller="profileCtrl">
+                <form class="fakeLogin-form" style="margin-top:15%;">
+                    <div style="margin-top: 6%;">
+                        <div class="row"  style="margin-left: 0%;">
+                            <div class="col"  style="text-align: left;"> Votre département:</div>
+                            <md-select ng-model="data.foString" style="margin-left: 2em; margin-top: -0.8em;" class ="col">
+                                <md-option ng-repeat="departement in data.departements" ng-value="departement.value">
+                                    {{departement.value}}
+                                </md-option>
+                            </md-select>
+                        </div>    
+                    </div>
+
+                    <md-autocomplete ng-if="data.foString" md-no-cache="true" placeholder="Saisissez votre adresse (N°, voie, ville)" md-selected-item="data.selectedSuggestion" md-items="suggestion in suggestions" md-search-text="form.typed" md-search-text-change="suggest(form, data)" md-item-text="suggestion.fullText">
+                        <span>{{ suggestion.fullText }}</span>
+                    </md-autocomplete>
+
+                    <a ng-if="showButton == true" class="md-raised social-button md-button md-default-theme material-background" ng-click="setUserFullAdress()">
+                        Choisissez votre adresse
+                    </a>
+
+                    <div ng-if="o.show == true">
+                        <label class="item item-input readOnly">
+                            <input type="text" ng-model="o.streetNumber" placeholder="N° de rue" readonly>
+                        </label>
+
+                        <label class="item item-input readOnly">
+                            <input class="user-name" type="text" ng-model="o.street" placeholder="Rue" readonly>
+                        </label>
+                        
+                        <label class="item item-input readOnly">
+                            <input class="user-name" type="text" ng-model="o.city" placeholder="Ville" readonly>
+                        </label>
+
+                        <label class="item item-input readOnly">
+                            <input class="user-name" type="text" ng-model="o.postalCode" placeholder="Code postal" readonly>
+                        </label>
+ 
+                        <label class="item item-input signUp" style="margin-top: 5%; width: 50%;">
+                            <input ng-model="o.batName" type="text" placeholder="Bâtiment">
+                        </label>
+
+                        <div>
+                            <div class="row">
+                                <div class="col"> Votre étage: </div>
+                                <md-select ng-model="o.floor" style="margin-left: 2em; margin-top: -0.8em;" class="col">
+                                    <md-option ng-repeat="floor in data.floors" ng-value="floor.value">
+                                        {{ floor.value }}
+                                    </md-option>
+                                </md-select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="row">
+                                <div class="col">Statut: </div>
+                                <md-select ng-model="o.status" style="margin-left: 2em; margin-top: -0.8em;" class ="col">
+                                    <md-option ng-repeat="status in data.status" ng-value="status.value">
+                                        {{status.name}}
+                                    </md-option>
+                                </md-select>
+                            </div>
+                        </div>
+
+                        <md-checkbox aria-label="CheckboxTerms" ng-model="o.isSyndicMember" style="text-align: left;">
+                            Je fais partie du conseil syndical.
+                        </md-checkbox>
+                            
+                        <a class="md-raised social-button md-button md-default-theme material-background" ng-click="changeAddress()">>
+                            Valider nouvelle adresse
+                        </a>
+                    </div>    
+                    <!--end input section-->
+                </form>
+            </ion-content>
+        </ion-slide>
+        <!--end slider section-->
+    </ion-slide-box><!--end try app section-->
+</ion-view>

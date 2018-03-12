@@ -1,0 +1,116 @@
+<!--header
+
+<div class="col-20">
+<img src="img/profileAvatar.jpg" class="user-img"/>
+</div>
+section
+<div class="row header">
+
+<div class="col-80">
+<span class="name">
+{{item.user}}
+
+
+</span>
+<br/>
+<div class="col-33">
+<span class="datetime"> {{item.timestamp | date:'dd/MM'}}
+</span>
+</div>
+</div> <span class="tags">  <i class="fa fa-calendar"></i> </span> (HH:mm)
+</div><!--end header section-->
+
+<!--footer section-->
+<div class=" card">
+
+    <div class=" row  bigger bolder"  style="padding-bottom: 15px;    background-color: rgba(226, 241, 255, 0.27)">
+
+        <span class="datetime"> 
+            {{item.timestamp | date:'dd/MM HH:mm'}}
+        </span>
+        <span style="width:30%; right: 5%; text-align:right; position: absolute;"> 
+            # {{item.id}}
+        </span>
+
+    </div><!--end footer section-->
+    
+    <div class=" row  bigger bolder"  style="padding-bottom: 15px;    background-color: rgba(226, 241, 255, 0.27)">
+
+        <div class="col col-20">
+            <span class="tags">
+                <img src="img/symbols/{{item.type.icon}}.png">
+            </span>
+        </div>
+        
+        <div class="col col-30">
+            {{item.type.name}}
+        </div>
+        
+        <div class="col col-20">
+            <span class="tags">
+                <img src="img/symbols/{{item.zone.icon}}.png">
+            </span>
+        </div>
+        
+        <div class="col col-30">
+            <span class="wording">{{item.zone.name}}</span>
+        </div>
+
+    </div><!--end footer section-->
+    <!--detail section-->
+
+    <div class="row footer detail">
+        <div class="col">
+            <span class="name">
+                <!--<
+                h1>{{item.titre}}</h1>
+                <i class="fa {{item.type.icon}}"></i> 
+                -->
+                <p class="content bigger">
+                    {{item.description}}
+                </p>
+            </span>
+            <p class="content">
+
+            </p>
+
+            <p class="tags">
+
+            </p>
+
+            <p class="tags">
+
+            </p>
+        </div>
+    </div>
+
+    <!--footer section-->
+
+
+    <div class="row detail footer " style="text-align: left;" ng-if="item.last_comment_details">
+        <!--footer section
+
+
+        <div class="col" ng-repeat="comment in item.last_comment_details">
+
+
+        <p data-ng-bind-html="comment.content"></p>
+        <p>Par {{comment.links.author.formatedName}} - {{comment.timestamp | date:"dd/MM HH:mm" }}</p>
+        </div>
+        ng-repeat="comment in item.last_comment_details"
+        -->
+                    <!--
+        <div class="col" ng-hide="item.last_comment_details">
+
+
+        Aucun commentaires.
+        </div>
+        -->
+        <div class="col"    >
+
+            <p class="tags">
+                Dernier commentaire : {{item.last_comment_details.content}}
+            </p>
+        </div>
+    </div><!--end footer section-->
+</div>

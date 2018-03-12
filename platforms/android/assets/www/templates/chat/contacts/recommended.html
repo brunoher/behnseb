@@ -1,0 +1,26 @@
+<!--<link href="css/contacts.css" rel="stylesheet">-->
+
+<ion-view title="Demande de contact" hide-tabs="true">
+ <ion-nav-buttons side="left">
+<a ng-click="$ionicGoBack()" class="button back-button buttons  button-clear header-item nav-back-btn">
+<i class="ion-android-arrow-back"></i>
+</a>
+</ion-nav-buttons>
+
+  <ion-nav-buttons side="right">
+        <button ng-if="index == 0" class="button button-clear" ng-click="toEdit(false)">
+            <i class="icon ion-compose"></i>
+        </button>
+    </ion-nav-buttons>
+ <ion-content>
+	<div class="list contacts-recommended">
+		<a class="item item-avatar" ng-repeat="contact in contacts">
+		  <img ng-if="contact.avatar.$value" ng-src="{{contact.avatar.$value}}">
+		  <img ng-if="!contact.avatar.$value" ng-src="css/img/avatar/{{contact.name.$value | firstChar}}.png">
+		  <h2>{{contact.name.$value}}</h2>
+		  <p>+{{contact.phone.$value}}</p>
+		  <button class="button button-outline button-positive" ng-click="accept(contact.$id)">Accepter</button>
+		</a>
+	</div>
+ </ion-content>
+</ion-view>

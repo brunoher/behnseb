@@ -1,0 +1,310 @@
+<!--<link href="css/contacts.css" rel="stylesheet">-->
+<ion-view cache-view="false" view-title="Mon Réseau">
+    <ion-nav-buttons side="left">
+        <button class="button button-clear" ui-sref="app.homeDashboard">
+            <i class="icon ion-home"></i>
+        </button>
+    </ion-nav-buttons>
+    
+<ion-nav-buttons side="right">
+<button class="button button-clear" ng-controller="mobileContractListCtrl" ng-click="loadMyContacts()">
+<i class="fa fa-refresh"></i>
+</button>
+</ion-nav-buttons>
+
+
+    <ion-content class="">
+        <!--
+
+<ion-header-bar align-title="left" class="bar-light">
+<button class="button button-icon ion-ios-search-strong" ui-sref="search"></button>
+<button class="button button-icon icon-add-person" ui-sref="app.chat.addContacts"></button>
+</ion-header-bar>
+-->
+        <!--
+<div ng-show="contactRecommended.length >0" class="list contacts-header no-margin">
+<a class="item item-icon-left item-icon-right" ui-sref="app.contactsRecommended">
+<i class="icon ion-ios-personadd-outline positive"></i>
+<span>
+<span ng-show="contactRecommended.length >0">(+{{contactRecommended.length}})</span>
+Demandes en attente
+</span>
+<i class="icon ion-ios-arrow-right"></i>
+</a>
+
+<a class="item item-icon-left" style="color:#98a2a7" ui-sref="app.nearbyContacts">
+<i class="icon icon-add-border-dashed"></i>
+<span>Trouver une personne</span>
+</a>
+
+</div>-->
+        <!--
+<div  class="list contacts-header no-margin">
+<a class="item item-icon-left item-icon-right" ui-sref="app.contactsRecommended">
+<i class="icon ion-ios-personadd-outline positive"></i>
+<span>
+<span ng-show="contactRecommended.length >0">(+{{contactRecommended.length}})</span>
+Demandes en attente
+</span>
+<i class="icon ion-ios-arrow-right"></i>
+</a>
+
+<a class="item item-icon-left" style="color:#98a2a7" ui-sref="app.nearbyContacts">
+<i class="icon icon-add-border-dashed"></i>
+<span>Trouver une personne</span>
+</a>
+
+</div>
+
+<div class="row" style="    padding: 0px;">
+<div class="col-50  no-margin">
+<a class="item no-margin item-icon-right" ui-sref="app.contactsList">
+
+<span>
+<span ng-show="contactsBookRecommended.length > 1">{{contacts.length}} relations</span>
+<span ng-show="contactsBookRecommended.length == 1">{{contacts.length}} relation</span>
+<span ng-show="contactsBookRecommended.length == 0">Aucune relations</span>
+
+</span>
+<i class="icon ion-ios-arrow-right"></i>
+</a>
+
+
+
+</div>
+<div class="col-50  no-margin">
+<a class="item no-margin " ui-sref="app.nearbyContacts">
+<span>
+<span >Trouver un voisin
+</span>
+
+
+</span>
+
+</a>
+
+
+</div>
+</div>
+-->
+        <div  class="list contacts-header no-margin">
+            <a class="item item-icon-left item-icon-right" ui-sref="app.contactsList">
+                <i class="icon ion-ios-people-outline positive"></i>
+                <span>
+                    <!--
+                    <span ng-show="contacts.length > 1">{{contacts.length}} relations</span>
+                    <span ng-show="contacts.length == 1">1 relation</span>
+                    <span ng-show="contacts.length == 0">Aucune relation</span>
+                    -->
+                    
+                    <span ng-show="contacts.length == 0">Aucune</span>
+                    <span ng-show="contacts.length >= 1">{{contacts.length}}</span>
+                    relation<span ng-show="contacts.length > 1">s</span>
+                </span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+
+        </div>
+
+
+        <div class="row" style="padding: 0px;">
+            <div class="col-50  no-margin">
+                <a class="item no-margin item-icon" ui-sref="app.nearbyContacts">
+                    <i class="fa fa-search"></i>
+                    <span >Trouver un voisin</span>
+
+                </a>
+            </div>
+            <div class="col-50  no-margin">
+                <a class="item no-margin " ui-sref="app.updateContacts">
+                    <i class="fa fa-address-book"></i>
+                    <span > 
+                        Inviter des amis
+                    </span>
+                </a>
+            </div>
+        </div>
+        <!--
+<div ng-show="contactRecommended.length >0" class="item item-divider light-bg positive">Invitations reçues</div>
+
+-->
+        <br />
+
+        <a ng-show="contactRecommended.length >0" class="item item-divider light-bg positive item-icon-left item-icon-right" ui-sref="app.contactsRecommended">
+            <i class="icon ion-ios-personadd-outline positive"></i>
+            <span>
+                <span ng-show="contactRecommended.length >0">(+{{contactRecommended.length}})</span>
+                Invitations reçues
+            </span>
+            <i class="icon ion-ios-arrow-right"></i>
+        </a>
+        <div ng-show="contactRecommended.length >0" class=" list contacts-recommended-custom">
+
+            <div ng-repeat="contact in contactRecommended | orderBy:'name.$value'" class="item no-margin item-avatar item-button-right">
+                <img ng-if="contact.avatar.$value" ng-src="{{contact.avatar.$value}}" ng-click="showContactDetailsModal(contact)">
+                <img ng-if="!contact.avatar.$value" ng-src="css/img/avatar/{{contact.name.$value | firstChar}}.png">
+                <div  class="name-info" for="{{contact.$id}}">
+                    <div ng-show="contact.status == '1'" class="contact-status positive-bg"></div>
+                    <span style="font-size: 2.1vh;">{{contact.name.$value}}</span>
+                    <div style="color:#7f8c8d; font-size: 2vh;">{{contact.address.$value}}</div>
+
+
+                </div>
+                <div class="buttons" >
+                    <button style ="color:green;" class="button button-icon larger icon ion-ios-checkmark" ng-click="acceptContactRequest(contact.$id)"></button>
+                    <button style ="color:red;" class="button button-icon larger ion-close  icon-accessory" ng-click="rejectContactRequest(contact.$id)"></button>
+                </div>
+            </div>
+        </div>
+        <!-- <div ng-if="$index == 0 || getAlpha($index)" class="item item-divider">{{contact.name.$value | firstChar}}</div>
+<a class="item item-avatar item-button-right" on-hold="showMenuSearch(contact.name.$value,contact.$id)" >
+<img ng-if="contact.avatar.$value" ng-src="{{contact.avatar.$value}}">
+<img ng-if="!contact.avatar.$value" ng-src="css/img/avatar/{{contact.name.$value | firstChar}}.png">
+<div ng-show="timeNow - contact.lastSign.$value <120000" class="contact-status positive-bg"></div>
+<h2>{{contact.name.$value}}</h2>
+<div class="buttons" >
+<button class="button button-icon larger icon ion-chatbubbles" ui-sref="detail({id:contact.$id})"></button>
+<button class="button  button-icon larger icon ion-chatbubbles " ng-click="acceptContactRequest(contact.$id)"></button>
+</div>
+
+
+</a>-->
+        <!--
+<div ng-show="contactsBookRecommended.length >0" class="list contacts-header no-margin">
+<a class="item item-icon-left item-icon-right" ui-sref="app.contactsBookRecommended">
+<i class="icon icon-linked positive"></i>
+<span>
+<span ng-show="contactsBookRecommended.length >0">(+{{contactsBookRecommended.length}})</span>
+Suggestions
+</span>
+<i class="icon ion-ios-arrow-right"></i>
+</a>
+
+<a class="item item-icon-left" style="color:#98a2a7" ui-sref="app.nearbyContacts">
+<i class="icon icon-add-border-dashed"></i>
+<span>Trouver une personne</span>
+</a>
+
+</div>
+-->
+        <br />
+        <a ng-show="myContactsRecommended.length >0" class="item item-divider light-bg positive item-icon-left item-icon-right">
+            <i class="icon ion-ios-personadd-outline positive"></i>
+            <span>
+                <span ng-show="myContactsRecommended.length >0">(+{{myContactsRecommended.length}})</span>
+                Les contacts suggérés
+            </span>
+            <i class="icon ion-ios-arrow-right"></i>
+        </a>
+        <div ng-if="myContactsRecommended.length >0" class=" contacts-recommended-custom">
+            <!--
+<div ng-repeat="contact in contactsBookRecommended | orderBy:'name.$value'">
+<!- - <div ng-if="$index == 0 || getAlpha($index)" class="item item-divider">{{contact.name.$value | firstChar}}</div> - ->
+<a class="item item-avatar" on-hold="showMenuSearch(contact.name.$value,contact.$id)" >
+<img ng-if="contact.avatar.$value" ng-src="{{contact.avatar.$value}}">
+<img ng-if="!contact.avatar.$value" ng-src="css/img/avatar/{{contact.name.$value | firstChar}}.png">
+<div ng-show="timeNow - contact.lastSign.$value <120000" class="contact-status positive-bg"></div>
+<h2>{{contact.name.$value}}</h2>
+<button class="button button-outline button-positive" ng-click="acceptContactSuggestion(contact.$id)">Ajouter</button>
+
+</a>
+</div>
+-->
+            <div ng-repeat="(k,contact) in myContactsRecommended | orderBy:'name.$value'">
+                <div class="item no-margin item-avatar item-button-right" ng-if="contact.$id !== currentUser.id">
+                    <img ng-if="contact.avatar.$value !== 'css/img/icon-camera.png'" ng-src="{{contact.avatar.$value}}" ng-click="showContactDetailsModal(contact)">
+                    <img ng-if="contact.avatar.$value === 'css/img/icon-camera.png'" ng-src={{contact.avatar.$value}}>
+                    <div  class="name-info" for="{{contact.$id}}">
+                        <div ng-show="contact.status == '1'" class="contact-status positive-bg"></div>
+                        <span style="font-size: 2.1vh;">{{contact.name.$value}}</span>
+                        <div style="font-size: 2vh; color:#7f8c8d;">{{contact.address.$value}}</div>
+                    </div>
+                    <div class="buttons" >
+                       <button ng-if="!contact.isAdded" style="color: #1976FF;" class="button button-icon larger icon ion-android-add-circle" ng-click="acceptContactSuggestion(contact.$id,k);contact.isAdded=true;"></button>
+                       <button ng-if="contact.isAdded" class="button button-icon larger icon ion-checkmark" ng-click="acceptContactSuggestion(contact.$id,k);"></button>
+
+                    </div>    
+                </div>
+                
+            </div>
+        </div>
+    <!--
+<div class="item item-divider light-bg positive ">CONTACTS</div>
+
+<div class="list contacts-main">
+<div ng-repeat="contact in contacts | orderBy:'name.$value'">
+<div ng-if="$index == 0 || getAlpha($index)" class="item item-divider">{{contact.name.$value | firstChar}}</div>
+<a class="item item-avatar" on-hold="showMenuSearch(contact.name.$value,contact.$id)" ui-sref="detail({id:contact.$id})">
+<img ng-if="contact.avatar.$value" ng-src="{{contact.avatar.$value}}">
+<img ng-if="!contact.avatar.$value" ng-src="css/img/avatar/{{contact.name.$value | firstChar}}.png">
+<div ng-show="timeNow - contact.lastSign.$value <120000" class="contact-status positive-bg"></div>
+<h2>{{contact.name.$value}}</h2>
+
+</a>
+</div>
+</div>
+
+-->
+    <!--  
+<div class="text-center">
+
+<button class="button button-small width-50 button-positive" ui-sref="app.updateContacts">CONTACTER MON SYNDIC</button>
+
+</div>
+<div>{{contacts.length}} contacts</div>
+-->
+    <!--
+
+
+<div class="text-center">
+<button class="button button-positive width-60 margin-auto" ng-click="loadMyContacts()">VOIR MES CONTACTS</button>
+</div>
+-->
+    <div ng-show="!contacts.length" class="text-center">
+        <div class="margin-bottom">Vous n'avez pas encore de contacts.</div>
+        <button class="button button-small width-50 button-positive" ui-sref="app.nearbyContacts">Trouver un membre</button>
+    </div> <!-- 
+<div class="list contacts-header no-margin">
+<div ng-if="contactsBookRecommended.length" class="list contacts-main">
+<div ng-repeat="contact in contactsBookRecommended | orderBy:'name'">
+<a class="item item-avatar" on-hold="showMenuSearch(contact.name.$value,contact.$id)" ui-sref="detail({id:contact.$id})">
+<img ng-if="contact.avatar.$value" ng-src="{{contact.avatar.$value}}">
+<img ng-if="!contact.avatar.$value" ng-src="css/img/avatar/{{contact.name | firstChar}}.png">
+<div ng-show="timeNow - contact.lastSign.$value <120000" class="contact-status positive-bg"></div>
+<h2>{{contact.formatedName}}</h2>
+</a>
+</div>
+</div>
+</div>
+-->
+    <!--
+<div class="list contacts-main">
+<div ng-repeat="contact in contactsBookRecommended | orderBy:'name.$value'">
+<div ng-if="$index == 0 || getAlpha($index)" class="item item-divider">{{contact.name.$value | firstChar}}</div>
+<a class="item item-avatar" on-hold="showMenuSearch(contact.name.$value,contact.$id)" ui-sref="detail({id:contact.$id})">
+<img ng-if="contact.avatar.$value" ng-src="{{contact.avatar.$value}}">
+<img ng-if="!contact.avatar.$value" ng-src="css/img/avatar/{{contact.name.$value | firstChar}}.png">
+<div ng-show="timeNow - contact.lastSign.$value <120000" class="contact-status positive-bg"></div>
+<h2>{{contact.name.$value}}</h2>
+
+</a>
+</div>
+</div>
+-->
+    <!-- 
+<div class="text-center">
+<button class="button button-positive width-60 margin-auto" ng-click="loadMyContacts()">Synchro MES CONTACTS</button>
+</div>
+-->
+    </ion-content>
+<!--
+<ion-footer-bar align-title="center" class="bar-positive">
+
+<button class="button button-small button-outline width-100 button-clear" ui-sref="app.updateContacts">CONTACTER MON SYNDIC</button>
+
+<button class="button button-icon ion-ios-search-strong" ui-sref="app.chat.search"></button>
+<button class="button button-icon ion-ios-chatbubble" ui-sref="app.chat.createGroup"></button>
+<!-- - ->
+</ion-footer-bar>
+-->
+</ion-view>

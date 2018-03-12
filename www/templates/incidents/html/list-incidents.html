@@ -1,0 +1,290 @@
+<!--View Information-->
+<!--View name : Facebook Profile-->
+<!--Controller name : facebookProfileCtrl-->
+<!--Controller path : www/templates/social-network-connect/facebook/js/controllers.js-->
+<!--State name : app.facebookProfile-->
+<!--URL : #app/facebookProfile-->
+
+<ion-view title="Liste des incidents">
+    <!--left button on navigation bar-->
+    <!-- <ion-nav-buttons side="left">
+<a ng-click="$ionicGoBack()" class="button back-button buttons  button-clear header-item nav-back-btn">
+<i class="ion-android-arrow-back"></i>
+</a>
+</ion-nav-buttons>-->
+
+    <!--end left button on navigation bar
+<md-toolbar class="bar-subheader md-tall md-primary toolbar-medium">
+<div>
+<h1>SQLite Database</h1>
+
+<h2>Application Storage</h2>
+</div>
+<a class="md-button md-accent md-fab fab-toolbar-medium"
+ng-click="navigateTo('app.contractdetail',contract)"
+aria-label="Add">
+<i class="icon ion-plus"></i>
+</a>
+</md-toolbar><!--end toolbar section-->
+
+    <!--toolbar section-
+<a class="md-button md-accent md-fab fab-toolbar-medium" ng-click="navigateTo('app.contractdetail',contract)" aria-label="Add" tabindex="0">
+<i class="icon ion-plus"></i>
+</a>-->
+    <ion-nav-buttons side="left">
+        <button class="button button-clear" ui-sref="app.homeDashboard">
+            <i class="icon ion-home"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear"   ng-click="navigateTo('app.addIncident',contract)">
+            <i class="icon ion-compose"></i>
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content id="social-feed-content" >
+        <div style="position:absolute;bottom:80px;">
+            <a class="md-button md-accent md-fab fab-toolbar-medium"
+               ng-click="navigateTo('app.addIncident',contract)"
+               aria-label="Add" style=    'position: absolute;
+                                           bottom: -12px;'>
+                <i class="icon ion-plus"></i>
+            </a>
+        </div>
+        <ion-refresher pulling-text="Rafraichir..." on-refresh="doRefresh($event)">
+        </ion-refresher>
+        <!--
+<md-toolbar class="md-tall md-primary toolbar-medium">
+<div>
+<h1>Liste des incidents</h1>
+
+<h2>{{currentUser.links.immeuble.name}}</h2>
+</div>
+<a class="md-button md-accent md-fab fab-toolbar-medium"
+ng-click="navigateTo('app.addIncident',contract)"
+aria-label="Add" style=    'position: absolute;
+bottom: -12px;'>
+<i class="icon ion-plus"></i>
+</a>
+</md-toolbar>
+-->
+        <md-tabs class="ng-hide" ng-show="!loading" md-dynamic-height md-border-bottom>
+
+            <md-tab label="En cours">
+                <!--social profile content section
+<md-autocomplete
+
+ng-disabled="isDisabled"
+md-no-cache="noCache"
+md-selected-item="selectedItem"
+md-search-text-change="searchTextChange(searchText)"
+md-search-text="searchText"
+md-selected-item-change="selectedItemChange(item)"
+md-items="item in querySearch(searchText)"
+md-item-text="item.display"
+md-min-length="0"
+placeholder="Filter par type">
+<md-item-template>
+<span md-highlight-text="searchText" md-highlight-flags="^i">{{item.display}}</span>
+</md-item-template>
+<md-not-found>
+"{{searchText}}" introuvable.
+
+</md-not-found>
+</md-autocomplete>
+<br/>
+<div class="list">
+{{contacts}}
+<div class="item item-divider"
+ng-repeat-start="(firstLetter, contacts) in contacts">
+{{firstLetter}}
+</div>
+
+<div class="item"
+ng-repeat="contact in contacts"
+bindonce
+ng-click="contactSelected(contact.id)">{{ contact }}
+</div>
+
+<div ng-repeat-end></div>
+
+</div>
+-->
+
+                <md-content id="news-feed-content" class="list">
+                    <div class="item item-divider" style="display: none"
+                         ng-repeat-start="(firstLetter, list) in listDataOpenByDay">
+                        {{firstLetter}}
+                    </div>
+                    <div   ng-include="template.url" ng-if="item.status!=='solved'" ng-repeat="(k,item) in list" class=" news-item" ui-sref="app.viewIncident({item:item,id:item.key})" >
+                    </div>
+                    <div ng-repeat-end></div>
+                </md-content>
+                
+            
+                <md-content ng-if="!listDataOpen.length" id="news-feed-content" class="list card">
+                    <div class="  item news-item" >
+                        <div class="text-center">
+                            <div class="margin-bottom">Aucun incident en cours</div>
+                        </div>
+                    </div>
+                </md-content>
+            
+            </md-tab>
+            <!--
+ui-sref="app.viewIncident({id:k,item:item})"
+{user:item.user,key:item.key}
+<div class="news-item">
+ng-click="navigateTo('app.viewIncident',item,k)"
+ui-sref="app.viewIncident({id:k,item:item})" 
+
+<!- -header section- ->
+<div class="row header">
+<div class="col-20">
+<img src="img/profileAvatar.jpg" class="user-img"/>
+</div>
+<div class="col-80">
+<span class="name">
+John Smith
+</span>
+<br/>
+<span class="datetime">
+1 hours ago
+</span>
+</div>
+</div><!- -end header section- ->
+
+<!- -detail section- ->
+<div class="row detail">
+<div class="col">
+<h1>
+Material is the metaphor
+</h1>
+
+<p class="content">
+A material metaphor is the unifying theory of a rationalized space and a system of motion. The
+material is grounded in tactile reality, inspired by the study of paper and ink, yet
+technologically advanced and open to imagination and magic.
+</p>
+
+<p class="content">
+http://google.com/design/spec/material-design/
+</p>
+
+<p class="tags">
+<i class="fa fa-tags"></i> Material Design, Ionic
+</p>
+</div>
+</div>
+
+<!- -footer section- ->
+<div class="row footer">
+<div class="col-33">
+<span class="number">10.9k</span> <span class="wording">Likes</span>
+</div>
+<div class="col-33">
+<span class="number">20k</span> <span class="wording">Comments</span>
+</div>
+<div class="col-33">
+<span class="number">1k</span> <span class="wording">Shared</span>
+</div>
+</div><!- -end footer section- ->
+
+</div>
+-->
+
+            <md-tab label="Terminés">
+
+                <md-content  ng-if="listDataCloseByDay" id="news-feed-content" class="list">
+                    <div class="item item-divider" style="display: none"
+                         ng-repeat-start="(firstLetter, list) in listDataCloseByDay">
+                        {{firstLetter}}
+                    </div>
+                    <div   ui-sref="app.viewIncident({item:item,id:item.key})" ng-include="template.url"  ng-repeat="(k,item) in list" class=" news-item" >
+                        <div ></div>
+
+                    </div>
+                    <div ng-repeat-end></div>
+                </md-content><!--end social profile content section-->
+                <md-content ng-show="!listDataClose.length"  id="news-feed-content" class="list card">
+                    <div class="  item news-item" >
+                        <div  class="text-center">
+                            <div class="margin-bottom"> Aucun incident terminé.</div>
+                        </div>
+                    </div>
+
+
+                </md-content><!--end social profile content section-->
+            </md-tab>
+            <md-tab label="Mes incidents">
+                <!--social profile content section-->
+
+                <md-content  ng-if="listDataUserAll" id="news-feed-content" class="list">
+                    <div class="item item-divider" style="display: none"
+                         ng-repeat-start="(firstLetter, list) in listDataUserAll">
+                        {{firstLetter}}
+                    </div>
+                    <div   ui-sref="app.incidentUpdate({id:item.key,item:item})" ng-include="template.url" ng-repeat="(k,item) in list" class=" news-item" >
+
+                    </div>
+                    <div ng-repeat-end></div>
+                </md-content><!--end social profile content section-->
+                <md-content ng-hide="listDataUserAll" id="news-feed-content" class="list card">
+                    <div class="  item news-item" >
+                        <div ng-show="!listDataUserAll.length" class="text-center">
+                            <div class="margin-bottom"> Aucun incident déclaré.</div>
+                        </div>
+                    </div>
+
+
+                </md-content>
+                <!--
+<md-content  ng-if="userIncidentsList" id="news-feed-content" class="list">
+
+<div ui-sref="app.incidentUpdate({id:k})"  ng-repeat="(k,item) in listDataUser" class="news-item" ng-include="template.url">
+<div ></div>
+
+</div>
+</md-content>
+-->
+            </md-tab>
+            <!--
+<md-tab label="Mes evenements">
+<md-content class="md-padding">
+<!--list section- ->
+<md-list>
+<md-subheader class="facebook-color">More Facebook APIs.</md-subheader>
+<md-list-item class="md-list-item-default"
+ng-click="navigateTo('app.facebookFeed')">
+<i class="ion-android-list"></i>
+
+<p>View Timeline Feed</p>
+</md-list-item>
+<md-list-item class="md-list-item-default"
+ng-click="navigateTo('app.facebookFriendList')">
+<i class="ion-person-stalker"></i>
+
+<p>Friends List</p>
+</md-list-item>
+<md-list-item class="md-list-item-default" ng-click="logOut($event)">
+<i class="ion-locked"></i>
+
+<p>Log Out</p>
+</md-list-item>
+</md-list><!--end list section- ->
+</md-content>
+</md-tab>-->
+        </md-tabs>
+        <!--social loading progress section-->
+        <md-progress-circular ng-show="loading" class="md-warn md-progress-social-profile ng-hide"
+                              md-mode="indeterminate"></md-progress-circular><!--end social loading progress section-->
+
+    </ion-content>
+    <!--loading progress-->
+    <div id="incident-post-loading-progress" class="loading-progress fade-in">
+        <ion-spinner ng-if="!isAndroid" class="progress-circular"></ion-spinner>
+        <md-progress-circular ng-if="isAndroid" class="md-warn md-progress-social-profile"
+                              md-mode="indeterminate"></md-progress-circular>
+    </div><!--end loading progress-->
+
+</ion-view>

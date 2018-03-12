@@ -1,0 +1,40 @@
+<!--<link href="css/contacts.css" rel="stylesheet">-->
+<ion-view title="Ajouter un contact">
+     <!--left button on navigation bar-->
+   <ion-nav-buttons side="left">
+<a ng-click="$ionicGoBack()" class="button back-button buttons  button-clear header-item nav-back-btn">
+<i class="ion-android-arrow-back"></i>
+</a>
+</ion-nav-buttons>
+
+  <ion-nav-buttons side="right">
+        <button ng-if="index == 0" class="button button-clear" ng-click="toEdit(false)">
+            <i class="icon ion-compose"></i>
+        </button>
+    </ion-nav-buttons>
+
+<ion-content class="stable-bg has-footer" >
+
+	<div class="invite-footer">
+          <a class="item item-icon-left item-icon-right" ui-sref="app.contactsRecommended">
+                <i class="icon icon-linked positive"></i>
+                <div>{{Friend.name.$value}}</div><span>+{{Friend.phone.$value}}</span>
+            </a>
+       <a class="center md-button-block md-raised md-button md-default-theme" ng-click="acceptInvite()">Envoyer une demande</a>
+	<div class="padding border-vertical">
+        
+        <!--
+              <md-whiteframe class="md-whiteframe-z1"  layout>
+                        <md-input-container class="md-block">
+                            <label>Description</label>
+                            <textarea ng-model="form.description" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                        </md-input-container>
+                    </md-whiteframe>
+
+        <textarea class="padding">{{Me.$value}} {{inviteText}}</textarea>
+-->
+        </div>
+		
+	</div>
+</ion-content>
+</ion-view>

@@ -1,0 +1,107 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "ionic-plugin-deploy",
+        "scope": null,
+        "escapedName": "ionic-plugin-deploy",
+        "name": "ionic-plugin-deploy",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/valentinelarit/Desktop/msh/myspotihome/node_modules"
+    ]
+  ],
+  "_from": "ionic-plugin-deploy@latest",
+  "_id": "ionic-plugin-deploy@0.6.7",
+  "_inCache": true,
+  "_location": "/ionic-plugin-deploy",
+  "_nodeVersion": "7.9.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/ionic-plugin-deploy-0.6.7.tgz_1494366394885_0.6233504198025912"
+  },
+  "_npmUser": {
+    "name": "fuiste",
+    "email": "rudy@ionic.io"
+  },
+  "_npmVersion": "4.2.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "ionic-plugin-deploy",
+    "scope": null,
+    "escapedName": "ionic-plugin-deploy",
+    "name": "ionic-plugin-deploy",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ionic-plugin-deploy/-/ionic-plugin-deploy-0.6.7.tgz",
+  "_shasum": "517e4285470e0ccd397609764cee2ae8ec6c6d3f",
+  "_shrinkwrap": null,
+  "_spec": "ionic-plugin-deploy",
+  "_where": "/Users/valentinelarit/Desktop/msh/myspotihome/node_modules",
+  "author": {
+    "name": "Ionic"
+  },
+  "bugs": {
+    "url": "https://github.com/driftyco/ionic-plugin-deploy/issues"
+  },
+  "cordova": {
+    "id": "ionic-plugin-deploy",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "dependencies": {},
+  "description": "Ionic Deploy Plugin",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "517e4285470e0ccd397609764cee2ae8ec6c6d3f",
+    "tarball": "https://registry.npmjs.org/ionic-plugin-deploy/-/ionic-plugin-deploy-0.6.7.tgz"
+  },
+  "gitHead": "03330af1f5a080601fd6e324f796732fec2058d6",
+  "homepage": "https://github.com/driftyco/ionic-plugin-deploy#readme",
+  "keywords": [
+    "Ionic",
+    "deploy",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "Apache 2.0",
+  "maintainers": [
+    {
+      "name": "dwieeb",
+      "email": "dwieeb@gmail.com"
+    },
+    {
+      "name": "ericb",
+      "email": "eric@hellouser.net"
+    },
+    {
+      "name": "fuiste",
+      "email": "rudy@ionic.io"
+    },
+    {
+      "name": "tlancina",
+      "email": "tim@ionic.io"
+    }
+  ],
+  "name": "ionic-plugin-deploy",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/driftyco/ionic-plugin-deploy.git"
+  },
+  "scripts": {},
+  "version": "0.6.7"
+}

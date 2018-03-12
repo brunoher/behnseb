@@ -1,0 +1,56 @@
+<ion-view title="Créer une discussion"  hide-tabs="true" class="create-group">
+    <ion-nav-buttons side="left">
+        <a ui-sref="app.messages" class="button back-button buttons  button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons>
+<!--
+    <ion-nav-buttons side="right">
+        <div class="buttons" ng-click="createGroup()">
+            <button class="button button-icon button-clear icon-planes"  ng-disabled="selectedCount < 1"></button>
+        </div>
+    </ion-nav-buttons>
+ <ion-header-bar  align-title="left" class="bar-stable">
+        <label class="item item-input row no-border">
+            <input ng-model="nameGroup" type="text" placeholder="Entrer le nom de cette discussion">
+        </label>
+    </ion-header-bar>
+-->
+    <ion-content class="has-header has-footer">
+
+        <!-- <ion-header-bar align-title="left" class="bar-stable">
+<div class="buttons" ui-sref="app.messages">
+<button class="button button-icon ion-android-arrow-back"></button>
+</div>
+<h1 class="title"><div>Créer une discussion</div><span>{{selectedCount}}/99</span></h1>
+<div class="buttons" ng-click="createGroup()">
+<button class="button button-icon icon-planes" style="color:#387ef5" ng-disabled="selectedCount < 1"></button>
+</div>
+</ion-header-bar>
+<input ng-model="search.name.$value" type="text" placeholder="Chercher un ou plusieurs contacts">
+
+-->
+
+        
+        <div class="list create-group-main no-margin no-padding" ng-repeat="contact in contacts | filter:search | orderBy:'name.$value'">
+            <div ng-if="$index == 0 || getAlpha($index)" class="item item-divider light-bg">{{contact.name.$value | firstChar}}</div>
+            <input type="checkbox" id="{{contact.$id}}" ng-change="change(contact)" ng-model="contact.selected">
+            <label class="item item-avatar" for="{{contact.$id}}">
+                <img ng-if="contact.avatar.$value" ng-src="{{contact.avatar.$value}}">
+                <img ng-if="!contact.avatar.$value" ng-src="css/img/avatar/{{contact.name.$value | firstChar}}.png">
+                <div ng-show="contact.status == '1'" class="contact-status positive-bg"></div>
+                <span>{{contact.name.$value}}</span>
+                <div class="status-check"><i class="icon ion-checkmark"></i></div>
+            </label>
+        </div>
+    </ion-content>
+     <ion-footer-bar  align-title="left" class="bar-stable">
+          <label class="item item-input row no-border">
+            <input ng-model="nameGroup" type="text" placeholder="Entrer le nom de cette discussion">
+        </label>
+         <div class="buttons" ng-click="createGroup()">
+            <button class="button button-icon button-clear icon-planes"  ng-disabled="selectedCount < 1"></button>
+        </div>
+    </ion-footer-bar>
+   
+</ion-view>

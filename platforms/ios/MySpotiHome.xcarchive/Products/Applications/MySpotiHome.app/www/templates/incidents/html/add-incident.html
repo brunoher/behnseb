@@ -1,0 +1,82 @@
+<!--View Information-->
+<!--View name : Menu Dashboard-->
+<!--Controller name : homeDashboardCtrl-->
+<!--Controller path : www/templates/themes/home-dashboard/js/controllers.js-->
+<!--State name : app.homeDashboard-->
+<!--URL : #app/homeDashboard-->
+
+<ion-view title="Quel est l'incident ?">
+    <!--menu dashboard section-->
+    <ion-content id="menu-dashboard-content">
+        <!--panel section-->
+        
+        <div class="menu-panel">
+    
+     
+
+            <div class="row">
+                <div class="col-33" ng-click="showToast('Inbox')">
+                    <i class="fa fa-refresh"></i>
+
+                    <p>En cours</p>
+                </div>
+                <div class="col-33" ng-click="showToast('Card')">
+                    <i class="fa fa-check"></i>
+
+                    <p>Résolus</p>
+                </div>
+               <div class="col-33" ng-click="showToast('Setting')">
+                    <i class="fa fa-pencil-square"></i>
+
+                    <p>Mes incidents</p>
+                </div>
+            </div>
+        </div><!--end panel section-->
+
+        <!--panel footer section-->
+        <div class="menu-dashboard-footer">
+            <md-whiteframe class="md-whiteframe-z1" layout ng-click="addNewIncident(type.value)" ng-repeat="type in incidentTypes">
+                <div class="row">
+                    <div class="col-10">
+                        <i class="fa  {{type.icon}}"></i>
+                    </div>
+                    <div class="col-80">
+                        {{type.name}}
+                    </div>
+                    <div class="col-10">
+                        <i class="fa fa-angle-right"></i>
+                    </div>
+                </div>
+            </md-whiteframe>
+<!--
+            <md-whiteframe class="md-whiteframe-z1" layout ng-click="showToast('Google Connect')">
+                <div class="row">
+                    <div class="col-10">
+                        <i class="fa fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="col-80">
+                        Suivre les incidents
+                    </div>
+                    <div class="col-10">
+                        <i class="fa fa-angle-right"></i>
+                    </div>
+                </div>
+            </md-whiteframe>
+
+            <md-whiteframe class="md-whiteframe-z1" layout ng-click="showToast('Facebook Connect')">
+                <div class="row">
+                    <div class="col-10">
+                        <i class="fa fa-plus-square"></i>
+                    </div>
+                    <div class="col-80">
+                        Déclarer un nouvel incident
+                    </div>
+                    <div class="col-10">
+                        <i class="fa fa-angle-right"></i>
+                    </div>
+                </div>
+            </md-whiteframe>
+-->
+        </div><!--end panel footer section-->
+    </ion-content><!--Menu dashboard section-->
+</ion-view>

@@ -1,0 +1,52 @@
+<!--View Information-->
+<!--View name : Fake Sign Up-->
+<!--State name : app.fakeSignUp-->
+<!--URL : /fakeWizardSignUp-->
+
+<ion-view title="Inscription" hide-tabs>
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="$ionicGoBack()" class="button back-button buttons button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons><!--end left button on navigation bar-->
+
+    <ion-content id="social-sign-up-content" hide-tabs> 
+        <form class="fakeLogin-form">
+           
+            <md-input-container md-no-float="">
+                <div>
+                    <input class="user-name" ng-model="form.user.email" type="text" placeholder="Votre adresse mail">
+                </div>
+            </md-input-container>
+            <md-input-container md-no-float="">
+                <div>
+                    <span ng-if="form.user.email !== form.user.email_2 && form.user.email_2.length > 5" style='color: red;'>adresses différentes</span>
+                    <span ng-if="form.user.email === form.user.email_2 && form.user.email_2.length > 5" style='color: green;'>adresses identiques</span>
+                    <input class="user-name" ng-model="form.user.email_2" type="text" placeholder="Confirmez votre mail">
+                </div>
+            </md-input-container>
+            <md-input-container md-no-float="">
+                <div>
+                    <input class="user-name" ng-model="form.user.pw" type="text" placeholder="Creez un mot de passe (6 caractères minimum)">
+                    <span ng-if="form.user.pw.length > 0 &&  form.user.pw.length < 6">&#10060;</span>
+                    <span ng-if="form.user.pw.length > 0 &&  form.user.pw.length > 5">&#10003;</span>
+                    
+                </div>
+            </md-input-container>
+
+            <md-input-container md-no-float="">
+                <div>
+                    <input class="user-name" ng-model="form.user.pw_2" type="text" placeholder="Confirmez votre mot de passe">
+                    <span ng-if="form.user.pw_2.length > 5 &&  form.user.pw_2 !== form.user.pw">&#10060;</span>
+                    <span ng-if="form.user.pw_2.length > 5 &&  form.user.pw_2 === form.user.pw">&#10003;</span>
+
+                </div>
+            </md-input-container>
+
+            <a class="md-raised social-button md-button md-default-theme material-background" ng-click="register()">>
+                Continuer
+            </a>
+        </form>
+    </ion-content>
+</ion-view>

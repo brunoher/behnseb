@@ -1,0 +1,247 @@
+<!--View Information-->
+<!--View name : Contract Detail-->
+<!--Controller name : contractDetailCtrl-->
+<!--Controller path : www/templates/application-storage/sqLite/js/controllers.js-->
+<!--State name : app.contractdetail-->
+<!--URL : #app/contractdetail-->
+
+<ion-view title="Compléter votre Profile"  hide-tabs>
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="$ionicGoBack()" class="button back-button buttons  button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons> <!--end left button on navigation bar-->
+
+    <!--contract detail section-->
+    <form name="profileForm" ng-controller="wizzardSignUpController">
+        <ion-content id="contract-details-content"  hide-tabs>
+            <!--contract detail input section
+            <md-input-container md-no-float>
+                <i class="ion-android-person"></i>
+                <input ng-model="form.uid" name="uid" disabled >
+            </md-input-container>
+            <md-input-container md-no-float>
+                <i class="ion-android-person"></i>
+                <input ng-model="form.formatedName" name="name" required placeholder="* nom (required)">
+            </md-input-container>
+            <md-input-container md-no-float>
+                <i class="ion-android-person"></i>
+                <input ng-model="form.mail"   name="email" disabled required placeholder="* email (required)">
+            </md-input-container>
+
+            <md-input-container  md-no-float>
+                <i class="ion-android-people"></i>
+                <md-select ng-model="form.batiment" style="    margin-left: 60px;
+                                                           padding: 0px;">
+                    <md-option><em>None</em></md-option>
+                    <md-option ng-repeat="(k,option)  in formSelectList.batiments" ng-value="k" ng-disabled="$index === 1">
+                        {{option.name}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container  md-no-float>
+                <i class="ion-android-people"></i>
+                <md-select ng-model="form.immeuble" style="    margin-left: 60px;
+                                                           padding: 0px;">
+                    <md-option><em>None</em></md-option>
+                    <md-option ng-repeat="(k,option) in formSelectList.immeubles" ng-value="k" ng-disabled="$index === 1">
+                        {{option.name}} 
+                    </md-option>
+                </md-select>
+            </md-input-container>
+-->
+            <div style="margin-bottom: 6%;">
+                <div class ='row'>
+                    <div> Civilité: </div>
+                    <md-select class="col" ng-model="form.user.gender" style="margin-left: 60px; padding: 0px;">
+                        <md-option ng-if="data.genders" ng-repeat="gender in data.genders" ng-value="gender.value" ng-disabled="$index === 1">
+                            {{ gender.name }} 
+                        </md-option>
+                    </md-select>
+                </div>
+            </div>
+
+            <md-input-container md-no-float="">
+                <div>
+                    <input class="user-name" ng-model="form.user.firstName" type="text" placeholder="Votre prénom">
+                </div>
+            </md-input-container>
+
+            <md-input-container md-no-float="">
+                <div>
+                    <input class="user-name" ng-model="form.user.name" type="text" placeholder="Votre nom">
+                </div>
+            </md-input-container>
+
+            <md-input-container md-no-float="">
+                <div>
+                    <input class="user-name" ng-model="form.user.mail" type="text" placeholder="Votre adresse mail">
+                </div>
+            </md-input-container>
+
+            <md-input-container md-no-float="">
+                <div>
+                    <input class="user-name" ng-model="form.user.phone" type="text" placeholder="Votre numéro de mobile">
+                </div>
+            </md-input-container>
+           <md-input-container md-no-float="">
+                <div>
+                    <input class="user-name" ng-model="form.user.birthday" type="text" placeholder="Anniversaire">
+                </div>
+            </md-input-container>
+            <md-input-container md-no-float="">
+                <div>
+                    <input class="user-name" ng-model="form.user.syndicNumber" type="text" placeholder="Code fourni par votre syndic">
+                </div>
+            </md-input-container>
+            <div style="margin-bottom: 6%;">
+                <div class="row" style="margin-left: 0%;">
+                    <div class="col">Statut: </div>
+                    <md-select ng-model="form.user.status" style=" margin-left: 60px; padding: 0px;" class ="col">
+                        <md-option ng-repeat="status in data.status" ng-value="status.value" ng-disabled="$index === 1">
+                            {{status.name}}
+                        </md-option>
+                    </md-select>
+                </div>
+            </div>
+
+            <md-checkbox aria-label="CheckboxTerms" ng-model="form.user.isSyndicMember">
+                Je fais partie du conseil syndical.
+            </md-checkbox>
+
+            <div style="margin-top: 6%;">
+                <div class="row"  style="margin-left: 0%;">
+                    <div class="col"  style="text-align: left;"> Votre département:</div>
+                    <md-select ng-model="data.foString" style="margin-left: 60px; padding: 0px;" class ="col">
+                        <md-option ng-repeat="departement in data.departements" ng-value="departement.value"  ng-disabled="$index === 1">
+                            {{departement.value}}
+                        </md-option>
+                    </md-select>
+                </div>    
+            </div>
+
+            <md-autocomplete md-no-cache="true" placeholder="Saisissez votre adresse" md-selected-item="data.selectedSuggestion" md-items="suggestion in suggestions" md-search-text="form.typed" md-search-text-change="suggest(form, data)" md-item-text="suggestion.fullText">
+                <span>{{ suggestion.fullText }}</span>
+            </md-autocomplete>
+
+            <a ng-if="showButton == true" class="md-raised social-button md-button md-default-theme material-background" ng-click="setUserFullAdress()">
+                Choisissez votre adresse
+            </a>
+
+
+            <div ng-if="o.show == true">
+                <md-input-container md-no-float="">
+                    <div>
+                        <input class="user-name" type="text" ng-model="o.streetNumber" placeholder="N° de rue" readonly>
+                    </div>
+                </md-input-container>
+
+                <md-input-container md-no-float="">
+                    <div>
+                        <input class="user-name" type="text" ng-model="o.street" placeholder="Rue" readonly>
+                    </div>
+                </md-input-container>
+
+                <md-input-container md-no-float="">
+                    <div>
+                        <input class="user-name" type="text" ng-model="o.city" placeholder="Ville" readonly>
+                    </div>
+                </md-input-container>
+
+                <md-input-container md-no-float="">
+                    <div>
+                        <input class="user-name" type="text" ng-model="o.postalCode" placeholder="Code postal" readonly>
+                    </div>
+                </md-input-container>
+
+                <md-input-container md-no-float="">
+                    <div>
+                        <input class="user-name" ng-model="o.batName" type="text" placeholder="Bâtiment">
+                    </div>
+                </md-input-container>
+
+                <md-input-container md-no-float="">
+                    <div>
+                        <input class="user-name" ng-model="o.residency" type="text" placeholder="Nom de résidence">
+                    </div>
+                </md-input-container>
+
+                <div>
+                    <div class="row" style="margin-left: -8.5%;">
+                        <div class="col"> Votre étage: </div>
+                        <md-select ng-model="form.user.floor" style="margin-left: 60px; padding: 0px;" class="col">
+                            <md-option ng-repeat="floor in data.floors track by $index" ng-disabled="$index === 1">
+                                {{ floor.value }}
+                            </md-option>
+                        </md-select>
+                    </div>
+                </div>
+<!--
+                <a class="md-raised social-button md-button md-default-theme material-background" ng-click="implement_2(form.user)">>
+                    Continuer
+                </a>
+                
+                <md-input-container  md-no-float>
+                        <h4 style="text-align:center; color:#ef473a; width:80%; margin-left:10%;"> Et maintenant, faites votre star!</h4>
+                        <h5 style="text-align:center; width:80%; margin-left:10%;">Pourquoi une photo est-elle nécessaire?</h5>
+                        <h5 style="text-align:center; width:80%; margin-left:10%;">Pour pouvoir entrer en relation avec les personnes que vous croisez autour de chez vous mais dont vous ignorez les coordonnées.</h5>
+                    </md-input-container>
+
+
+                    <img src="{{ img.src }}" id="img" ng-model="img.src" style="width:50%;">
+
+                    <!--div class="fileinputs">
+<input type="file" class="file" file-input="files" />                        
+<div class="fakefile">
+<a class="md-raised social-button md-button md-default-theme material-background">
+<span ng-if="!files.length"> Ajout photo</span>
+<span ng-if="files.length > 0">Modifier</span>
+</a>
+</div>
+</div- ->
+                    <a class="md-raised social-button md-button md-default-theme material-background" ng-click="takePhotoActionSheet(img.src)">Photo</a>
+
+                    <a ng-if="img.src !== 'css/img/icon-camera.png'" class="md-raised social-button md-button md-default-theme material-background" ng-click="readURL(img.src, '#img')">
+                        Afficher photo
+                    </a>
+-->
+                    <a class="md-raised social-button md-button md-default-theme material-background" ng-click="saveCompleteProfile()">Terminer</a>
+            </div>   
+        </ion-content>
+        <div class="footer-fab-bar">
+            <a class="md-button md-accent md-fab fab-footer" ng-click="saveCompleteProfile()"
+               aria-label="Contract Form Actions">
+                <i class="ion-android-star"></i>
+            </a>
+        </div>
+    </form><!--end contract detail section-->
+
+    <!--angular template section-->
+    <script type="text/ng-template" id="incident-actions-template.html">
+<md-bottom-sheet class="md-list md-has-header">
+    <h1 class="md-bottom-sheet-header">Actions</h1>
+    <md-list>
+        <!--md bottom sheet list item-->
+        <md-list-item>
+            <a class="md-default-theme md-bottom-sheet-list-item"
+               ng-class="{ 'disabled-link': disableSaveBtn}"
+               ng-click="saveProfile(form,$event)">
+                <i class="ion-android-list"></i>
+                <span>Save Profile</span>
+        </a>
+        </md-list-item>
+
+        <md-list-item ng-show="actionDelete">
+            <a class="md-default-theme md-bottom-sheet-list-item"
+               ng-click="deleteContract(contract,$event)">
+                <i class="ion-android-delete"></i>
+                <span>Remove Incident</span>
+        </a>
+        </md-list-item>
+        <!--end md bottom sheet list item-->
+        </md-list>
+        </md-bottom-sheet>
+    </script><!--end angular template section-->
+    <ion-footer></ion-footer>
+</ion-view>

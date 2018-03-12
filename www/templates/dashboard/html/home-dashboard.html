@@ -1,0 +1,97 @@
+<!--View Information-->
+<!--View name : Menu Dashboard-->
+<!--Controller name : homeDashboardCtrl-->
+<!--Controller path : www/templates/themes/home-dashboard/js/controllers.js-->
+<!--State name : app.homeDashboard-->
+<!--URL : #app/homeDashboard-->
+<ion-view cache-view="false" title="Accueil" hide-tabs>
+    <ion-nav-buttons>
+        <button class="button button-icon button-clear ion-navicon" side="left" ng-click="showMenu()"></button>
+    </ion-nav-buttons>
+
+    <!--menu dashboard section-->
+    <ion-content id="menu-dashboard-content">
+        <!--panel section-->
+
+        <md-toolbar class="md-tall md-primary toolbar-medium">
+            <div>
+                <!--<h1>Bienvenue sur MySpotyHome</h1>
+
+<h2>{{currentUser.links.immeuble.name}}</h2>
+-->
+                <img src="img/icon.png">
+
+            </div>
+
+        </md-toolbar>
+        <!--
+        <div style="position:absolute; top: 180%; left: 30%; width: 40%; font-size: 20px; z-index: 10; text-align: center; color: #faa;">{{ device }}</div>
+        -->
+        <div class="container home-container"  ng-style="myStyle">
+            <div ng-style={{addressStyle}} class="dashboard-address">{{ currentUser.fullAddress }}</div>
+            <div class="menu-panel">
+                <div class="row">
+                    <div class="col-33 dashboard-icon-container" ng-click="goToSyndic()">
+                        <img ng-style={{iconHeight}} src="img/addressBook.png">
+
+                        <p>Contacts utiles</p>
+                    </div>
+                    <div class="col-33 dashboard-icon-container" ng-click="navigateTo('app.addIncident',{})" >
+                        <img ng-style={{iconHeight}} src="img/incident.png">
+
+                        <p style="font-weight: bold">Déclarer incident</p>
+                    </div>
+                    <div class="col-33 dashboard-icon-container" ui-sref="app.messages">
+                        <img ng-style={{iconHeight}} src="img/chat.png">
+
+                        <p>Messagerie</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-33 dashboard-icon-container" ui-sref="app.contacts">
+                        <img ng-style={{iconHeight}} src="img/network.png">
+
+                        <p>Réseau</p>
+                    </div>
+                    <div class="col-33 dashboard-icon-container" ng-click="listIncidents()">
+                        <img ng-style={{iconHeight}} src="img/symbols/H_suivi3.png">
+
+                        <p>Suivi incidents</p>
+                    </div>
+                    
+                    <div class="col-33 dashboard-icon-container" ng-click="listAnnonces()">
+                        <img ng-style={{iconHeight}} src="img/digipost.png">
+
+                        <p>Affiches digitales</p>
+                    </div>
+                </div>
+
+            </div><!--end panel section-->
+
+            <!--panel footer section -->
+            <div class="menu-dashboard-footer">
+                <!-- 
+<md-whiteframe ng-if="loggedInUser" class="md-whiteframe-z1" layout ng-click="logout()">
+<div class="row">
+<div class="col-10">
+<i class="fa fa-sign-out"></i>
+</div>
+<div class="col-80">
+Deconnexion ({{loggedInUser.email}})
+</div>
+<div class="col-10">
+<i class="fa fa-angle-right"></i>
+</div>
+</div>
+</md-whiteframe>
+-->
+                <div id="home-loading-progress" class="loading-progress fade-in">
+                    <ion-spinner ng-if="!isAndroid" class="progress-circular"></ion-spinner>
+                    <md-progress-circular ng-if="isAndroid" class="md-warn md-progress-social-profile"
+                                          md-mode="indeterminate"></md-progress-circular>
+                </div><!--end loading progress-->
+            </div>
+        </div>
+    </ion-content><!--Menu dashboard section-->
+</ion-view>

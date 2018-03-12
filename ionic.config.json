@@ -1,0 +1,35 @@
+{
+  "name": "com.myspoticom.app",
+  "version": "0.0.5",
+  "description": "MSHn: An Ionic project",
+  "app_id": "7e164c5b",
+  "type": "ionic1",
+  "watchPatterns": [
+    "scss/**/*",
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ],
+  "watch": {
+    "sass": [
+      "scss/**/*.scss"
+    ],
+    "html": [
+      "www/**/*.html"
+    ],
+    "livereload": [
+      "www/**/*.html",
+      "www/**/*.js",
+      "www/**/*.css"
+    ]
+  },
+  "dependencies": {
+    "gulp-sass": "^2.3.2"
+  },
+  "integrations": {
+    "gulp": {
+      "file": "gulpfile.js"
+    },
+    "cordova": {}
+  }
+}

@@ -1,0 +1,17 @@
+<ion-modal-view view-title="Demandes reçues" ng-controller="digipostCtrl" style="opacity: 0.98; width: 100%; height: 100%; position: absolute; left: 0; top: 0;">
+  <ion-content style="background-color: #667; color: #ffffff;">   
+        <div class="mokoleHeader">
+            <p class="modal-Date">Le : {{ card.date }}</p>
+            <button class="modal-back" ng-click="closeModal()">
+                revenir
+            </button>
+        </div> 
+        <div class="modal-content">
+            {{ card.content }} <br>
+            {{ card.creator}}
+            <div ng-if="card.img" class="mokoleFooter-modal">
+                <img class="mokole-img-modal" src={{card.img}}>
+            </div>
+        </div>          
+    </ion-content>
+</ion-modal-view>

@@ -1,0 +1,252 @@
+<!--View Information-->
+<!--View name : Wordpress Post-->
+<!--Controller name : wordpressPostCtrl-->
+<!--Controller path : www/templates/social-network-connect/wordpress/js/controllers.js-->
+<!--State name : app.wordpressPost-->
+<!--URL : #app/wordpressPost-->
+
+<ion-view  cache-view="false" view-title="Détail de l'incident" hide-tabs>
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="$ionicGoBack()" class="button back-button buttons  button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons><!--end left button on navigation bar-->
+    <!--wordpress post content section-->
+    <ion-content id="wordpress-post-content" class="fade-in">
+        <!--
+<md-list>
+<md-subheader class="md-no-sticky">Avatar with Secondary Action Icon</md-subheader>
+<md-list-item ng-repeat="person in [item.type,item.zone]" ng-click="goToPerson(person.name, $event)" class="noright">
+<span class="tags"><i class="fa {{person.icon}}"></i> </span> <span class="wording"> {{person.name}}</span>
+
+</md-list-item>
+</md-list>-->
+        <!--
+<md-list-item>
+<p>Click anywhere to fire the secondary action</p>
+<md-menu class="md-secondary">
+<md-button class="md-icon-button">
+<md-icon md-svg-icon="communication:message"></md-icon>
+</md-button>
+<md-menu-content width="4">
+<md-menu-item>
+<md-button>
+Redial
+</md-button>
+</md-menu-item>
+<md-menu-item>
+<md-button>
+Check voicemail
+</md-button>
+</md-menu-item>
+<md-menu-divider></md-menu-divider>
+<md-menu-item>
+<md-button>
+Notifications
+</md-button>
+</md-menu-item>
+</md-menu-content>
+</md-menu>
+</md-list-item>
+-->
+        <!--<div class="row footer" style="width:100%">
+<div class="col-33">
+<span class="tags"><i class="fa {{item.type.icon}}"></i> </span> <span class="wording"> {{item.type.name}}</span>
+</div>
+<div class="col-33">
+<span class="tags"> <i class="fa {{item.zone.icon}}"></i> </span> <span class="wording">{{item.zone.name}}</span>
+</div>
+<div class="col-33">
+<span class="tags">  <i class="fa fa-calendar"></i> </span> <span class="datetime"> {{item.timestamp | date:'dd/MM (HH:mm)'}}
+</span>
+</div>
+</div>-->
+
+        <md-subheader class="md-no-sticky"><span class="tags">                                
+            <img src="img/symbols/{{item.type.icon}}.png">
+            </span> <span class="wording"> {{item.type.name}} </span></md-subheader>
+        <md-divider></md-divider>
+        <md-subheader class="md-no-sticky"><span class="tags">                                
+            <img src="img/symbols/{{item.zone.icon}}.png">
+            </span> <span class="wording"> {{item.zone.name}}</span></md-subheader>
+        <md-divider></md-divider>
+        <md-subheader class="md-no-sticky"><span class="tags">                                
+            </span> <span class="wording"> Etage : {{item.floor}}</span></md-subheader>
+        <md-divider></md-divider>
+
+        <md-subheader class="md-no-sticky">
+            <span class="tags"> </span> 
+            
+            <span class="wording">
+                 Statut : 
+                 <span ng-if="item.status === 'open'">En cours</span> 
+                 <span ng-if="item.status !== 'open'">Terminé</span>
+            </span>
+        </md-subheader>
+        <!--
+<div class="social-card-wp-footer row" >
+<div class="col">
+<md-subheader class="md-no-sticky"><span class="tags"><i class="fa {{item.type.icon}}"></i> </span> <span class="wording"> {{item.type.name}}</span></md-subheader>
+</div>
+</div>
+<div class="social-card-wp-footer row" >
+<div class="col">
+<span class="tags"> <i class="fa {{item.zone.icon}}"></i> </span> <span class="wording">{{item.zone.name}}</span>
+</div>
+</div>
+<div class="social-card-wp-footer row " >
+<div class="col">
+<span class="tags">  <i class="fa fa-calendar"></i> </span> <span class="datetime"> {{item.timestamp | date:'dd/MM (HH:mm)'}}</span>
+</div>
+</div>
+<div class="social-card-wp-footer row" ng-show="item.status != null ?  true : false">
+<div class="col">
+<i class="fa  fa-bullhorn"></i>
+<span >
+{{item.status}}
+</span>
+</div>
+</div>
+<div class="social-card-wp-footer row " >
+<div class="col" >
+<span class="tags">  <i class="fa fa-pencil"></i> </span> <span class=""> {{item.description}}</span>
+</div>
+</div>
+<div class="social-card-wp-footer row" role="listitem" >
+<div class="col-33" >
+<img ng-src="{{item.links.author.avatar}}" class="md-avatar">
+
+<span class="tags">  <i class="fa fa-pencil"></i> </span> <span class=""> {{item.links.author.formatedName}}</span>
+</div>
+<div class="col-66" >
+<md-list-item class="md-2-line md-no-proxy" role="listitem">
+
+<div class="md-list-item-text">
+<h3>{{item.links.author.formatedName}}</h3>
+
+<p>{{item.date | date:"short" }}</p>
+</div>
+</md-list-item>
+</div>
+</div>
+
+<md-card-content>
+<div class="pin" ng-show="item.picture" >
+
+<img data-ng-src="{{item.picture}}" >
+
+</div>
+<div>
+<a  ng-show = "canEditEvent" class="md-raised social-button md-button md-default-theme material-background" ui-sref="app.incidentUpdate({id:item.key})">
+Modifier
+</a></div>
+<!--<p class="feed-name">{{item.titre}}</p>-->
+       
+        <!--wordpress content section-->
+        <md-subheader class="md-no-sticky"><span class="tags wording">Description : </span> <span class="wording"> {{item.description}}</span></md-subheader>
+        <!--
+<div class="wp-content" data-ng-bind-html="item.description"></div>
+-->
+        <!--end wordpress content section
+{{item.links.author.imageUrl}}
+<md-button class="md-secondary md-icon-button" ng-click="doSecondaryAction($event)" aria-label="call">
+<i class="fa fa-pencil"></i>
+</md-button>
+-->               
+ <md-divider></md-divider>
+        <div>
+            <a  style="    width: auto;" ng-show = "canEditEvent" class="md-raised social-button md-button md-default-theme material-background" ui-sref="app.incidentUpdate({id:item.key})">
+                Modifier
+            </a></div>
+        <md-card ng-if="item.picture.length" ng-repeat="img in item.picture | toArray | orderBy: '-date'" md-no-float ng-init="pic = getImage(img)">
+
+            <img ng-if="!pic" src="https://material.angularjs.org/latest/img/icons/angular-logo.svg" class="md-card-image" alt="image caption">
+            <img ng-if="pic"  src="{{pic.url}}" class="md-card-image" alt="image caption">
+
+
+        </md-card>
+        <md-subheader class="md-no-sticky">{{item.date | date:"short" }}</md-subheader>
+        <md-list-item ng-if="item.links.author"  class="noright">
+            <img alt="{{item.links.author.formatedName}}" ng-src="{{item.links.author.imageUrl}}" class="md-avatar" />
+            <p >{{item.links.author.formatedName}}</p>
+
+
+        </md-list-item>
+        <md-list-item class="md-2-line md-no-proxy" role="listitem">
+
+            <div class="md-list-item-text">
+
+                <p>{{item.date | date:"short" }}</p>
+            </div>
+        </md-list-item>
+
+        <!--card footer section-->
+
+
+        <!--card footer section
+</md-card-content>
+
+<div class="social-card-wp-footer row" ng-show="item.zone.name != null ?  true : false">
+<div class="col">
+<i class="fa  {{item.zone.icon}}"></i>
+<span >
+{{item.zone.name}}
+</span>
+</div>
+</div>
+
+<div class="social-card-wp-footer row" ng-show="item.type.name != null ?  true : false">
+<div class="col">
+<i class="fa  {{item.type.icon}}"></i>
+<span >
+{{item.type.name}}
+</span>
+</div>
+</div>
+-->
+        <!--end card footer section-->
+
+        <!--list comment section-->
+        <md-list class="comment">
+            <md-subheader>Commentaires</md-subheader>
+            <md-list-item class="md-3-line" ng-repeat="comment in comments">
+                <img ng-src="{{comment.links.author.imageUrl}}" class="md-avatar"/>
+
+                <div class="md-list-item-text">
+                    <h3>{{comment.links.author.formatedName}}</h3>
+                    <p>{{comment.timestamp | date:"dd/MM HH:mm" }}</p>
+
+                    <p data-ng-bind-html="comment.content"></p>
+                </div>
+                <md-divider></md-divider>
+            </md-list-item>
+
+
+            <div ng-if="item.status === 'open'">
+                <md-subheader>Ajouter un commentaire</md-subheader>
+
+                <md-whiteframe class="md-whiteframe-z1"  layout>
+                    <md-input-container class="md-block">
+                        <label>Description</label>
+                        <textarea ng-model="form.content" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                    </md-input-container>
+                </md-whiteframe>
+
+                <a  class="md-raised social-button md-button md-default-theme material-background" ng-click="addComment(form)">
+                    Publier
+                </a>
+
+
+            </div>        </md-list><!--end list comment section-->
+
+    </ion-content><!--end wordpress post content section-->
+
+    <!--loading progress-->
+    <div id="incident-post-loading-progress" class="loading-progress fade-in">
+        <ion-spinner ng-if="!isAndroid" class="progress-circular"></ion-spinner>
+        <md-progress-circular ng-if="isAndroid" class="md-warn md-progress-social-profile"
+                              md-mode="indeterminate"></md-progress-circular>
+    </div><!--end loading progress-->
+
+</ion-view>

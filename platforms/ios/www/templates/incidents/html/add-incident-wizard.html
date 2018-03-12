@@ -1,0 +1,465 @@
+<ion-view view-cache="false" title="Déclarer un nouvel incident" hide-tabs>
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <button class="button button-clear" ng-click="goBackSlide()">
+            <i class="ion-android-arrow-back"></i>
+        </button>
+    </ion-nav-buttons><!--end left button on navigation bar-->
+
+    <!--try app section -->
+    <ion-slide-box show-pager="false" id="try-app-content" active-slide="0">
+        <!--slider section -->
+
+
+        <ion-slide class="slide-XX" ng-init="hasSelectedType=false" >
+            <ion-content id="menu-dashboard-content">
+                <!--panel section-->
+
+                <div class="menu-panel">
+
+                    <md-toolbar class="md-medium md-primary toolbar-medium toolbar-small">
+                        <div >
+
+                            <h2>1/4 De quoi s’agit-il ? </h2>
+                        </div>
+
+                    </md-toolbar>
+                </div><!--end panel section-->
+
+                <!--panel footer section
+ng-controller='base64Ctrl'-->
+
+                <div class="menu-dashboard-footer"  >
+
+                    <md-whiteframe class="md-whiteframe-z1" layout ng-click="form.type = type ;nextSlide() ;refreshIncidents() " ng-repeat="type in incidentTypes">
+                        <div class="row">
+                            <div class="col-10">
+                                <img src="img/symbols/{{type.icon}}.png">
+
+                            </div>
+                            <div class="col-80" style="font-size: 2.8vh;">
+                                {{type.name}}
+                            </div>
+                            <div class="col-10">
+                                <i class="fa fa-angle-right"></i>
+                            </div>
+                        </div>
+                    </md-whiteframe>
+                </div>
+            </ion-content>
+        </ion-slide>
+        <ion-slide class="slide-XX">
+            <ion-content id="menu-dashboard-content" ng-controller="incidentsDashboardCtrl">
+                <!--panel section-->
+
+                <div class="menu-panel">
+                    <md-toolbar class="md-medium md-primary toolbar-medium toolbar-small">
+                        <div>
+
+                            <h2>2/4 Liste des incidents en cours :</h2>
+                        </div>
+
+                    </md-toolbar>
+
+                </div><!--end panel section-->
+
+                <!--panel footer section-->
+                <div class="menu-dashboard-footer" ng-init="refreshIncidentsData(listData) ">
+
+                    <div class="menu-dashboard-footer"   >
+
+                        <md-whiteframe style="background-color: #f9f9f9; box-shadow: 0.03em 0.03em 0 grey; font-size: 3vh; padding: 2.5%;" layout>
+                                <div class="col-80" style="margin-top: 3%;">
+                                    J'ai choisi :  {{form.type.name}}
+                                </div>
+                                <div class="col-10">
+                                    <img ng-src="img/symbols/{{form.type.icon}}.png">
+
+                                    <!--<i class="fa  {{form.type.icon}}"></i>-->
+                                </div>
+                            </div>
+
+
+                        </md-whiteframe>
+                        <md-whiteframe class="md-whiteframe-z1" layout  ng-if = "existingIncidents1.length || existingIncidents2.length">
+                            <div class="row" style="font-size: 18px">
+
+                                <div class="col-80" style="color:#123a9a; font-size: 2.5vh; font-weight:bold; padding: 1.5%; text-align: left; line-height: 140%;">
+                                Je vérifie que mon incident n'est pas déjà référencé ci-dessous
+                                </div>
+                                <div class="col-20">
+                                    <img src="img/fleche_bas.png" style="width: 50%;">
+
+                                </div>
+                            </div>
+                        </md-whiteframe>
+                        <!-- ng-show = "filteredIncidents.length == 0"
+<md-whiteframe class="md-whiteframe-z1" layout ng-init="existingIncidents = (filteredIncidents | filter:{status:'open'} | filter:{type:{name:form.type.name}})" >
+<div class="row">
+{{ filteredIncidents.length}}    {{ existingIncidents.length}}
+
+Aucun incident similaire détécté.
+tt{{existingIncidents1.length}}
+</div>dd{{existingIncidents.length}}
+</md-whiteframe> -->
+                        <md-content  id="news-feed-content" class="no-padding">
+                            <div ng-init="existingIncidents = (listData | filter:{status:'open'} | filter:{type:{name:form.type.name}})"></div>
+                            <!--
+<div  ng-click="navigateTo('app.viewIncident',item,k)" ng-if="item.status!=='solved' && item.type.name === form.type.name" ng-repeat="(k,item) in  existingIncidents1 = (listData | filter:{status:'open'} | filter:{type:{name:form.type.name}})" class="news-item">dddd{{existingIncidents1.length}}
+</div>
+-->
+                            <div  ui-sref="app.viewIncident({item:item,id:item.key})" ng-if="item.status!=='solved' && item.type.name === form.type.name" ng-repeat="(k,item) in  existingIncidents1 = (listData | filter:{status:'open'} | filter:{type:{name:form.type.name}})" class="news-item" ng-include="template.url">
+                            </div>
+
+                            <div  ui-sref="app.viewIncident({item:item,id:item.key})" ng-if="item.status!=='solved' && item.type.name === 'Autres'" ng-repeat="(k,item) in  existingIncidents2 = (listData | filter:{status:'open'} | filter:{type:{name:'autres'}})" class="news-item" ng-include="template.url">
+                            </div>
+
+
+                            <!-- 
+<div ng-if="item.status!=='solved' && item.type.name === form.type.name" ng-click="navigateTo('app.viewIncident',item,k)" ng-init="existingIncidentsc = (listData | filter:{status:'open'} | filter:{type:{name:form.type.name}}) " class="news-item" > Bouya {{existingIncidentsc.length}}
+</div>
+
+<div  ng-click="navigateTo('app.viewIncident',item,k)" ng-init="existingIncidents = (filteredIncidents | filter:{status:'open'} | filter:{type:{name:form.type.name}})" class="news-item" > Bouya Z{{existingIncidents.length}}
+</div>
+-->
+                        </md-content>
+
+
+                        <md-whiteframe class="md-whiteframe-z1" layout  ng-if = "!existingIncidents1.length && !existingIncidents2.length">
+                            <div class="row">
+                                Aucun incident similaire détécté.
+                            </div>
+                        </md-whiteframe>
+                        <div class="row">
+                            <!--
+                            <div class="col-50">
+                                <a ng-click="previousSlide()" class="left md-raised md-button md-default-theme ">Précédent</a>
+                            </div>
+                            -->
+                            
+                                <!-- <a disabled ng-if="(existingIncidents1.length  && !incidentIsUnlistedConfirmation || existingIncidents2.length  && !incidentIsUnlistedConfirmation)"   class="right md-raised md-button md-default-theme">Suivant</a>
+<a ng-if="incidentIsUnlistedConfirmation || (!existingIncidents1.length && !existingIncidents2.length) "   ng-click="nextSlide()"  class="right md-raised md-button md-default-theme">
+Suivant</a>
+-->
+                                 <a ng-click="previousSlide()" class="left md-raised md-button md-default-theme" style="position: absolute; left: 2%; font-size: 2.2vh; width: 40%;">Précédent</a>
+                                
+                                <a ng-if="form.type "   ng-click="nextSlide()"  class="col-80 right material-background md-raised md-button md-default-theme" style="position:absolute; right: 2%; font-size: 2.2vh; width: 40%;">
+                                    Nouvel incident</a>
+                            
+                        </div>  
+                    </div>
+                </div>
+
+                <!---->
+                <!--
+<div class="row">
+<div class="col-50">
+<a ng-click="previousSlide()" class="left md-raised md-button md-default-theme ">Précédent</a>
+</div>
+<div class="col-50">
+<a disabled ng-click="nextSlide()" ng-show="existingIncidents.length > 0 && !incidentIsUnlistedConfirmation" class="right md-raised md-button md-default-theme">Suivant</a>
+<a ng-click="nextSlide()" ng-hide="existingIncidents.length > 0 &&  !incidentIsUnlistedConfirmation"  class="right md-raised md-button md-default-theme">Suivant</a>
+</div>
+</div>
+
+-->
+
+                <!--<md-whiteframe class="md-whiteframe-z1" layout  ng-click="nextSlide()" ng-show = "existingIncidents.length">
+<div class="row">
+
+<div class="col-90">
+Je confirme que cet incident n’est pas déjà référencé
+</div>
+<div class="col-10">
+<i class="fa fa-angle-right"></i>
+</div>
+</div>
+
+</md-whiteframe>                        
+<md-whiteframe class="md-whiteframe-z1" layout  ng-click="nextSlide()" ng-hide = "existingIncidents.length">
+<div class="row">
+
+<div class="col-90">
+Continuer
+</div>
+<div class="col-10">
+<i class="fa fa-angle-right"></i>
+</div>
+</div>
+</md-whiteframe>
+-->
+
+                <!-- <div class="row try-app-footer-content">
+<div class="col-50">
+<a ng-click="nextSlide()" class="left md-raised md-button md-default-theme ">Annuler</a>
+</div>
+<div class="col-50">
+<a ng-click="nextSlide()"  class="right md-raised md-button md-default-theme">Suivant</a>
+</div>
+</div>
+-->
+            </ion-content>
+        </ion-slide>
+        <ion-slide class="slide-XX">
+            <ion-content id="menu-dashboard-content">
+                <!--panel section-->
+
+                <div class="menu-panel">
+
+                    <md-toolbar class="md-medium md-primary toolbar-medium toolbar-small">
+                        <div>
+
+                            <h2>3/4 Quel est le lieu concerné ?</h2>
+                        </div>
+
+                    </md-toolbar>
+                </div><!--end panel section-->
+
+                <!--panel footer section-->
+                <div class="menu-dashboard-footer">
+                    <md-whiteframe class="md-whiteframe-z1" layout ng-click="form.zone =type;nextSlide() " ng-repeat="type in incidentPlaces">
+                        <div class="row">
+                            <div class="col-10">
+                                <img src="img/symbols/{{type.icon}}.png">
+
+                            </div>
+                            <div class="col-80" style="font-size: 2.8vh;">
+                                {{type.name}}
+                            </div>
+                            <div class="col-10">
+                                <i class="fa fa-angle-right"></i>
+                            </div>
+                        </div>
+                    </md-whiteframe>
+                    <!--
+                    <div class="row">
+                        
+                            <a ng-click="previousSlide()" class="left md-raised md-button md-default-theme ">Précédent</a>
+                        </div>
+                        <div class="col-50">
+                        
+                            <a disabled ng-if="!form.zone"   class="right md-raised md-button md-default-theme">Suivant</a>
+                            <a ng-if="form.zone"   ng-click="nextSlide()"  class="right md-raised md-button md-default-theme">
+                                Suivant</a>
+
+                      
+                    </div>
+                     -->
+                </div>
+
+            </ion-content>
+        </ion-slide>
+        <ion-slide class="slide-XX">
+            <ion-content id="menu-dashboard-content">
+                <!--panel section-->
+
+                <div class="menu-panel">
+
+                    <md-toolbar class="md-medium md-primary toolbar-medium toolbar-small">
+                        <div>
+
+                            <h2>4/4 Description et photo</h2>
+                        </div>
+
+                    </md-toolbar>
+
+                </div><!--end panel section-->
+
+                <!--panel footer section-->
+                <div class="menu-dashboard-footer">
+                    <!--
+<md-input-container class="md-block" >
+<label>Titre</label>
+<input ng-model="form.titre">
+</md-input-container>
+-->
+                    <md-whiteframe class="md-whiteframe-z1"  layout>
+                        <div ng-style="miss_floor" class="col"> Etage: </div>
+                        <md-select ng-model="form.floor" style="margin-left: 2em; margin-top: -0.8em;" class="col">
+                            <md-option ng-repeat="floor in incidentFloors" ng-value="floor.value">
+                                {{ floor.value }}
+                            </md-option>
+                        </md-select>
+                    </md-whiteframe>
+                    <md-whiteframe class="md-whiteframe-z1"  layout>
+
+                        <md-input-container class="md-block">
+                            <label>Apportez des précisions...</label>
+                            <textarea ng-model="form.description" md-maxlength="850" rows="5" md-select-on-focus></textarea>
+                        </md-input-container>
+
+                    </md-whiteframe>
+
+                </div>
+
+                <!--
+                <md-card md-no-float>
+                    <img ng-if="img.src" ng-src="{{ img.src }}" id="img" ng-model="img.src" class="md-card-image">
+
+                
+
+
+                </md-card>
+                -->
+                <md-card>
+                    <img ng-if="img.src"  id="img" class="md-card-image" alt="image caption">
+
+                    <md-card-actions ng-if="img.src" layout="row" layout-align="center" no-margin>
+                        <md-button ng-click="deleteimg(img)">Supprimer l'image</md-button>
+                    </md-card-actions>
+
+                </md-card>
+
+                <div class="row try-app-footer-content">
+                    <div class="col-33">
+                        <a ng-click="previousSlide()" class="left md-raised md-button md-default-theme ">Précédent</a>
+                    </div>
+                    <div class="col-33">
+                        <button ng-if="form.picture.length" ng-click="showAddImageBottomSheet($event,form)" class="button icon ion-add"></button>
+                        <a ng-if="!form.picture.length" ng-click="showAddImageBottomSheet($event,form)">
+                            <img src="img/add_photo.svg" style="background-color: grey; border-radius: 1%; width: 60%; margin-left: 5%; max-height: 2.7em; margin-top: 4%; box-shadow: 0 0 0.3em black;">
+                        </a>
+                    </div>
+
+                    <div class="col-33">
+                        <a disabled ng-if="form.description===''" ng-click="nextSlide()"  class="right md-raised md-button md-default-theme">Suivant</a>
+                        <a ng-if="form.description!=='' && !inputPicture.content"  ng-click="nextSlide()" class="right md-raised md-button md-default-theme">
+                            Suivant</a>                
+                        <a ng-if="form.description!=='' && inputPicture.content"  ng-click="form.picture = inputPicture.content  ;nextSlide()" class="right md-raised md-button md-default-theme">
+                            Suivant</a>
+
+                    </div>
+
+                </div>
+                    <!--
+                        <div class="col-33 ">
+                        <div class="bg-full-h relative row row-center md-avatar no-padding " style="background-image:url({{form.picture}});height:170px">
+                        <div ng-if="!inputPicture.content" class="width-100 text-center">Aucune image selectionnée</div>
+                        <button class="button button-icon send-camera icon-planes-top positive" ng-click="sendPicture()"></button>
+
+                        </div>
+
+                        </div>
+                    -->
+            </ion-content>
+        </ion-slide>
+
+        <ion-slide class="slide-XX">
+
+            <ion-content id="menu-dashboard-content">
+                <!--panel section-->
+
+                <div class="menu-panel">
+                    <md-toolbar class="md-medium md-primary toolbar-medium toolbar-small">
+                        <div>
+
+                            <h2>Récapitulatif</h2>
+                        </div>
+
+                    </md-toolbar>
+
+                </div><!--end panel section-->
+
+                <!--panel footer section-->
+                <div class="menu-dashboard-footer">
+                    <md-whiteframe class="md-whiteframe-z1" layout ng-click="goToSlide(2) " >
+                        <div class="row">
+                            <div class="col-10">
+                                <img ng-src="img/symbols/{{form.type.icon}}.png">
+
+                                <i class="fa  {{form.type.icon}}"></i>
+                            </div>
+                            <div class="col-80">
+                                {{form.type.name}}
+                            </div>
+                            <div class="col-10">
+                                <i class="fa fa-angle-right"></i>
+                            </div>
+                        </div>
+                    </md-whiteframe>
+                    <md-whiteframe class="md-whiteframe-z1" layout ng-click="goToSlide(3) " >
+                        <div class="row">
+                            <div class="col-10">
+                                <i class="fa  {{form.zone.icon}}"></i>
+                                <img ng-src="img/symbols/{{form.zone.icon}}.png">
+
+                            </div>
+                            <div class="col-80">
+                                {{form.zone.name}}
+                            </div>
+                            <div class="col-10">
+                                <i class="fa fa-angle-right"></i>
+                            </div>
+                        </div>
+                    </md-whiteframe>
+                    
+                    <md-whiteframe class="md-whiteframe-z1"  layout>
+                        <div class="row">
+                            <div class="col-100">
+                                
+                                <p>
+                                    <span ng-if="form.description.length > 0 && form.description.length < 5">
+                                        Votre description doit faire au minimum cinq caractères.
+                                    </span>                                    
+
+                                    <span ng-if="form.description.length < 1">
+                                        Vous devez décrire l'incident pour pouvoir le publier.
+                                    </span>
+
+                                    <span ng-if="form.description.length >= 5">
+                                        {{form.description}}
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </md-whiteframe>
+                </div>
+                <md-card>
+                    <img ng-if="img.src" id="img2" class="md-card-image" alt="image caption">  
+                </md-card>
+                
+        
+
+                <div class="row try-app-footer-content">
+                    <div class="col-50">
+                        <a ng-click="previousSlide()" class="left md-raised md-button md-default-theme ">Précédent</a>
+                    </div>
+                    <div class="col-50">
+                        <a ng-if="form.description && form.type && form.zone" ng-click="saveIncident(form,$event)" class="sign-up-button md-raised md-button md-default-theme material-background">
+                            PUBLIER</a>
+                    </div>
+                </div>
+
+
+            </ion-content>
+        </ion-slide>
+        <!--end slider section-->
+    </ion-slide-box><!--end try app section-->
+
+    <script type="text/ng-template" id="image-actions-template.html">
+        <md-bottom-sheet class="md-list md-has-header">
+            <h1 class="md-bottom-sheet-header">Ajouter une image</h1>
+            
+            <md-list>
+                <!--md bottom sheet list item-->
+                <md-list-item>
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-class="{ 'disabled-link': disableSaveBtn}"
+                       ng-click="takePicture(1, img.src)">
+                        <i class="ion-camera"></i>
+                        <span>Prendre une photo</span>
+                    </a>
+                </md-list-item>
+
+                <md-list-item >
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-click="takePicture(0, img.src)">
+                        <i class="ion-folder"></i>
+                        <span>Depuis ma bibliothèque</span>
+                    </a>
+                </md-list-item>
+                <!--end md bottom sheet list item-->
+            </md-list>
+        </md-bottom-sheet>
+    </script><!--end angular template section-->
+</ion-view>

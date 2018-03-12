@@ -1,0 +1,143 @@
+<!--<link href="css/contacts.css" rel="stylesheet">-->
+<ion-view cache-view="false" title="Liste des Contacts">
+    <ion-nav-buttons side="left">
+        <button class="button button-clear" ui-sref="app.contacts">
+            <i class="ion-android-arrow-back"></i>
+        </button>
+    </ion-nav-buttons>
+    <!--
+<ion-nav-buttons side="right">
+<button class="button button-clear" ui-sref="app.nearbyContacts">
+<i class="fa fa-search"></i>
+</button>
+</ion-nav-buttons>
+has-footer
+<ion-header-bar align-title="left" class="bar-stable">
+<div class="buttons" ui-sref="app.messages">
+<button class="button button-icon ion-android-arrow-back"></button>
+</div>
+<h1 class="title"><div>Créer une discussion</div><span>{{selectedCount}}/99</span></h1>
+<div class="buttons" ng-click="createGroup()">
+<button class="button button-icon icon-planes" style="color:#387ef5" ng-disabled="selectedCount < 1"></button>
+</div>
+</ion-header-bar>
+-->
+
+    <ion-content class="has-header">
+        <div class="list list-inset">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input ng-model="search.name.$value" type="search" placeholder="Tapez un nom...">
+            </label>
+        </div>
+
+        <div class="list create-group-main no-margin no-padding" ng-repeat="contact in contacts | filter:search | orderBy:'formatedName.$value'" >
+            <div ng-if="$index == 0 || getAlpha($index)" class="item item-divider light-bg">{{contact.name.$value | firstChar}}</div>
+            <div class="item item-avatar item-button-right"  for="{{contact.$id}}">
+                <img ng-click="showContactDetailsModal(contact)" ng-if="contact.avatar.$value" ng-src="{{contact.avatar.$value}}">
+                <img ng-if="!contact.avatar.$value" ng-src="css/img/avatar/{{contact.name.$value | firstChar}}.png">
+                <div ng-show="contact.status == '1'" class="contact-status positive-bg"></div>
+                <span style="font-size: 2.1vh;">{{contact.firstname.$value}} {{contact.name.$value}}</span>
+                <div style="font-size: 2vh; color:#7f8c8d;">{{contact.address.$value}}</div>
+                <div class="buttons" >
+                    <button class="button button-icon larger icon ion-chatbubbles" ng-class="{ 'disabled-link': contact.blocked.$value}" ui-sref="detail({id:contact.$id})"></button>
+                    <button class="button button-icon larger ion-navicon  icon-accessory" ng-click="testx='rr';showContactListBottomSheet($event,contact)"></button>
+                </div>
+
+            </div>
+        </div>
+        <!--
+<div class="list contacts-main">
+<div ng-repeat="contact in contacts | orderBy:'name.$value'">
+<div ng-if="$index == 0 || getAlpha($index)" class="item item-divider">{{contact.name.$value | firstChar}}</div>
+<a class="item item-avatar" on-hold="showMenuSearch(contact.name.$value,contact.$id)" ui-sref="detail({id:contact.$id})">
+<img ng-if="contact.avatar.$value" ng-src="{{contact.avatar.$value}}">
+<img ng-if="!contact.avatar.$value" ng-src="css/img/avatar/{{contact.name.$value | firstChar}}.png">
+<div ng-show="timeNow - contact.lastSign.$value <120000" class="contact-status positive-bg"></div>
+<h2>{{contact.name.$value}}</h2>
+
+</a>
+</div>
+</div>
+-->
+        <!--
+        <div ng-if="contacts.length === 0" class="text-center">
+            <div class="margin-bottom">Vous n'avez pas encore de contacts.</div>
+            <button class="button button-small width-50 button-positive" ui-sref="app.nearbyContacts">Trouver un membre</button>
+        </div> 
+-->
+    </ion-content>
+    
+    <script type="text/ng-template" id="dialog-select-template.html">
+        <md-dialog aria-label="options dialog">
+            <md-dialog-content layout-padding>
+                <h2 class="md-title">Quel est la raison du blocage ?</h2>
+                
+                <md-select ng-model="abuseSelect" placeholder="Choisir une raison">
+                    <md-option value="Photo inappropriée">Photo inappropriée</md-option>
+                    <md-option value="Propos inapproprié">Propos inapproprié</md-option>
+                    <md-option value="Faux profil / usurpation">Faux profil / usurpation</md-option>
+                </md-select>
+                
+                <md-input-container md-no-float="">
+                    <div>
+                        <input ng-model="abuseSelectDetails" type="text" placeholder="Raison du blocage">
+                    </div>
+                </md-input-container>
+            </md-dialog-content>
+        
+            <md-dialog-actions>
+                <span flex></span>
+                
+                <md-button ng-click="confirmAbusePrompt()">Confirmer</md-button>
+                <md-button ng-click="closeAbusePrompt()">Annuler</md-button>
+            </md-dialog-actions>
+        </md-dialog>
+    </script>
+    
+    <script type="text/ng-template" id="contact-actions-template.html">
+        <md-bottom-sheet class="md-list md-has-header">
+            <!--  <h1 class="md-bottom-sheet-header">{{currentUserSelected.name.$value}}</h1>-->
+            <md-list>
+                <md-list-item ng-show="currentUserSelected.blocked.$value">
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+
+                       ng-click="blockPerson(currentUserSelected)">
+                        <i class="ion-android-add-circle"></i>
+                        <span style="font-size: 95%;">Débloquer {{currentUserSelected.name.$value}}</span>
+                    </a>
+                </md-list-item>
+                <md-list-item>
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-class="{ 'disabled-link': currentUserSelected.blocked.$value}"
+                       ng-click="blockPerson(currentUserSelected)">
+                        <i class="ion-android-remove-circle"></i>
+                        <span style="font-size: 95%;">Bloquer {{currentUserSelected.name.$value}}</span>
+                    </a>
+                </md-list-item>
+                <md-list-item>
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-class="{ 'disabled-link': disableSaveBtn}"
+                       ng-click="openAbusePrompt($event,currentUserSelected)">
+                        <i class="ion-android-warning"></i>
+                        <span>Signaler un abus</span>
+                    </a>
+                </md-list-item>
+
+                <md-list-item >
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-click="removePerson(currentUserSelected)">
+                        <i class="ion-android-delete"></i>
+                        <span>Supprimer de mes relations</span>
+                    </a>
+                </md-list-item>
+            </md-list>
+        </md-bottom-sheet>
+    </script>
+</ion-view>
+<!---->
+
+<!--md bottom sheet list item-->
+
+<!--end md bottom sheet list item-->
+<!--end angular template section-->

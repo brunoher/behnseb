@@ -1,0 +1,105 @@
+<ion-view cache-view="false" title="Affiches digitales">  
+    <ion-nav-buttons side="left">
+        <button class="button button-clear" ng-click="back()">
+            <i class="icon ion-home"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="toEdit(false)">
+            <img src="img/edit.svg">
+        </button>
+    </ion-nav-buttons>
+    <ion-content ng-init="initPostIts()">
+        <div ng-if="showActionSheet" class="profile-actionSheet">
+            <div class="actionSheet-par" style="top: 0;">
+                <a ng-click="toEdit(true)" class="btn-actionSheet">Modifier votre mot</a>
+            </div>
+          
+            <div class="actionSheet-par" style="top: 33.3%;">
+                <a ng-click="delete();" class="btn-actionSheet">Supprimer votre mot</a>
+            </div>
+          
+            <div class="actionSheet-par" style="top: 66.6%;">
+                <a ng-click="hideActionSheet()"><span style="color: red;">Annuler</span></a>
+            </div>
+        </div>
+
+        <swipe-cards on-card-swipe="onSwipe($event)">
+            <swipe-card ng-style={{postSize}} class="postIt" ng-if="!cards[0]"> 
+                 <div class="mokoleContent-empty" style="">Aucune affiche digitale n'a été postée, pour l'instant dans votre copropriété. Soyez le premier à poster un mot! 
+                 </div>        
+            </swipe-card>
+            <swipe-card ng-style={{postSize}} class="postIt" ng-repeat="card in cards" on-card-swipe="cardSwiped(card)" allowPageScroll = "horizontal">
+                <div class="mokoleHeader">
+                    <div class="mokoleDate">
+                        <span style="position: absolute; top: 1%; left: 1%;">Le :</span>
+                        <div style="position: absolute; top: 25%; left: 1%;">{{ card.date }}<span style="color:transparent;">a</span>
+                        </div>
+                    </div>
+                    <div ng-if="currentUser.formatedName == card.creator">
+                        <button class="mokoleDel"  ng-click="displayActionSheet(card)">
+                        </button>
+                        <div ng-style={{fontSize}} class="cross">Modifier</div>  
+                    </div>
+                    <div ng-if="currentUser.formatedName !== card.creator">
+                        <button class="mokoleDel"  ng-click="openAbusePrompt($event,card._id)">
+                        </button>
+                        <div ng-style={{fontSize}} class="cross">Signaler</div>  
+                    </div>
+                    
+                </div> 
+
+                <div class="mokoleBody">
+                    <ion-content delegate-handle="mainScroll" on-scroll-complete="scrolledTrue()"  ng-style="topScrollDigipost" class="post-scroll">
+                        <div class="mokoleContent">
+                            <div ng-if="card.img" ng-style={{imgContainer_top}} class="mokole-img-container">
+                                <img class="mokole-img" ng-style={{digipostImg_height}} src={{card.img}}>
+                            </div>
+                            <div ng-style={{textPost_top}} class="text-post">
+                                <p ng-if="!card.img">{{ card.content.slice(0, 100) }}<span ng-if="!card.img && card.content.length > 100" style="font-size: 170%;">...</span></p>
+                                <!--
+                                <p ng-if="!card.img && card.content.length > 100" class="etc" >...</p>
+                                -->
+                                <p ng-if="card.img" class="text-under-img" ng-style={{textUnderImg_top}}>{{ card.content.slice(0, 25) }}<span ng-if="card.img && card.content.length > 25" style="font-size: 180%;">...</span></p>
+                                <!--
+                                <p ng-if="card.img && card.content.length > 50" class="etcImg" >...</p>
+                                -->
+                                <button ng-if="!card.img && card.content.length > 100" ng-click="showModal(card)" class="showModal-btn">Voir</button>
+                                <button ng-if="card.img" ng-click="showModal(card)" class="showModal-btn-img" ng-style = {{showMore_top}}>Voir</button>
+                            </div>   
+                        </div>
+                    </ion-content>
+                </div>
+                
+                <div class="mokoleFooter">
+                    <div ng-style={{fontSizeDate}} class="mokoleRank">{{ rank }}/{{ postIts.length }}</div>
+                    <div class = "mokoleCreator">{{ card.creator }}</div>
+                </div>
+            </swipe-card>
+        </swipe-cards>
+    </ion-content>
+
+    <script type="text/ng-template" id="dialog-select-template.html">
+        <md-dialog aria-label="options dialog">
+            <md-dialog-content layout-padding>
+                <h2 class="md-title">Quel est la raison du signalement?</h2>
+                
+                <md-select ng-model="abuseSelect" placeholder="Choisir une raison">
+                    <md-option value="Photo inappropriée">Photo inappropriée</md-option>
+                    <md-option value="Propos inappropriés">Propos inappropriés</md-option>
+                </md-select>
+                
+                <md-input-container md-no-float="">
+                    <div>
+                        <input ng-model="abuseSelectDetails" type="text" placeholder="Raison du signalement">
+                    </div>
+                </md-input-container>
+            </md-dialog-content>
+        
+            <md-dialog-actions>
+                <span flex></span>
+                <md-button ng-click="closeAbusePrompt()">Terminer</md-button>
+            </md-dialog-actions>
+        </md-dialog>
+    </script>
+</ion-view>

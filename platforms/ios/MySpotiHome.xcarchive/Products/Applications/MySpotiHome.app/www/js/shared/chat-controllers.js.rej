@@ -1,0 +1,40 @@
+diff a/www/js/shared/chat-controllers.js b/www/js/shared/chat-controllers.js	(rejected hunks)
+@@ -256,27 +256,27 @@
+     };
+ })
+ 
+-    .controller('messagesDetail', function($scope, $ionicScrollDelegate, $ionicTabsDelegate, $ionicSideMenuDelegate, $timeout, $ionicPopup, IonicClosePopupService, Notification, Block, Messages, Camera, DetailMessages, User, $localStorage, $state, $stateParams, Location, Animate){
++    .controller('messagesDetail', function($scope, $ionicScrollDelegate, $ionicTabsDelegate, $ionicSideMenuDelegate, $timeout, $ionicPopup, IonicClosePopupService, Notification, Block, Messages, Camera, DetailMessages, User, $localStorage, $state, $stateParams, Location, Animate, $ionicActionSheet){
++    
+     $scope.$on( "$ionicView.loaded", function( scopes, states ) {
++        $scope.inputText = {};
++        $scope.inputSticker = {};
++        $scope.inputPicture = {}; 
+         $scope.rowsInputMsg = 1;
+-        console.log($scope.rowsInputMsg);
+-    }); 
+-    $scope.inputText = {
+-        content: ""
+-    };
+-
+-    $scope.footerBarHeight = "8";
+-    let rowLength = 29;
++        $scope.footerBarHeight = "7.5";
++    });
+     
++    let rowLength = 29;
+     $scope.adjustInputHeight = function() {
+-        if (!$scope.inputText.content.length) {
++        if (!$scope.inputText.content) {
+             $scope.rowsInputMsg = 1;
+             console.log($scope.rowsInputMsg);
+         }else {
++            $scope.picture = false; $scope.text = true; $scope.sticker = false;
+             $scope.rowsInputMsg = Math.ceil($scope.inputText.content.length/rowLength);
+             console.log($scope.rowsInputMsg);
+         }
+-        $scope.footerBarHeight = String(6+2.8*$scope.rowsInputMsg);
++        $scope.footerBarHeight = String(5+2.5*$scope.rowsInputMsg);
+         console.log($scope.footerBarHeight);
+     }
+ 

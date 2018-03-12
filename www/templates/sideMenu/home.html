@@ -1,0 +1,81 @@
+<ion-view title="Home" hide-tabs="true">
+  <ion-nav-bar class="bar-positive">
+    <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear ion-navicon" menu-toggle="left" ui-sref="app.homeDashboard">
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <!--div style=" margin-top: -50px; background-color:#667; position: relative;"> 
+      <img style=" width: 100%;background-color:#444; position: relative;" src="img/bulle.png"> 
+    </div-->
+
+    <div class="talk-bubble tri-right border round" style="width: 75%; background-color:#f8f8f8; background-size: 100%;background-image: url(img/bulle.png); margin-top: -10%; margin-left: 15%;">
+      <div class="talktext" style="line-height: 150%; padding-left:23%; padding-right:18%; padding-top:26%; padding-bottom: 25%;">
+        Bonjour {{ user.firstName }}, choisissez le service dont vous avez besoin.
+      </div>
+    </div>    
+    
+    <div class="row" style="position: relative; margin-top: -25%; right: 10%; width: 90%; margin-left: 10%;">
+      <div class="col" style="width: 100%;">
+        <img style="z-index: 1; width: 180%; position: relative; margin-top: -25%; left:5%;" src="img/immeuble1.png">
+        <!--img style="width: 2%; z-index: 2; position: relative;" src="img/espace-vert.png"-->
+      </div>
+      
+      <div class="col" style=" z-index: 1; margin-right: 5%;">
+        <img style="width: 170%;" src="img/maison.png">
+      </div>
+
+      <div class="col">
+        <img style="width: 110%; height: 75%; margin-top: 34%;" src="img/immeuble3.png">
+      </div> 
+    </div>
+    
+   
+    <!--img style="position: relative;" class="imageHome" style="" src="/img/mike.png"-->
+    <p style="text-align: center; margin-top: -10%;">
+      {{ user.fullAddress }}
+    </p>
+ 
+    <div class="row" style="padding-bottom: 5%; margin-top: -10%;">   
+      
+      <div class="col" style="margin-top: 5.5%;">
+        <button ui-sref="syndic" id="myHomeButton" class="button button-outline">
+          <img src="img/syndic.png" style="width:200%; margin-left:-50%; height:85%; margin-top:25%; position: relative;">    
+        </button>
+        
+        <p style="text-align: center;">
+          Syndic
+        </p>
+      </div>
+    
+      <div class="col" style="margin-top: 10.5%;">
+        <button ui-sref="incidents" id="myHomeButton" class="button button-outline">
+          <div class="row" style="width: 150%; margin-left:-25%; height: 80%; margin-top: 10%;">   
+            <div class="col" style="z-index: 100; width: 125%; height:110%; margin-top: -10%; margin-left: -12.5%;">
+              <img src="img/suivi.png" style="width:200%; margin-left:-50%; height:50%;">
+            </div>
+          
+            <div class="col" style="z-index: 50; width: 125%; height:110%; margin-top: -13%; margin-right: -12.5%;">
+              <img src="img/suivi2.png" style="width:250%; margin-left:-140%; height:105%; margin-top: -10%;">
+            </div>
+          </div>       
+        </button>
+        
+        <p style="text-align: center;">
+          Suivi des incidents
+        </p>     
+      </div>
+
+      <div class="col" style="margin-top: 9%;">   
+        <button  ui-sref="incidentsNew" id="myHomeButton" class="button button-outline"> 
+          <img src="img/incident.png" style="width:130%; margin-left:-15%; height:75%; margin-top:30%; position: relative;"> 
+        </button>
+        
+        <p style="text-align: center;">
+           Déclarer nouvel incident
+        </p>       
+      </div>    
+    </div>   
+  </ion-content>
+</ion-view>

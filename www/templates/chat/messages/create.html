@@ -1,0 +1,59 @@
+   <ion-view cache-view="false" title="Contacts">
+    <ion-nav-buttons side="left">
+        <button class="button button-clear" ng-click="goBackSlide()">
+            <i class="icon ion-home"></i>
+        </button>
+    </ion-nav-buttons>
+    <!--
+<ion-nav-buttons side="right">
+<button class="button button-clear" ui-sref="app.nearbyContacts">
+<i class="fa fa-search"></i>
+</button>
+</ion-nav-buttons>
+has-footer
+-->
+    <ion-content class="">
+        <div class="list list-inset">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+         <input ng-model="search.name.$value" type="text" placeholder="Chercher un contact...">
+            </label>
+        </div>
+        <div  class="list contacts-header no-margin">
+<a class="item item-icon-left item-icon-right" ui-sref="app.createGroup">
+<i class="icon ion-ios-people-outline positive"></i>
+<span>
+Créer un groupe de discussion
+</span>
+<i class="icon ion-ios-arrow-right"></i>
+</a>
+
+
+</div>
+        <!--
+<div class="list contacts-main">
+<div ng-repeat="contact in contacts | orderBy:'name.$value'">
+<div ng-if="$index == 0 || getAlpha($index)" class="item item-divider">{{contact.name.$value | firstChar}}</div>
+<a class="item item-avatar" on-hold="showMenuSearch(contact.name.$value,contact.$id)" ui-sref="detail({id:contact.$id})">
+<img ng-if="contact.avatar.$value" ng-src="{{contact.avatar.$value}}">
+<img ng-if="!contact.avatar.$value" ng-src="css/img/avatar/{{contact.name.$value | firstChar}}.png">
+<div ng-show="timeNow - contact.lastSign.$value <120000" class="contact-status positive-bg"></div>
+<h2>{{contact.name.$value}}</h2>
+
+</a>
+</div>
+</div>-->
+        <div class="list create-group-main no-margin no-padding" ng-repeat="contact in contacts | filter:search | orderBy:'name.$value'" ui-sref="detail({id:contact.$id})">
+            <div ng-if="$index == 0 || getAlpha($index)" class="item item-divider light-bg">{{contact.name.$value | firstChar}}</div>
+            <label class="item item-avatar item-button-right" for="{{contact.$id}}">
+                <img ng-if="contact.avatar.$value" ng-src="{{contact.avatar.$value}}">
+                <img ng-if="!contact.avatar.$value" ng-src="css/img/avatar/{{contact.name.$value | firstChar}}.png">
+                <div ng-show="contact.status == '1'" class="contact-status positive-bg"></div>
+                <span>{{contact.name.$value}}</span>
+                <div class="buttons">
+                <div class="button button-icon icon ion-chatbubbles">
+                    </div>
+            </label>
+        </div>
+       </ion-content>
+</ion-view>
