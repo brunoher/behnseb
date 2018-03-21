@@ -21,7 +21,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3.3</string>
+	<string>1.3.6</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -44,7 +44,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.3.3</string>
+	<string>1.3.6</string>
 	<key>FacebookAppID</key>
 	<string>129918904315367</string>
 	<key>FacebookDisplayName</key>
@@ -67,9 +67,9 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Voir conditions générales d'utilisation</string>
 	<key>NSContactsUsageDescription</key>
-	<string>Voir conditions générales d'utilisation</string>
+	<string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Voir conditions générales d'utilisation</string>
+	<string></string>
 	<key>NSMainNibFile</key>
 	<string></string>
 	<key>NSMainNibFile~ipad</key>
@@ -79,7 +79,9 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Voir conditions générales d'utilisation</string>
 	<key>UIBackgroundModes</key>
-	<array/>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UIInterfaceOrientation</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

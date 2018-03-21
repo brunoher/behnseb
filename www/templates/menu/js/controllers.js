@@ -440,11 +440,11 @@ appControllers.controller('profileCtrl', function($rootScope, $scope, $state, Ut
             $scope.data.selectedSuggestion.fullText = nmbr + " " + $scope.data.selectedSuggestion.fullText;
             IgnApiService.formatString($scope.data.selectedSuggestion.fullText);   
             IgnApiService.setUserFullAdress($scope.data, $scope.form).then(function(obj) {
-            //    $scope.o = obj;
-                $scope.o.addressSelected = $scope.data.selectedSuggestion.fullText;
+                $scope.o = obj;
+                //$scope.o.addressSelected = $scope.data.selectedSuggestion.fullText;
                 $scope.displayResult = obj.displayResult;
                 $scope.showButton = obj.showButton;
-                $scope.o.streetNumber = nmbr;
+                //$scope.o.streetNumber = nmbr;
                 $scope.data.streetNumber = null;
              }), function (err) {
                 console.log(err);

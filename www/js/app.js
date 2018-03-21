@@ -43,24 +43,24 @@ window.globalVariable = {
 };// End Global variable
 
 //######################Version prod###############################
-/*var config = {
+var config = {
     apiKey: "AIzaSyCPfLymyg5Ekf8RhxKxZ74LNv2LpQ6RxMo",
     authDomain: "msh2-d4cb7.firebaseapp.com",
     databaseURL: "https://msh2-d4cb7.firebaseio.com",
     projectId: "msh2-d4cb7",
     storageBucket: "msh2-d4cb7.appspot.com",
     messagingSenderId: "373460998251"
-}*/
+}
 
 //######################Version dev############################### 
-var config = { 
+/*var config = { 
     apiKey: "AIzaSyCWrnqD7ycey6HYw6ADxWUlftAsLminDaM", 
     authDomain: "myspotihome-prod.firebaseapp.com", 
     databaseURL: "https://myspotihome-prod.firebaseio.com", 
     projectId: "myspotihome-prod", 
     storageBucket: "myspotihome-prod.appspot.com", 
     messagingSenderId: "459587234881" 
-};
+};*/
 
 firebase.initializeApp(config);
 var storageRef = firebase.storage().ref();

@@ -600,8 +600,7 @@ appControllers.controller('wizzardSignUpController', function ($ionicModal, $sco
     }
 
     var user = UserService.getUser();
-    if (user.picture) $scope.img = { src: 'css/img/icon-camera.png' };
-    else $scope.img = {src: user.picture};
+    $scope.img = {src: 'css/img/icon-camera.png'};
 
     /*$scope.refresh = function() {
     $timeout(function() {
@@ -783,11 +782,11 @@ appControllers.controller('wizzardSignUpController', function ($ionicModal, $sco
             $scope.data.selectedSuggestion.fullText = nmbr + " " + $scope.data.selectedSuggestion.fullText;
             IgnApiService.formatString($scope.data.selectedSuggestion.fullText);   
             IgnApiService.setUserFullAdress($scope.data, $scope.form).then(function(obj) {
-                //$scope.o = obj;
-                $scope.o.addressSelected = $scope.data.selectedSuggestion.fullText;
+                $scope.o = obj;
+                //$scope.o.addressSelected = $scope.data.selectedSuggestion.fullText;
                 $scope.displayResult = obj.displayResult;
                 $scope.showButton = obj.showButton;
-                $scope.o.streetNumber = obj.streetNumber;
+                //$scope.o.streetNumber = obj.streetNumber;
                 $scope.data.streetNumber = null;
             }), function (err) {
                 console.log(err);
@@ -804,7 +803,7 @@ appControllers.controller('wizzardSignUpController', function ($ionicModal, $sco
             $scope.o = obj;
             if (isNaN(parseInt($scope.o.streetNumber))) {
                 var template = '<input type="text" ng-model="data.streetNumber">';
-                var title = "Numéro de rue manquant : souhaitez vous ajouter un numéro de rue à l'adresse :<br>'"+ $scope.data.selectedSuggestion.fullText+"' ?";
+                var title = "Numéro de rue manquant : souhaitez vous compléter un numéro de rue à l'adresse :<br>'"+ $scope.data.selectedSuggestion.fullText+"' ?";
                 Confirm.addStreetNumber($scope, template, title);
                 /*PopupService.show("invalidStreetNumber");
                 delete $scope.o;*/

@@ -60,7 +60,7 @@
     "plugins": {
       "cordova-plugin-statusbar": {},
       "cordova-plugin-contacts": {
-        "CONTACTS_USAGE_DESCRIPTION": "Accès au répertoire de contacts"
+        "CONTACTS_USAGE_DESCRIPTION": "Accès au répertoire de contacts."
       },
       "cordova-plugin-console": {},
       "cordova-plugin-device": {},
@@ -75,8 +75,8 @@
       "cordova-plugin-browsertab": {},
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-camera": {
-        "CAMERA_USAGE_DESCRIPTION": " ",
-        "PHOTOLIBRARY_USAGE_DESCRIPTION": " "
+        "CAMERA_USAGE_DESCRIPTION": "Voir conditions générales d'utilisation.",
+        "PHOTOLIBRARY_USAGE_DESCRIPTION": "Voir conditions générales d'utilisation."
       },
       "cordova-plugin-x-socialsharing": {},
       "cordova-plugin-googleplus": {

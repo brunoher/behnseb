@@ -1782,7 +1782,6 @@ appServices.factory ('IgnApiService', function ($q){
                     location = newLocation;
                 }// le but est de pouvoir taper '2bis' alors que l'autocomplétion ne comprend que '2 bis'
             }
-            console.log(location);
             return location;
         },
 
@@ -1851,8 +1850,8 @@ appServices.factory ('IgnApiService', function ($q){
                 addressSelected: ""
             };
             obj.displayResult = false;
-            obj.streetNumber = data.streetNumber ? data.streetNumber : {};
 
+            obj.streetNumber = data.streetNumber ? data.streetNumber : {};
             var postalCode = data.foString;
             //*** : toutes les balises html correspondant aux champs à compléter par l'utilisatuer sont complétées avec les résultats de l'autocomplétion
             if (data.selectedSuggestion){
@@ -1869,9 +1868,11 @@ appServices.factory ('IgnApiService', function ($q){
                             obj.postalCode = result.locations[0].placeAttributes.postalCode;  // dans result, ce qui nous intéresse, c'est l'attribut 'location', et plus particulièrement le 1er index
                             obj.city = result.locations[0].placeAttributes.municipality;     // c'est le match le plus précis par rapport à l'adresse rentrée en paramètres
                             obj.street = result.locations[0].placeAttributes.street;        // toutes le infos qui nous intéressent sont récupérées (rue, numéro, ville, code postal...)        
+                            
                             if(result.locations[0].placeAttributes.number != undefined){
                                 obj.streetNumber = result.locations[0].placeAttributes.number;
                             }
+
                             var positionX = result.locations[0].position.x;  // les coordonnées GPS 'lat' et 'long' sont aussi récupérées pour être envoyées en paramètres de la fonction qui récupère la parcelle cadastrale 
                             var positionY = result.locations[0]. position.y;
                             ((function(positionX, positionY){
@@ -1889,7 +1890,6 @@ appServices.factory ('IgnApiService', function ($q){
                                         obj.cadastralParcel = result.locations[0].placeAttributes.cadastralParcel;
                                         obj.city = result.locations[0].placeAttributes.municipality;
                                         obj.show = true;
-
                                         defer.resolve(obj);
                                     }
 
@@ -2031,7 +2031,7 @@ appServices.factory('Confirm', function (PopupService, $ionicPopup, Animate) {
                 title: title,
                 scope: scope,
                 buttons: [
-                    { text: 'Autre adresse' },
+                    { text: 'Non merci' },
                     {
                         text: "<b>Confirmer</b>",
                         type: 'button',
@@ -2047,7 +2047,8 @@ appServices.factory('Confirm', function (PopupService, $ionicPopup, Animate) {
                 if (confirm === true) {
                     scope.addStreetNumber();
                 } else {
-                    delete scope.o;  
+                    scope.o.streetNumber = ""; 
+                    //delete scope.o; 
                 }     
             });   
         }

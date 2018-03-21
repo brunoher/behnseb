@@ -1786,7 +1786,7 @@ appControllers.controller('groupDetail', function(/*$cordovaKeyboard, */UserGrou
     $scope.takePicture = function(index){
         //$ionicTabsDelegate.select(1);
         try {
-            Utilities.takePicture(index, false, false, false).then(function(result){
+            Utilities.takePicture(index, false, true, false).then(function(result){
                 $scope.picture = true; $scope.text = false; $scope.sticker = false;
                 $scope.inputPicture.content = "data:image/jpeg;base64,"+result;
                 $timeout(function() {
