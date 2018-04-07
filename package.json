@@ -44,7 +44,7 @@
     "bower": "^1.8.0",
     "gulp": "^3.9.1",
     "gulp-util": "^2.2.20",
-    "ionic": "3.7.0",
+    "ionic": "^3.20.0",
     "shelljs": "^0.3.0"
   },
   "cordovaPlugins": [

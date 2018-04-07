@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
 		06003AE553304CA791DF96AC /* UNIHTTPClientHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F85380030DF2482B8EF3B425 /* UNIHTTPClientHelper.m */; };
@@ -682,7 +681,7 @@
 				LastUpgradeCheck = 510;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = CKNJX969FS;
+						DevelopmentTeam = NL5FHBA8Z9;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -919,7 +918,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = MySpotiHome/Resources/MySpotiHome.entitlements;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = CKNJX969FS;
+				DEVELOPMENT_TEAM = NL5FHBA8Z9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"MySpotiHome/Plugins/cordova-plugin-facebook4\"",
@@ -960,7 +959,7 @@
 				CODE_SIGN_ENTITLEMENTS = MySpotiHome/Resources/MySpotiHome.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = CKNJX969FS;
+				DEVELOPMENT_TEAM = NL5FHBA8Z9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"MySpotiHome/Plugins/cordova-plugin-facebook4\"",
